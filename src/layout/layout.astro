@@ -1,5 +1,7 @@
 ---
 const { SiteTitle } = Astro.props;
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
 import { ViewTransitions } from "astro:transitions";
 ---
 
@@ -10,7 +12,9 @@ import { ViewTransitions } from "astro:transitions";
     <title>{SiteTitle}</title>
     <ViewTransitions />
   </head>
-  <body>
+  <body class="bg-gray-200">
+    <Navigation />
     <slot />
+    <Footer />
   </body>
 </html>
