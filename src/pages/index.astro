@@ -1,30 +1,63 @@
 ---
 import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings"
-const dataFeedBooksing = [
-
-]
+import Map from "../components/Map"
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
 	<div class="overflow-hidden">
+		<!-- 
 		<div class="w-full h-[75vh] bg-[url('https://cdn.orbxdirect.com/products/1047/632d24939545d.jpg')] bg-cover flex flex-col items-center justify-center">
 			<h1 class="text-white font-bold drop-shadow-2xl text-2xl md:text-4xl lg:text-6xl mt-20">WELCOME TO</h1>
 			<h1 class="text-white font-bold drop-shadow-xl text-4xl md:text-6xl lg:text-8xl">VATSIM Scandinavia</h1>
 		</div>
-		<div class="w-full h-screen">
-			<div class="w-full h-screen bg-vatsca3 grid gap-4 content-center grid-cols1 md:grid-cols-2">
-				<div class="w-full h-80 m-4 bg-white">
-					<h1>Announcements</h1>
-				</div>
-				<div class="w-full h-80 m-4 bg-white flex justify-center flex-col items-center">
-					<h1 class="font-semibold text-2xl p-2">ATC Bookings</h1>
-					<Bookings />
-				</div>
+		-->
+		<div class="w-full h-[calc(100vh-6rem)] bg-snow flex justify-between">
+			<div class="w-full flex flex-col items-center justify-center bg-snow">
+				<h5 class="text-vatsca2 font-bold drop-shadow text-4xl">WELCOME TO</h5>
+				<h1 class="text-vatsca2 font-bold drop-shadow text-6xl">VATSIM Scandinavia</h1>
+				<p class="text-vatsca2 font-semibold drop-shadow text-lg p-2">Home vACC of Denmark, Sweden, Norway, Finland & Iceland</p>	
+			</div>
+			<div class="w-full bg-snow hidden xl:block">
+				<Map />
 			</div>
 		</div>
 		<div class="w-full h-screen">
-			<div class="w-full h-screen bg-snow flex justify-center gap-32">
-				a
+			<div class="w-full h-full bg-vatsca3 grid gap-4 content-start pt-12 grid-cols1 md:grid-cols-4 pl-4 pr-4" id="bookings">
+				<div class="w-full h-fit flex flex-col md:col-span-3">
+					<div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
+						Latest announcements
+					</div>
+					<div class="bg-white">
+						<div class="w-full p-4">
+							<h2 class="font-semibold text-xl"><span class="font-bold text-vatsca3">[VACANT POSITION]</span> Director of VATSIM Scandinavia</h2>
+							<p>Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.</p>
+							<p class="text-lg font-semibold">February 29 | By Christian Kovanen</p>
+						</div>
+						<hr />
+						<div class="w-full p-4">
+							<h2 class="font-semibold text-xl">Real-world conflicts on VATSIM</h2>
+							<p>Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.</p>
+							<p class="text-lg">February 29 | By Christian Kovanen</p>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-full bg-white flex justify-start flex-col items-center row-span-2">
+					<div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
+						ATC Bookings
+					</div>
+					<Bookings />
+				</div>
+				<div class="w-full h-64 flex flex-col md:col-span-3">
+					<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
+						Upcoming Events
+					</div>
+					<dir class="bg-white h-full w-full m-0">
+						<div class="w-full h-20">
+							<p>9 March 2024</p>
+							<h2 class="font-semibold text-xl m-0">Helsinki Overload</h2>
+						</div>
+					</dir>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -1,10 +1,9 @@
-import React from "react";
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
 import {Chip} from "@nextui-org/react";
 
 export default function Bookings() {
   return (
-    <Table isStriped aria-label="Example static collection table" className="w-96">
+    <Table isStriped aria-label="Example static collection table" className="w-full h-full">
       <TableHeader>
         <TableColumn>Station</TableColumn>
         <TableColumn>Type</TableColumn>
