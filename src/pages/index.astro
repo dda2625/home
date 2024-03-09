@@ -1,5 +1,9 @@
 ---
 import Layout from "../layout/layout.astro";
+import Bookings from "../components/Bookings"
+const dataFeedBooksing = [
+
+]
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
 	<div class="overflow-hidden">
@@ -12,8 +16,9 @@ import Layout from "../layout/layout.astro";
 				<div class="w-full h-80 m-4 bg-white">
 					<h1>Announcements</h1>
 				</div>
-				<div class="w-full h-80 m-4 bg-white">
-					<h1>Bookings</h1>
+				<div class="w-full h-80 m-4 bg-white flex justify-center flex-col items-center">
+					<h1 class="font-semibold text-2xl p-2">ATC Bookings</h1>
+					<Bookings />
 				</div>
 			</div>
 		</div>
