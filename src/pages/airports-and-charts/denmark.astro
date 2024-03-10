@@ -1,0 +1,111 @@
+---
+import Layout from "../../layout/layout.astro";
+---
+<Layout SiteTitle="VATSIM Scandinavia">
+    <div class="w-screen h-fit bg-snow grid grid-cols-1 xl:grid-cols-4 gap-4 content-center p-4">
+        <div class="col-span-1 xl:col-span-2 xl:col-start-2 bg-white p-2">
+            <h1 class="text-4xl font-semibold text-vatsca2 text-center">Denmark</h1>
+            <p class="text-center pt-4">Here you will find information about each airport in Denmark, including ATC frequencies, local traffic regulations, parking procedures, and links to charts and scenery.</p>
+            <h2 class="text-2xl font-semibold text-vatsca2 text-center pt-4">ACC Sectors in Denmark</h2>
+            <p class="text-center pt-4">
+                We have many different ACC Sectors in Denmark. See below to Identify which one is for you. <br />
+                Notice that an entire area is covered even if only one sector in that area is online. <br />
+                Notice that these areas are segregated and no online controller in an area will control other areas <br />
+                EKDK_CTR will provide traffic service for entire Copenhagen FIR if no other ATC areas are online <br />
+            </p>
+        </div>
+        <div class="col-start-2 w-full bg-white flex-col items-center flex">
+            <img src="https://vatsim-scandinavia.org/uploads/monthly_2023_10/image.thumb.png.9b789786bbe64bff1718a84a06fd5c4f.png" class="p-4">
+            <table class="table-auto text-center w-full">
+                <tr class="bg-vatsca2 text-white">
+                  <th>Area</th>
+                  <th>Frequency</th>
+                  <th>Callsign</th>
+                  <th>Name</th>
+                </tr>
+                <tr>
+                  <td rowspan="4" class="rotate-90">Area-West</td>
+                  <td>135.565</td>
+                  <td>EKDK_V_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>124.555</td>
+                  <td>EKDK_L_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>134.680</td>
+                  <td>EKDK_N_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>136.555</td>
+                  <td>EKDK_S_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+              </table>
+        </div>
+        <div class="w-full bg-white">
+            <img src="https://vatsim-scandinavia.org/uploads/monthly_2023_10/image.thumb.png.d011a46aae91a0627eeecfeee200acc6.png" class=" p-4">
+            <table class="table-auto text-center w-full">
+                <tr class="bg-vatsca2 text-white">
+                  <th>Area</th>
+                  <th>Frequency</th>
+                  <th>Callsign</th>
+                  <th>Name</th>
+                </tr>
+                <tr>
+                  <td rowspan="4" class="rotate-90">Area-Lower<br/>East</td>
+                  <td>123.730</td>
+                  <td>EKDK_E_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>133.155</td>
+                  <td>EKDK_D_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>121.380</td>
+                  <td>EKDK_I_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>119.555</td>
+                  <td>EKDK_B_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+              </table>
+        </div>
+        <div class="col-start-2 w-full bg-white flex-col items-center flex">
+            <img src="https://vatsim-scandinavia.org/uploads/monthly_2023_10/image.thumb.png.9b789786bbe64bff1718a84a06fd5c4f.png" class="p-4">
+            <table class="table-auto text-center w-full">
+                <tr class="bg-vatsca2 text-white">
+                  <th>Area</th>
+                  <th>Frequency</th>
+                  <th>Callsign</th>
+                  <th>Name</th>
+                </tr>
+                <tr>
+                  <td rowspan="4" class="rotate-90 h-32">Area-Upper<br/>East</td>
+                  <td>135.290</td>
+                  <td>EKDK_A_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+                <tr>
+                  <td>128.215</td>
+                  <td>EKDK_C_CTR</td>
+                  <td>Copenhagen Control</td>
+                </tr>
+              </table>
+        </div>
+        <div class="w-full bg-white">
+            <img src="https://vatsim-scandinavia.org/uploads/monthly_2023_10/image.thumb.png.d011a46aae91a0627eeecfeee200acc6.png" class=" p-4">
+            <p class="text-center flex justify-center items-center pt-10">
+                This is a parent sector which only control when other areas are unstaffed <br/>
+                This does not have a native Area of Responsibility
+            </p>
+        </div>
+    </div>
+</Layout>

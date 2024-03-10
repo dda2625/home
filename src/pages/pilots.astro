@@ -2,4 +2,45 @@
 import Layout from "../layout/layout.astro";
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
+
+    <div class="grid grid-cols-4 gap-4 bg-snow h-screen content-center">
+
+        <div class="w-full h-fit flex flex-col items-center justify-center col-start-2 col-span-2">
+            <div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
+            Airports & Charts
+            </div>
+            <div class="w-full h-48 bg-white text-snow flex justify-center items-center gap-4 p-4">
+                <a href="/airports-and-charts/denmark" class="bg-vatsca2 h-32 w-full  font-semibold text-xl flex items-center flex-col justify-center">
+                    <p class="text-4xl">EKDK</p>
+                    <hr class="border-1 border-snow/25 w-2/3"/>
+                    <p>Denmark</p>
+                </a>
+                <div class="bg-vatsca2 h-32 w-full font-semibold text-xl flex items-center flex-col justify-center">
+                    <p class="text-4xl">ENOR</p>
+                    <hr class="border-1 border-snow/25 w-2/3"/>
+                    <p>Norway</p>
+                </div>
+                <div class="bg-vatsca2 h-32 w-full  font-semibold text-xl flex items-center flex-col justify-center">
+                    <p class="text-4xl">ESOS</p>
+                    <hr class="border-1 border-snow/25 w-2/3"/>
+                    <p>Sweden</p>
+                </div>
+                <div class="bg-vatsca2 h-32 w-full  font-semibold text-xl flex items-center flex-col justify-center">
+                    <p class="text-4xl">EFHK</p>
+                    <hr class="border-1 border-snow/25 w-2/3"/>
+                    <p>Finland</p>
+                </div>
+                <div class="bg-vatsca2 h-32 w-full  font-semibold text-xl flex items-center flex-col justify-center">
+                    <p class="text-4xl">BIRD</p>
+                    <hr class="border-1 border-snow/25 w-2/3"/>
+                    <p>Iceland</p>
+                </div>
+            </div>
+         </div>
+
+    </div>
+
+
+
+
 </Layout>
