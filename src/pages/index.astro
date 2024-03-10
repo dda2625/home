@@ -10,21 +10,23 @@ import DonationGoal from "../components/donationGoal"
     <div class="w-full h-[calc(100vh-6rem)] bg-snow flex justify-between">
       <div class="w-full flex flex-col items-center justify-center bg-snow">
         <h5 class="text-vatsca2 font-bold drop-shadow text-4xl">WELCOME TO</h5>
-        <h1 class="text-vatsca2 font-bold drop-shadow text-6xl">
+        <h1 class="text-vatsca2 font-bold drop-shadow text-6xl text-center">
           VATSIM Scandinavia
         </h1>
-        <p class="text-vatsca2 font-semibold drop-shadow text-lg p-2">
+        <p class="text-vatsca2 font-semibold drop-shadow text-lg p-2 text-center w-4/5 lg:w-full ">
           Home vACC of Denmark, Sweden, Norway, Finland & Iceland
         </p>
       </div>
-      <div class="w-full bg-snow hidden xl:block"></div>
+      <div class="w-full bg-snow hidden xl:block">
+
+	  </div>
     </div>
 
     <div
-      class="w-full h-screen bg-vatsca3 grid gap-4 content-start pt-6 grid-cols1 md:grid-cols-4 pl-4 pr-4"
+      class="w-full h-fit bg-vatsca3 grid gap-4 content-start pt-6 grid-cols1 xl:grid-cols-4 pl-4 pr-4"
       id="bookings"
     >
-      <div class="w-full h-fit flex flex-col md:col-span-3">
+      <div class="w-full h-fit flex flex-col col-span-3">
         <div
           class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
         >
@@ -62,7 +64,7 @@ import DonationGoal from "../components/donationGoal"
         </div>
       </div>
       <div
-        class="w-full h-[calc(100vh-3rem)] bg-white flex justify-start flex-col items-center row-span-2"
+        class="w-full h-[calc(100vh-3rem)] bg-white flex flex-col items-center col-span-3 xl:col-span-1  xl:row-span-2"
       >
         <div
           class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
@@ -72,7 +74,7 @@ import DonationGoal from "../components/donationGoal"
         <Bookings />
       </div>
       <div
-        class="w-full h-fit pb-6 flex flex-col md:col-span-3 items-center justify-center"
+        class="w-full h-full flex flex-col col-span-3 items-center justify-center"
       >
         <div
           class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
@@ -80,10 +82,10 @@ import DonationGoal from "../components/donationGoal"
           Events
         </div>
         <!-- Featured Event -->
-        <div class="w-full h-full grid grid-cols-4 bg-white">
+        <div class="w-full h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 bg-white">
           <div class="p-4 col-span-2">
             <img
-              class="h-full m-0"
+              class="m-0 aspect-video"
               src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
               alt=""
             />
@@ -101,24 +103,23 @@ import DonationGoal from "../components/donationGoal"
               from 6z and all the way until 22z.
             </p>
           </div>
-
           <img
-            class="w-full h-full p-4"
+            class="aspect-video p-4"
             src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
             alt=""
           />
           <img
-            class="w-full h-full p-4"
+            class="aspect-video p-4"
             src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
             alt=""
           />
           <img
-            class="w-full h-full p-4"
+            class="aspect-video p-4"
             src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
             alt=""
           />
           <img
-            class="w-full h-full p-4"
+            class="aspect-video p-4"
             src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
             alt=""
           />
@@ -126,21 +127,20 @@ import DonationGoal from "../components/donationGoal"
       </div>
     </div>
 
-	<div class="w-full h-[calc(100vh-6rem)] bg-snow grid grid-cols-2 gap-4 pl-4 pr-4 pt-4">
+	<div class="w-full h-fit bg-snow grid content-center grid-cols-1 xl:grid-cols-2 gap-4 p-4">
 
 		<div class="w-full h-fit flex flex-col items-center justify-center">
 			<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
 			Donations
 			</div>
-			<div class="w-full h-full bg-white">
-				<h2 class="text-lg">We'd love to hear your feedback when you've been flying in Scandinavia.<br />
-					Either it's funny stories, critique or suggestions for improvements.
+			<div class="w-full h-48 bg-white flex justify-center items-center flex-col gap-6">
+				<h2 class="text-lg">We have raised enough to cover the costs for the year 2022. Donations are still welcome to cover our costs in the future.
 				</h2>
 				<DonationGoal client:visible/>
 				<a
 				href="mailto:feedback@vatsim-scandinavia.org"
 				class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
-				>Feedback
+				>Read more
 			  </a>
         	</div>
      	</div>
@@ -149,7 +149,7 @@ import DonationGoal from "../components/donationGoal"
 			<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
 			Feedback
 			</div>
-			<div class="w-full h-48 bg-white flex justify-center items-center flex-col gap-12">
+			<div class="w-full h-48 bg-white flex justify-center items-center flex-col gap-6">
 				<h2 class="text-lg">We'd love to hear your feedback when you've been flying in Scandinavia.<br />
 					Either it's funny stories, critique or suggestions for improvements.
 				</h2>
