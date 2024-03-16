@@ -17,7 +17,7 @@ export default function DonationGoal() {
     isStriped
       aria-label="Donations"
       size="lg"
-      value={25}
+      value={value}
       maxValue={200}
       color="primary"
       label="Current donations"
