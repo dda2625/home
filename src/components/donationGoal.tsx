@@ -14,11 +14,16 @@ export default function DonationGoal() {
 
   return (
     <Progress
-      aria-label="Donation Goal..."
-      size="md"
+    isStriped
+      aria-label="Donations"
+      size="lg"
       value={25}
+      maxValue={200}
       color="primary"
+      label="Current donations"
       className="max-w-xl"
+      formatOptions={{style: "currency", currency: "EUR"}}
+      showValueLabel={true}
     />
   );
 }

@@ -9,9 +9,9 @@ import Map from "../components/Map"
   <div class="overflow-hidden flex flex-col items-center bg-vatsca3">
     <div class="w-full h-[calc(100vh-6rem)] bg-snow flex justify-center">
       <div class="w-full flex flex-col items-center justify-center">
-        <h5 class="text-vatsca2 font-bold drop-shadow text-4xl">WELCOME TO</h5>
-        <h1 class="text-vatsca2 font-bold drop-shadow text-6xl text-center">
-          VATSIM Scandinavia
+        <h5 class="text-vatsca3 font-bold drop-shadow text-3xl lg:text-4xl">WELCOME TO</h5>
+        <h1 class="text-vatsca3 font-semibold drop-shadow text-4xl lg:text-6xl text-center">
+          VATSIM SCANDINAVIA
         </h1>
         <p class="text-vatsca2 font-semibold drop-shadow text-lg p-2 text-center w-4/5 lg:w-full ">
           Home vACC of Denmark, Sweden, Norway, Finland & Iceland
@@ -23,7 +23,7 @@ import Map from "../components/Map"
     </div>
 
     <div
-      class="w-4/5 h-fit bg-vatsca3 grid gap-4 content-start pt-6 grid-cols-1 xl:grid-cols-4 p-8"
+      class="w-full h-fit bg-vatsca3 grid gap-4 content-start pt-6 grid-cols-1 xl:grid-cols-4 p-4"
       id="bookings"
     >
       <div class="w-full h-full flex flex-col col-span-3">
@@ -128,19 +128,19 @@ import Map from "../components/Map"
     </div>
 
 	<div class="w-full h-fit bg-snow flex flex-col justify-center items-center">
-    <div class="w-4/5 grid content-center grid-cols-1 xl:grid-cols-2 gap-4 p-4">
+    <div class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-4 p-4">
 
 
-		<div class="w-w-4/5 h-fit flex flex-col items-center justify-center">
+		<div class="w-full h-fit flex flex-col items-center justify-center">
 			<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
 			Donations
 			</div>
-			<div class="w-full h-48 bg-white flex justify-center items-center flex-col gap-6">
-				<h2 class="text-lg">We have raised enough to cover the costs for the year 2022. Donations are still welcome to cover our costs in the future.
-				</h2>
+			<div class="w-full h-96 bg-white flex justify-center items-center flex-col gap-6 p-4">
+				<p class="text-lg">VATSIM Scandinavia relies on the support and generosity of individuals like you to support our services.</p>
+        <p>Your donations enable us to maintain our infrastructure, develop innovative features, and expand our reach, ensuring that pilots across the scandinavian airspace can continue to enjoy the immersive experience of flying</p>
 				<DonationGoal client:visible/>
 				<a
-				href="mailto:feedback@vatsim-scandinavia.org"
+				href="/about/donations"
 				class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
 				>Read more
 			  </a>
@@ -151,10 +151,11 @@ import Map from "../components/Map"
 			<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
 			Feedback
 			</div>
-			<div class="w-full h-48 bg-white flex justify-center items-center flex-col gap-6">
-				<h2 class="text-lg">We'd love to hear your feedback when you've been flying in Scandinavia.<br />
-					Either it's funny stories, critique or suggestions for improvements.
-				</h2>
+			<div class="w-full h-96 bg-white flex justify-center items-center flex-col gap-6 p-4">
+				<p class="text-lg"><span class="italic font-medium">Your</span> feedback is invaluable to us as we strive to enhance your virtual flying experience.</p>
+					<p>Whether you've encountered seamless navigation, encountered challenges, or have suggestions for improvement, we want to hear from you.</p>
+          <p>Take a moment to share your thoughts and experiences with us, and together, let's elevate the skies over Scandinavia to new heights. Fly safe, and thank you for being a part of VATSIM Scandinavia!</p>
+				
 				<a
 				href="mailto:feedback@vatsim-scandinavia.org"
 				class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
