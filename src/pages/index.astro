@@ -1,27 +1,32 @@
 ---
 import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings";
-import DonationGoal from "../components/donationGoal"
-import Map from "../components/Map"
+import DonationGoal from "../components/donationGoal";
+import Map from "../components/Map";
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
   <div class="overflow-hidden flex flex-col items-center bg-vatsca3">
     <div class="w-full h-[calc(100vh-6rem)] bg-snow flex justify-center">
-      <div class="w-full flex flex-col items-center justify-center p-12 font-medium">
+      <div
+        class="w-full flex flex-col items-center justify-center p-12 font-medium"
+      >
         <h1 class="text-vatsca3 text-4xl lg:text-6xl text-center">
-          Delivering ATC services 
+          Delivering ATC services
         </h1>
         <h1 class="text-vatsca3 text-4xl lg:text-6xl text-center">
           over the skies of scandinavia
         </h1>
-        <p class="text-vatsca3 drop-shadow text-xl p-2 text-center w-3/5 lg:w-full ">
-          Welcome to VATSIM Scandinavia, Home vACC of Denmark, Sweden, Norway, Finland & Iceland
+        <p
+          class="text-vatsca3 drop-shadow text-xl p-2 text-center w-3/5 lg:w-full"
+        >
+          Welcome to VATSIM Scandinavia, Home vACC of Denmark, Sweden, Norway,
+          Finland & Iceland
         </p>
       </div>
       <div class="w-full bg-snow hidden xl:block">
         <Map />
-	  </div>
+      </div>
     </div>
 
     <div
@@ -37,8 +42,9 @@ import Map from "../components/Map"
         <div class="bg-white">
           <div class="w-full p-4">
             <h2 class="font-semibold text-xl">
-              <span class="font-bold text-vatsca3">[VACANT POSITION]</span><br class="sm:hidden" /> Director
-              of VATSIM Scandinavia
+              <span class="font-bold text-vatsca3">[VACANT POSITION]</span><br
+                class="sm:hidden"
+              /> Director of VATSIM Scandinavia
             </h2>
             <p>
               Due to the recent discussions in various channels of our Discord
@@ -65,8 +71,24 @@ import Map from "../components/Map"
           </div>
         </div>
       </div>
+      <div class="w-full h-full bg-white flex flex-col items-center col-span-3 xl:col-span-1">
+        <div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
+          Community
+        </div>
+        <div class="w-full h-full bg-white flex flex-col p-4 gap-4">
+          <a href="" class="w-full bg-[#488e78] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+            Join VATSIM Scandinavia
+          </a>
+          <a href="" class="w-full bg-[#274f68] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+            Signup for ATC Traning
+          </a>
+          <a href="" class="w-full bg-[#8397ee] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+            Join our Discord
+          </a>
+        </div>
+      </div>
       <div
-        class="w-full h-full bg-white flex flex-col items-center col-span-3 xl:col-span-1  xl:row-span-2"
+        class="w-full h-full bg-white flex flex-col items-center col-span-3 xl:col-span-1 xl:row-span-2"
       >
         <div
           class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
@@ -84,7 +106,9 @@ import Map from "../components/Map"
           Events
         </div>
         <!-- Featured Event -->
-        <div class="w-full h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 bg-white">
+        <div
+          class="w-full h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 bg-white"
+        >
           <div class="p-4 col-span-2">
             <img
               class="m-0 aspect-video"
@@ -129,45 +153,70 @@ import Map from "../components/Map"
       </div>
     </div>
 
-	<div class="w-full h-fit bg-snow flex flex-col justify-center items-center">
-    <div class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-4 p-4">
+    <div class="w-full h-fit bg-snow flex flex-col justify-center items-center">
+      <div
+        class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-4 p-4"
+      >
+        <div class="w-full h-fit flex flex-col items-center justify-center">
+          <div
+            class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
+          >
+            Donations
+          </div>
+          <div
+            class="w-full h-96 bg-white flex justify-center items-center flex-col gap-6 p-4"
+          >
+            <p class="text-lg">
+              VATSIM Scandinavia relies on the support and generosity of
+              individuals like you to support our services.
+            </p>
+            <p>
+              Your donations enable us to maintain our infrastructure, develop
+              innovative features, and expand our reach, ensuring that pilots
+              across the scandinavian airspace can continue to enjoy the
+              immersive experience of flying
+            </p>
+            <DonationGoal client:visible />
+            <a
+              href="/about/donations"
+              class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
+              >Read more
+            </a>
+          </div>
+        </div>
 
+        <div class="w-full h-fit flex flex-col items-center justify-center">
+          <div
+            class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
+          >
+            Feedback
+          </div>
+          <div
+            class="w-full h-96 bg-white flex justify-center items-center flex-col gap-6 p-4"
+          >
+            <p class="text-lg">
+              <span class="italic font-medium">Your</span> feedback is invaluable
+              to us as we strive to enhance your virtual flying experience.
+            </p>
+            <p>
+              Whether you've encountered seamless navigation, encountered
+              challenges, or have suggestions for improvement, we want to hear
+              from you.
+            </p>
+            <p>
+              Take a moment to share your thoughts and experiences with us, and
+              together, let's elevate the skies over Scandinavia to new heights.
+              Fly safe, and thank you for being a part of VATSIM Scandinavia!
+            </p>
 
-		<div class="w-full h-fit flex flex-col items-center justify-center">
-			<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
-			Donations
-			</div>
-			<div class="w-full h-96 bg-white flex justify-center items-center flex-col gap-6 p-4">
-				<p class="text-lg">VATSIM Scandinavia relies on the support and generosity of individuals like you to support our services.</p>
-        <p>Your donations enable us to maintain our infrastructure, develop innovative features, and expand our reach, ensuring that pilots across the scandinavian airspace can continue to enjoy the immersive experience of flying</p>
-				<DonationGoal client:visible/>
-				<a
-				href="/about/donations"
-				class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
-				>Read more
-			  </a>
-        	</div>
-     	</div>
-
-		 <div class="w-full h-fit flex flex-col items-center justify-center">
-			<div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
-			Feedback
-			</div>
-			<div class="w-full h-96 bg-white flex justify-center items-center flex-col gap-6 p-4">
-				<p class="text-lg"><span class="italic font-medium">Your</span> feedback is invaluable to us as we strive to enhance your virtual flying experience.</p>
-					<p>Whether you've encountered seamless navigation, encountered challenges, or have suggestions for improvement, we want to hear from you.</p>
-          <p>Take a moment to share your thoughts and experiences with us, and together, let's elevate the skies over Scandinavia to new heights. Fly safe, and thank you for being a part of VATSIM Scandinavia!</p>
-				
-				<a
-				href="mailto:feedback@vatsim-scandinavia.org"
-				class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
-				>Feedback
-			  </a>
-        	</div>
-     	</div>
-	  
+            <a
+              href="mailto:feedback@vatsim-scandinavia.org"
+              class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 hover:bg-gray-200 border-2 border-transparent"
+              >Feedback
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-
-	</div>
   </div>
 </Layout>
