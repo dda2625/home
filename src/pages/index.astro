@@ -3,34 +3,38 @@ import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings";
 import DonationGoal from "../components/donationGoal";
 import Map from "../components/Map";
+
+const featuredPictures = ["/sweden_airport.jpg","/iceland_airport.webp","/norway_airport.jpg","/finland_airport.jpg","/denmark_airport.webp"]
+
+const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPictures.length))]
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
-  <div class="overflow-hidden flex flex-col items-center bg-vatsca3">
-    <div class="w-full h-[calc(100vh-6rem)] bg-snow flex justify-center">
+  <div class="overflow-hidden w-full h-full flex flex-col items-center bg-vatsca3 " style={{'--image-url': `url(${featuredPicture})`}}>
+    <div class="w-full h-[calc(100vh-5rem)] flex justify-center bg-[image:var(--image-url)] bg-center bg-cover" >
       <div
-        class="w-full flex flex-col items-center justify-center p-12 font-medium"
+        class="w-full flex flex-col items-center justify-center p-12 font-medium backdrop-blur-sm bg-vatsca2/30"
       >
-        <h1 class="text-vatsca3 text-4xl lg:text-6xl text-center">
+        <h1 class="text-snow text-4xl lg:text-6xl text-center drop-shadow">
           Delivering ATC services
         </h1>
-        <h1 class="text-vatsca3 text-4xl lg:text-6xl text-center">
+        <h1 class="text-snow text-4xl lg:text-6xl text-center drop-shadow">
           over the skies of scandinavia
         </h1>
         <p
-          class="text-vatsca3 drop-shadow text-xl p-2 text-center w-3/5 lg:w-full"
+          class="text-snow text-xl p-2 text-center w-3/5 lg:w-full drop-shadow"
         >
           Welcome to VATSIM Scandinavia, Home vACC of Denmark, Sweden, Norway,
           Finland & Iceland
         </p>
       </div>
-      <div class="w-full bg-snow hidden xl:block">
+      <div class="w-full hidden xl:block backdrop-blur-sm bg-vatsca2/30">
         <Map />
       </div>
     </div>
 
     <div
-      class="w-full h-fit bg-vatsca3 grid gap-8 content-start pt-6 grid-cols-1 xl:grid-cols-4 p-8"
+      class="max-w-[1300px] w-full h-fit bg-vatsca3 grid gap-8 content-start pt-6 pb-6 grid-cols-1 xl:grid-cols-4"
       id="bookings"
     >
       <div class="w-full h-full flex flex-col col-span-3">
@@ -88,16 +92,6 @@ import Map from "../components/Map";
         </div>
       </div>
       <div
-        class="w-full h-full bg-white flex flex-col items-center col-span-3 xl:col-span-1 xl:row-span-2"
-      >
-        <div
-          class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-        >
-          ATC Bookings
-        </div>
-        <Bookings />
-      </div>
-      <div
         class="w-full h-full flex flex-col col-span-3 items-center justify-center"
       >
         <div
@@ -151,11 +145,21 @@ import Map from "../components/Map";
           />
         </div>
       </div>
+      <div
+      class="w-full h-full bg-white flex flex-col items-center col-span-3 xl:col-span-1"
+    >
+      <div
+        class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
+      >
+        ATC Bookings
+      </div>
+      <Bookings />
+    </div>
     </div>
 
-    <div class="w-full h-fit bg-snow flex flex-col justify-center items-center">
+    <div class="max-w-[1300px] w-full h-fit flex flex-col justify-center items-center">
       <div
-        class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-4 p-4"
+        class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-6"
       >
         <div class="w-full h-fit flex flex-col items-center justify-center">
           <div

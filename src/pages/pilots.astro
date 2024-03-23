@@ -23,7 +23,7 @@ const firs = [{
     NAME: "Reykjavík CTR",
     ICAO: "BIRD",
     FLAG: "/iceland.svg",
-    BACKGROUND: "/iceland_airport.jpg"
+    BACKGROUND: "/iceland_airport.webp"
 },
 {
     NAME: "Sweden FIR",
@@ -35,23 +35,21 @@ const firs = [{
 
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
-    <div class="w-screen min-h-[calc(100vh-13rem)] py-6 flex flex-col md:flex-row justify-center items-center gap-6 p-6 flex-wrap">
-
-
-        {firs.map(fir => 
-            <a href={"/airports-and-charts/"+fir.ICAO} class="min-w-[250px] max-w-[500px] min-h-[250px] max-h-[500px] h-full w-full rounded-md shadow bg-white">
-                <div class:list={[,"bg-[url('"+fir.BACKGROUND+"')] bg-center bg-cover","min-h-[125px] h-80 bg-vatsca3 rounded-t-md flex justify-center items-center"]}>
-                    <div class="w-full min-h-[125px] h-80 backdrop-blur-sm bg-vatsca2/30 flex justify-center items-center">
-                        <img src={fir.FLAG} class="h-[75px] rounded-lg" />
+    <div class="w-screen min-h-[calc(100vh-13rem)] py-6 flex flex-col md:flex-row justify-center items-center">
+        <div class="max-w-[1300px] w-full flex gap-6 p-6 flex-wrap justify-center">
+            {firs.map(fir => 
+                <a href={"/airports-and-charts/"+fir.ICAO} class="min-w-[250px] max-w-[400px] min-h-[250px] max-h-[500px] h-full w-full rounded-md shadow bg-white">
+                    <div class:list={["bg-[image:var(--image-url)] bg-center bg-cover","min-h-[125px] h-80 bg-vatsca3 rounded-t-md flex justify-center items-center"]} style={{'--image-url': `url(${fir.BACKGROUND})`}} >
+                        <div class="w-full min-h-[125px] h-80 backdrop-blur-sm bg-vatsca2/30 flex justify-center items-center">
+                            <img src={fir.FLAG} class="h-[75px] rounded-lg" />
+                        </div>
                     </div>
-                </div>
-                <div class="min-h-[125px] h-full flex justify-center items-center flex-col">
-                    <h1 class="text-2xl font-bold">{fir.NAME}</h1>
-                    <h1 class="text-4xl font-medium">{fir.ICAO}</h1>
-                </div>
-            </a>
-        )}
-
-
+                    <div class="min-h-[125px] h-full flex justify-center items-center flex-col">
+                        <h1 class="text-2xl font-bold">{fir.NAME}</h1>
+                        <h1 class="text-4xl font-medium">{fir.ICAO}</h1>
+                    </div>
+                </a>
+            )}
+        </div>
     </div>
 </Layout>
