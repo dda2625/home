@@ -1,24 +1,52 @@
 ---
 import Layout from "../layout/layout.astro";
+
+const firs = [{
+    NAME: "Copenhagen FIR",
+    ICAO: "EKDK",
+    FLAG: "/denmark.svg"
+},
+{
+    NAME: "Sweden FIR",
+    ICAO: "ESOS",
+    FLAG: "/sweden.svg"
+},
+{
+    NAME: "Norway FIR",
+    ICAO: "ENOR",
+    FLAG: "/norway.svg"
+},
+{
+    NAME: "Helsinki FIR",
+    ICAO: "EFIN",
+    FLAG: "/finland.svg"
+},
+{
+    NAME: "Reykjavík CTR",
+    ICAO: "BIRD",
+    FLAG: "/iceland.svg"
+}
+]
+
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
     <div class="w-screen min-h-[calc(100vh-13rem)] h-fit py-6 flex flex-col md:flex-row justify-center items-center gap-6">
 
-        <a href="/airports-and-charts/denmark" class="min-w-[250px] w-fit min-h-[250px] rounded-md shadow bg-white">
+
+        {firs.map(fir => 
+                <a href="/airports-and-charts/denmark" class="min-w-[250px] w-fit min-h-[250px] rounded-md shadow bg-white">
             <div class="min-h-[125px] bg-vatsca3 rounded-t-md flex justify-center items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_Denmark.svg/2560px-Flag_of_Denmark.svg.png" class="h-[75px] rounded-lg">
+                <img src={fir.FLAG} class="h-[75px] rounded-lg">
             </div>
             <div class="min-h-[125px] h-full flex justify-center items-center flex-col">
 
-                <h1 class="text-2xl font-bold">Copenhagen FIR</h1>
-                <h1 class="text-4xl font-medium">EKDK</h1>
+                <h1 class="text-2xl font-bold">{fir.NAME}</h1>
+                <h1 class="text-4xl font-medium">{fir.ICAO}</h1>
             </div>
 
         </a>
+        )}
 
-        <div class="min-w-[250px] w-fit min-h-[350px] rounded-md shadow bg-white">
-            a
-        </div>
 
     </div>
 </Layout>

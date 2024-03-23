@@ -84,7 +84,8 @@ const AboutOptions = {
   };
 ---
 <div class="bg-vatsca3 h-20 flex items-center justify-center px-8">
-    <div class="hidden max-w-[1300px] lg:flex flex-row items-center justify-between">
+    <div class="hidden max-w-[1300px] w-full lg:flex flex-row items-center justify-evenly">
+        <a href="/" class="h-16">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 922 427" class="h-16 fill-white">
             <g id="Logo">
                 <path style=""
@@ -116,6 +117,7 @@ const AboutOptions = {
                 <polygon style="fill: #6fc4e5" points="50 221 115 80 179 221 114 175 50 221" />
             </g>
         </svg>
+        </a>
         <ul class="flex gap-2 text-white text-xl">
             <li>
                 <NavMenuItem data={PilotOptions} client:visible/>
