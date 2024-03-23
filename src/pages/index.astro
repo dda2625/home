@@ -1,6 +1,7 @@
 ---
 import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings";
+import DisplayBookings from "../components/DisplayBookings.astro";
 import DonationGoal from "../components/donationGoal";
 import Map from "../components/Map";
 
@@ -151,9 +152,9 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
       <div
         class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
       >
-        ATC Bookings
+        Live ATC & Bookings
       </div>
-      <Bookings />
+      <DisplayBookings />
     </div>
     </div>
 
