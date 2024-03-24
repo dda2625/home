@@ -11,32 +11,35 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
-  <div class="overflow-hidden w-full h-full flex flex-col items-center bg-vatsca3 " style={{'--image-url': `url(${featuredPicture})`}}>
-    <div class="w-full h-[calc(100vh-5rem)] flex justify-center bg-[image:var(--image-url)] bg-center bg-cover" >
+  <div class="overflow-hidden w-full h-full flex flex-col items-center bg-vatsca3 bg-[image:var(--image-url)] bg-center bg-cover -mt-20" style={{'--image-url': `url(${featuredPicture})`}}>
+    <div class="w-full h-[calc(100vh)] flex justify-center backdrop-blur-sm bg-vatsca3/75" >
+      <div class="max-w-5/6 w-full h-full flex">
       <div
-        class="w-full flex flex-col items-center justify-center p-12 backdrop-blur-sm bg-snow/75 uppercase font-bold"
+        class="w-full flex flex-col items-center justify-center p-12   font-bold"
       >
-        <h1 class="text-vatsca3 text-6xl lg:text-6xl text-center drop-shadow ">
-          <span class="">vATC</span> services
+        <h1 class="text-snow text-6xl lg:text-6xl text-center drop-shadow">
+          <span class="">vATC</span> SERVICES
         </h1>
-        <h1 class="text-vatsca3 text-4xl lg:text-5xl text-center drop-shadow">
+        <h1 class="text-snow text-4xl lg:text-3xl text-center drop-shadow uppercase">
           across scandinavia's skies 
         </h1>
         <p
-          class="text-vatsca3 text-xl p-2 text-center w-3/5 lg:w-full drop-shadow font-medium"
+          class="text-snow text-xl p-2 text-center w-3/5 lg:w-full drop-shadow font-medium"
         >
           Home vACC of Denmark, Sweden, Norway, Finland & Iceland
         </p>
       </div>
-      <div class="w-full hidden xl:block backdrop-blur-sm bg-snow/75">
+      <div class="w-full hidden xl:block">
         <Map client:load/>
+      </div>
       </div>
     </div>
 
     <div
-      class="max-w-[1300px] w-full h-fit bg-vatsca3 grid gap-8 content-start pt-6 pb-6 grid-cols-1 xl:grid-cols-4"
+      class=" w-full h-fit bg-vatsca3 backdrop-blur-sm bg-vatsca3/75 flex justify-center"
       id="bookings"
     >
+      <div class="max-w-[1300px] w-full grid gap-8 content-center pt-6 pb-6 grid-cols-1 xl:grid-cols-4">
       <div class="w-full h-full flex flex-col col-span-3">
         <div
           class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
@@ -155,9 +158,11 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
       </div>
       <DisplayBookings />
     </div>
+  </div>
     </div>
 
-    <div class="max-w-[1300px] w-full h-fit flex flex-col justify-center items-center">
+    <div class="w-full h-fit flex flex-col justify-center items-center backdrop-blur-sm bg-vatsca3/75">
+      <div class="max-w-[1300px] w-full h-full">
       <div
         class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-6"
       >
@@ -221,6 +226,7 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </Layout>
