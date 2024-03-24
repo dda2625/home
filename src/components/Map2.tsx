@@ -1,9 +1,13 @@
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import React from "react"
+import { ComposableMap, Geographies, Geography } from "react-simple-maps"
+
+const geoUrl =
+  "./data.json"
 
 export default function Map() {
   return (
     <ComposableMap>
-      <Geographies geography="/features.json">
+      <Geographies geography={geoUrl}>
         {({ geographies }) =>
           geographies.map((geo) => (
             <Geography key={geo.rsmKey} geography={geo} />

@@ -14,23 +14,22 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
   <div class="overflow-hidden w-full h-full flex flex-col items-center bg-vatsca3 " style={{'--image-url': `url(${featuredPicture})`}}>
     <div class="w-full h-[calc(100vh-5rem)] flex justify-center bg-[image:var(--image-url)] bg-center bg-cover" >
       <div
-        class="w-full flex flex-col items-center justify-center p-12 font-medium backdrop-blur-sm bg-vatsca2/30"
+        class="w-full flex flex-col items-center justify-center p-12 backdrop-blur-sm bg-snow/75 uppercase font-bold"
       >
-        <h1 class="text-snow text-4xl lg:text-6xl text-center drop-shadow">
-          Delivering ATC services
+        <h1 class="text-vatsca3 text-6xl lg:text-6xl text-center drop-shadow ">
+          <span class="">vATC</span> services
         </h1>
-        <h1 class="text-snow text-4xl lg:text-6xl text-center drop-shadow">
-          over the skies of scandinavia
+        <h1 class="text-vatsca3 text-4xl lg:text-5xl text-center drop-shadow">
+          across scandinavia's skies 
         </h1>
         <p
-          class="text-snow text-xl p-2 text-center w-3/5 lg:w-full drop-shadow"
+          class="text-vatsca3 text-xl p-2 text-center w-3/5 lg:w-full drop-shadow font-medium"
         >
-          Welcome to VATSIM Scandinavia, Home vACC of Denmark, Sweden, Norway,
-          Finland & Iceland
+          Home vACC of Denmark, Sweden, Norway, Finland & Iceland
         </p>
       </div>
-      <div class="w-full hidden xl:block backdrop-blur-sm bg-vatsca2/30">
-        <Map />
+      <div class="w-full hidden xl:block backdrop-blur-sm bg-snow/75">
+        <Map client:load/>
       </div>
     </div>
 
