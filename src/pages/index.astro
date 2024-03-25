@@ -5,6 +5,21 @@ import Map from "../components/Map";
 
 const featuredPictures = ["/sweden_airport.jpg","/iceland_airport.webp","/norway_airport.jpg","/finland_airport.jpg","/denmark_airport.webp"]
 const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPictures.length))]
+
+const announcement = [{
+    title:"[VACANT POSITION] Director of VATSIM Scandinavia",
+    description: "Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.",
+    date: "February 29",
+    author: "Christian Kovanen",
+    link: ""
+  },
+  {
+    title: "Real-world conflicts on VATSIM",
+    description: "Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.",
+    date: "February 29",
+    author: "Christian Kovanen",
+    link: ""
+  }]
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
@@ -44,35 +59,20 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
           Latest announcements
         </div>
         <div class="bg-white dark:bg-vatsca3">
-          <div class="w-full p-4">
-            <h2 class="font-semibold text-xl">
-              <span class="font-bold text-vatsca3 dark:text-snow">[VACANT POSITION]</span><br
-                class="sm:hidden"
-              /> Director of VATSIM Scandinavia
-            </h2>
-            <p>
-              Due to the recent discussions in various channels of our Discord
-              server and on these forums, I have been asked to make this
-              announcement explaining our position and the position of VATSIM
-              regarding the ongoing war.
-            </p>
-            <p class="text-lg font-semibold">
-              February 29 | By Christian Kovanen
-            </p>
-          </div>
-          <hr />
-          <div class="w-full p-4">
-            <h2 class="font-semibold text-xl">
-              Real-world conflicts on VATSIM
-            </h2>
-            <p>
-              Due to the recent discussions in various channels of our Discord
-              server and on these forums, I have been asked to make this
-              announcement explaining our position and the position of VATSIM
-              regarding the ongoing war.
-            </p>
-            <p class="text-lg">February 29 | By Christian Kovanen</p>
-          </div>
+          {announcement.map(post => <div class="w-full p-4 hover:bg-vatsca2/50">
+            <a href="" class="font-semibold text-xl">
+              {post.title}
+            </a>
+            <br/>
+            <a href="">
+              {post.description}
+            </a>
+            <br/>
+            <a href="" class="text-lg font-semibold">
+              {post.date} | By {post.author}
+            </a>
+          </div>)}
+          
         </div>
       </div>
       <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-6 xl:col-span-2">
