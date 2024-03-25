@@ -1,150 +1,465 @@
 ---
-import {Chip} from "@nextui-org/react";
+import { Chip } from "@nextui-org/react";
+
+const mockCCData = {
+  data: [
+    {
+      id: 9,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKDK_B_CTR",
+      position_id: 19,
+      name: "Web Team",
+      time_start: "2024-03-25 12:00:00",
+      time_end: "2020-12-09 14:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2024-03-25T20:24:00.000000Z",
+      updated_at: "2020-12-03T20:24:00.000000Z",
+    },
+    {
+      id: 4,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKAH_TWR",
+      position_id: 2,
+      name: "Web Team",
+      time_start: "2020-12-10 12:00:00",
+      time_end: "2020-12-10 23:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 1,
+      deleted: 0,
+      created_at: "2020-12-03T19:55:34.000000Z",
+      updated_at: "2020-12-03T19:55:34.000000Z",
+    },
+    {
+      id: 8,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EFHA_TWR",
+      position_id: 59,
+      name: "Web Two",
+      time_start: "2020-12-10 12:00:00",
+      time_end: "2020-12-10 12:00:00",
+      user_id: 10000002,
+      training: 1,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2020-12-03T20:00:25.000000Z",
+      updated_at: "2020-12-03T20:00:25.000000Z",
+    },
+    {
+      id: 10,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKBI_APP",
+      position_id: 3,
+      name: "Web Team",
+      time_start: "2020-12-16 11:11:00",
+      time_end: "2020-12-16 12:12:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 1,
+      deleted: 0,
+      created_at: "2020-12-04T15:18:08.000000Z",
+      updated_at: "2020-12-04T15:18:08.000000Z",
+    },
+    {
+      id: 1,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "ENGK_I_TWR",
+      position_id: 191,
+      name: "Web Team",
+      time_start: "2020-12-17 21:00:00",
+      time_end: "2020-12-17 22:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2020-12-03T19:55:04.000000Z",
+      updated_at: "2020-12-03T19:55:39.000000Z",
+    },
+    {
+      id: 7,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKAH_TWR",
+      position_id: 2,
+      name: "Web Six",
+      time_start: "2020-12-24 12:00:00",
+      time_end: "2020-12-24 15:00:00",
+      user_id: 10000006,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2020-12-03T19:58:05.000000Z",
+      updated_at: "2020-12-03T19:58:05.000000Z",
+    },
+    {
+      id: 6,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "ENFL_I_TWR",
+      position_id: 190,
+      name: "Web Six",
+      time_start: "2020-12-29 12:00:00",
+      time_end: "2020-12-29 13:00:00",
+      user_id: 10000006,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2020-12-03T19:57:05.000000Z",
+      updated_at: "2020-12-03T19:57:05.000000Z",
+    },
+    {
+      id: 3,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "ESDF_TWR",
+      position_id: 280,
+      name: "Web Team",
+      time_start: "2020-12-30 12:00:00",
+      time_end: "2020-12-30 12:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 1,
+      exam: 0,
+      deleted: 0,
+      created_at: "2020-12-03T19:55:26.000000Z",
+      updated_at: "2020-12-03T19:55:26.000000Z",
+    },
+    {
+      id: 2,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "BIRD_1_CTR",
+      position_id: 111,
+      name: "Web Team",
+      time_start: "2020-12-31 12:12:00",
+      time_end: "2020-12-31 15:00:00",
+      user_id: 10000010,
+      training: 1,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2020-12-03T19:55:13.000000Z",
+      updated_at: "2020-12-03T19:55:13.000000Z",
+    },
+    {
+      id: 12,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKAH_APP",
+      position_id: 1,
+      name: "Web Six",
+      time_start: "2021-01-29 12:00:00",
+      time_end: "2021-01-29 13:00:00",
+      user_id: 10000006,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2021-01-28T18:57:52.000000Z",
+      updated_at: "2021-01-28T18:57:52.000000Z",
+    },
+    {
+      id: 11,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKAH_TWR",
+      position_id: 2,
+      name: "Web Six",
+      time_start: "2021-01-30 12:00:00",
+      time_end: "2021-01-30 12:00:00",
+      user_id: 10000006,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2021-01-28T18:57:24.000000Z",
+      updated_at: "2021-01-28T18:57:24.000000Z",
+    },
+    {
+      id: 14,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKAH_TWR",
+      position_id: 2,
+      name: "Web Team",
+      time_start: "2021-03-10 12:00:00",
+      time_end: "2021-03-10 14:00:00",
+      user_id: 10000010,
+      training: 1,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2021-03-04T20:40:19.000000Z",
+      updated_at: "2021-03-04T20:40:19.000000Z",
+    },
+    {
+      id: 15,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKAH_APP",
+      position_id: 1,
+      name: "Web Ten",
+      time_start: "2022-01-10 12:00:00",
+      time_end: "2022-01-10 15:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2022-01-02T14:36:24.000000Z",
+      updated_at: "2022-01-02T14:36:24.000000Z",
+    },
+    {
+      id: 17,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "ENGM_E_TWR",
+      position_id: 200,
+      name: "Web Ten",
+      time_start: "2022-05-21 12:00:00",
+      time_end: "2022-05-21 13:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 1,
+      deleted: 0,
+      created_at: "2022-05-19T17:41:41.000000Z",
+      updated_at: "2022-05-19T17:41:41.000000Z",
+    },
+    {
+      id: 18,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKCH_GND",
+      position_id: 11,
+      name: "Web Ten",
+      time_start: "2022-05-21 12:00:00",
+      time_end: "2022-05-21 13:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 1,
+      deleted: 0,
+      created_at: "2022-05-19T17:41:41.000000Z",
+      updated_at: "2022-05-19T17:41:41.000000Z",
+    },
+    {
+      id: 19,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "ENBR_TWR",
+      position_id: 178,
+      name: "Web Ten",
+      time_start: "2023-03-15 12:00:00",
+      time_end: "2023-03-15 14:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2023-03-04T17:36:25.000000Z",
+      updated_at: "2023-03-04T17:36:25.000000Z",
+    },
+    {
+      id: 20,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EFHA_APP",
+      position_id: 58,
+      name: "Web Ten",
+      time_start: "2023-03-16 12:00:00",
+      time_end: "2023-03-16 13:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2023-03-04T17:37:45.000000Z",
+      updated_at: "2023-03-04T17:37:45.000000Z",
+    },
+    {
+      id: 21,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EFET_I_TWR",
+      position_id: 57,
+      name: "Web Two",
+      time_start: "2023-03-16 12:13:00",
+      time_end: "2023-03-16 14:15:00",
+      user_id: 10000002,
+      training: 1,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2023-03-04T17:54:22.000000Z",
+      updated_at: "2023-03-04T17:54:22.000000Z",
+    },
+    {
+      id: 22,
+      source: "CC",
+      vatsim_booking: null,
+      callsign: "EKBI_APP",
+      position_id: 3,
+      name: "Web Ten",
+      time_start: "2023-08-24 12:00:00",
+      time_end: "2023-08-24 13:00:00",
+      user_id: 10000010,
+      training: 0,
+      event: 0,
+      exam: 0,
+      deleted: 0,
+      created_at: "2023-08-23T18:03:33.000000Z",
+      updated_at: "2023-08-23T18:03:33.000000Z",
+    },
+  ],
+};
+
+const sortedData = mockCCData.data.sort((a, b) => {
+  return new Date(a.time_start) - new Date(b.time_start);
+});
+
+function getDatesApi(data:any) {
+    const dates = [];
+  data.forEach(item => {
+    // Extract time_start from each item and convert it to Date object
+    const startDate = new Date(item.time_start);
+    dates.push(startDate);
+  });
+
+  // Sort the dates
+  dates.sort((a, b) => a - b);
+
+  // Convert dates to formatted strings like "Monday March 25"
+  const formattedDates = dates.map(date => {
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  });
+
+  return formattedDates;
+}
+console.log(getDatesApi(mockCCData.data));
+
+function CCBooking(type:string) {
+    if (type === "CC") {
+        return true
+    }
+}
+function isTodayUTC(date:string) {
+    // Convert the date string to a Date object
+    const dateObject = new Date(date);
+
+    // Get the current UTC date
+    const currentUTCDate = new Date(new Date().toUTCString().slice(0, -4));
+
+    // Extract the date part of the current UTC date
+    const currentUTCDateString = currentUTCDate.toISOString().slice(0, 10);
+
+    // Extract the date part of the given date object
+    const givenDateString = dateObject.toISOString().slice(0, 10);
+
+    // Compare the dates to see if they are the same
+    return currentUTCDateString === givenDateString;
+}
+
+function convertToCustomFormat(dateString: string) {
+    // Parse the date string
+    var date = new Date(dateString);
+
+    // Extract hours and minutes
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    // Format the time as HH:MMz
+    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + 'z';
+
+    // Return the formatted time
+    return formattedTime;
+}
+
+let currentDate:any = null; // To keep track of current date
 ---
 
 <div class="max-h-[450px] w-full h-full overflow-y-scroll">
-    <table class=" w-full h-full text-sm">
-        <tr>
-            <td colspan="4" class="font-bold text-center w-full">Today</td>
+  <table class="w-full text-sm">
+    <tr class="h-6">
+      <td colspan="4" class="font-bold text-center w-full">Today</td>
+    </tr>
+    {
+      mockCCData.data.map((booking) => (
+        isTodayUTC(booking.time_start) ? 
+        <tr class="h-6">
+            <td class="font-bold"><span class="text-red-200">{CCBooking(booking.source) ? "⚫" : "◯"}</span> {booking.callsign}</td>
+            <td>
+                {booking.event ? <Chip radius="none" size="sm" color="success" className="text-white">Event</Chip> : ""} 
+                {booking.exam ? <Chip radius="none" size="sm" color="danger" className="text-white">Exam</Chip> : ""}
+                {booking.training ? <Chip radius="none" size="sm" className="text-white bg-vatsca2">Traning</Chip> : ""} 
+            </td>
+            <td>{convertToCustomFormat(booking.time_start)}</td>
+            <td>{convertToCustomFormat(booking.time_end)}</td>
         </tr>
-        <tr>
-            <td class="font-bold text-[#41826e]">EKCH_W_APP</td>
-            <td><Chip radius="none" size="sm" color="success" className="text-white">Event</Chip></td>
-            <td>17:00z</td>
-            <td>21:00z</td>
+        : ""
+      ))
+    }
+  </table>
+  <table class="w-full text-sm">
+    <tbody>
+      {sortedData.map((item, index) => {
+        const startDate = new Date(item.time_start);
+        // Check if the date has changed
+        const isNewDate = currentDate !== startDate.toDateString();
+        if (isNewDate) {
+          currentDate = startDate.toDateString();
+          return (
+            <>
+              <tr>
+                <td colSpan="4" class="font-bold text-center w-full">
+                  {startDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                </td>
+              </tr>
+              
+              <tr class="h-6">
+            <td class="font-bold"><span class="text-red-200">{CCBooking(item.source) ? "⚫" : "◯"}</span> {item.callsign}</td>
+            <td>
+                {item.event ? <Chip radius="none" size="sm" color="success" className="text-white">Event</Chip> : ""} 
+                {item.exam ? <Chip radius="none" size="sm" color="danger" className="text-white">Exam</Chip> : ""}
+                {item.training ? <Chip radius="none" size="sm" className="text-white bg-vatsca2">Traning</Chip> : ""} 
+            </td>
+            <td>{convertToCustomFormat(item.time_start)}</td>
+            <td>{convertToCustomFormat(item.time_end)}</td>
         </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td><Chip radius="none" size="sm" className="text-white bg-vatsca2">Traning</Chip></td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td><Chip radius="none" size="sm" color="danger" className="text-white">Exam</Chip></td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-        <tr>
-            <td>EKCH_W_APP</td>
-            <td>Event</td>
-            <td>17:00z</td>
-            <td>21:00z</td>
-        </tr>
-      </table>
+            </>
+          );
+        }
+      })}
+    </tbody>
+  </table>
 </div>
 
 <style>
-    td, th {
-      padding: 4px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: rgb(26 71 95);
-    }
-    /* ===== Scrollbar CSS ===== */
+  td,
+  th {
+    padding: 4px;
+  }
+
+  tr:nth-child(even) {
+    background-color: rgb(26 71 95);
+  }
+  /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
     scrollbar-width: thin;

@@ -1,12 +1,9 @@
 ---
 import Layout from "../layout/layout.astro";
-import Bookings from "../components/Bookings";
 import DisplayBookings from "../components/DisplayBookings.astro";
-import DonationGoal from "../components/donationGoal";
 import Map from "../components/Map";
 
 const featuredPictures = ["/sweden_airport.jpg","/iceland_airport.webp","/norway_airport.jpg","/finland_airport.jpg","/denmark_airport.webp"]
-
 const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPictures.length))]
 ---
 
@@ -15,7 +12,7 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
     <div class="w-full h-[calc(100vh)] flex justify-center backdrop-blur-sm bg-vatsca3/75" >
       <div class="max-w-5/6 w-full h-full flex">
       <div
-        class="w-full flex flex-col items-center justify-center p-12   font-bold"
+        class="w-full flex flex-col items-center justify-center p-12 font-bold"
       >
         <h1 class="text-snow text-6xl lg:text-6xl text-center drop-shadow">
           <span class="">vATC</span> SERVICES
@@ -39,8 +36,8 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
       class=" w-full h-fit bg-vatsca3 backdrop-blur-sm bg-vatsca3/75 flex justify-center"
       id="bookings"
     >
-      <div class="max-w-[1300px] w-full grid gap-8 content-center pt-6 pb-6 grid-cols-1 xl:grid-cols-4">
-      <div class="w-full h-full flex flex-col col-span-3">
+      <div class="max-w-[1300px] w-full grid gap-8 content-center pt-6 pb-6 grid-cols-1 xl:grid-cols-6">
+      <div class="w-full h-full flex flex-col col-span-6 xl:col-span-4">
         <div
           class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
         >
@@ -78,7 +75,7 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
           </div>
         </div>
       </div>
-      <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-3 xl:col-span-1">
+      <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-6 xl:col-span-2">
         <div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
           Community
         </div>
@@ -95,7 +92,7 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
         </div>
       </div>
       <div
-        class="w-full h-full flex flex-col col-span-3 items-center justify-center"
+        class="w-full h-full flex flex-col col-span-6 xl:col-span-4 items-center justify-center"
       >
         <div
           class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
@@ -149,7 +146,7 @@ const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPic
         </div>
       </div>
       <div
-      class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-3 xl:col-span-1"
+      class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-6 xl:col-span-2"
     >
       <div
         class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
