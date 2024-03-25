@@ -1,11 +1,10 @@
-import React from "react";
+
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
   Button,
-  cn,
 } from "@nextui-org/react";
 import { AirportStandIcon } from "./icons/AirportStandIcon";
 

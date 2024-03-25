@@ -330,28 +330,8 @@ const mockCCData = {
 };
 
 const sortedData = mockCCData.data.sort((a, b) => {
-  return new Date(a.time_start) - new Date(b.time_start);
+  return new Date(a.time_start).getTime() - new Date(b.time_start).getTime();
 });
-
-function getDatesApi(data:any) {
-    const dates = [];
-  data.forEach(item => {
-    // Extract time_start from each item and convert it to Date object
-    const startDate = new Date(item.time_start);
-    dates.push(startDate);
-  });
-
-  // Sort the dates
-  dates.sort((a, b) => a - b);
-
-  // Convert dates to formatted strings like "Monday March 25"
-  const formattedDates = dates.map(date => {
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-  });
-
-  return formattedDates;
-}
 
 function CCBooking(type:string) {
     if (type === "CC") {
@@ -417,7 +397,7 @@ let currentDate:any = null; // To keep track of current date
   </table>
   <table class="w-full text-sm">
     <tbody>
-      {sortedData.map((item, index) => {
+      {sortedData.map((item) => {
         const startDate = new Date(item.time_start);
         // Check if the date has changed
         const isNewDate = currentDate !== startDate.toDateString();
@@ -425,13 +405,13 @@ let currentDate:any = null; // To keep track of current date
           currentDate = startDate.toDateString();
           return (
             <>
-              <tr key={`data-${index}`}>
-                <td colSpan="4" class="h-8 font-bold text-center w-full text-medium">
+              <tr >
+                <td colspan="4" class="h-8 font-bold text-center w-full text-medium">
                   {startDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
                 </td>
               </tr>
               
-              <tr class="h-6" key={`data-${index}`}>
+              <tr class="h-6">
             <td class="font-bold"><span class="text-red-200">{CCBooking(item.source) ? "⚫" : "◯"}</span> {item.callsign}</td>
             <td>
                 {item.event ? <Chip radius="none" size="sm" color="success" className="text-white">Event</Chip> : ""} 
@@ -445,7 +425,7 @@ let currentDate:any = null; // To keep track of current date
           );
         } else {
             return (
-              <tr class="h-6" key={`data-${index}`}>
+              <tr class="h-6">
                 <td>
                   {item.event ? <Chip radius="none" size="sm" color="success" className="text-white">Event</Chip> : ""} 
                   {item.exam ? <Chip radius="none" size="sm" color="danger" className="text-white">Exam</Chip> : ""}

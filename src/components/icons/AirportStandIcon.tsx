@@ -1,4 +1,3 @@
-import React from "react";
 export const AirportStandIcon = (props: any) => (
   <svg
     aria-hidden="true"
