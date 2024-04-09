@@ -2,50 +2,28 @@
 import Layout from "../../layout/layout.astro";
 ---
 <Layout>
-    <div class="w-full h-screen flex flex-col items-center pt-12">
-        <div class="max-w-[1300px] w-full flex flex-col items-center">
-            <div class="bg-vatsca2 h-16 text-4xl font-bold text-white w-full m-0 pl-4 flex items-center">
-            Donations
+    <div class="w-full h-screen flex flex-col justify-start items-center">
+        <h1 class="text-4xl py-6">Donations</h1>
+        <div class="w-full h-fit grid grid-cols-1 md:grid-cols-2 px-6 md:px-0 gap-4 max-w-[1300px]">
+            <div>
+                <h1 class="text-2xl font-bold p-2">Our Agreement</h1>
+                <ul class="pl-4 text-lg">
+                    <li class="list-disc">Every EUR donated will go towards funding our web services. As we will be using the PayPal system to accept donations, your financial commitment will be guaranteed towards funding our web services.</li>
+                    <li class="list-disc">VATSIM Scandinavia will continue to work proactively to grow our community and will do its utmost to constantly improve the final product to our membership.</li>
+                    <li class="list-disc">We will not disclose the details of anyone who has donated, or how much they have donated.</li>
+                    <li class="list-disc">We will not treat those who do and don’t donate any differently, as below.</li>
+                </ul>
             </div>
-            <p class="text-lg p-4 bg-white dark:bg-vatsca3">The price to run the VATSIM Scandinavia services are quite low. The only thing that needs to be payed for now, is the yearly fee of our domains and Cloudflare. However… We have recently acquired a VPS to safeguard data, and added some modules to the forum to merge the web page and forums to comply with GDPR. This has more or less drained our monetary resources.</p>
-            <p class="text-lg p-4 bg-white dark:bg-vatsca3">To help pay for the service provided for VATSIM Scandinavia, we have set up a PayPal donation option. Any donation, no matter how small, is greatly appreciated. Below is an agreement that we must place on the site as per our agreement with the VATSIM Board of Governors.</p>
-
-            <div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 mt-4 flex items-center">
-                Our Agreement
+            <div>
+                <h1 class="text-2xl font-bold p-2">Your Agreement</h1>
+                <ul class="pl-4 text-lg">
+                    <li class="list-disc">By donating, you agree that your financial contribution is solely an act of goodwill, and that such a contribution does not grant you with any higher say in how the VACC is run. You agree that you will never use the fact that you have made a financial contribution as a tool to attempt to influence or intimidate staff members or the general membership.</li>
+                    <li class="list-disc">You will not use the fact that you have made a financial contribution for elevating your status in the VACC, nor to attempt to “bribe” the VACC into granting you special privileges.</li>
+                    <li class="list-disc">Once you have donated, you have surrendered your right to claim your money back at any time, unless your financial contribution does not go towards running costs for web services, as described.</li>
+                    <li class="list-disc">You confirm that you are 18 years or older.</li>
+                </ul>
             </div>
-            <ul class="list-disc text-lg p-4 pl-8 bg-white dark:bg-vatsca3">
-                <li>
-                    Every EUR donated will go towards funding our web services. As we will be using the PayPal system to accept donations, your financial commitment will be guaranteed towards funding our web services.
-                </li>
-                <li>
-                    VATSIM Scandinavia will continue to work proactively to grow our community and will do its utmost to constantly improve the final product to our membership.
-                </li>
-                <li>
-                    We will not disclose the details of anyone who has donated, or how much they have donated.
-                </li>
-                <li>
-                    We will not treat those who do and don’t donate any differently, as below.
-                </li>
-            </ul>
-
-            <div class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 mt-4 flex items-center">
-                Your Agreement
-            </div>
-            <ul class="list-disc text-lg p-4 pl-8 bg-white dark:bg-vatsca3">
-                <li>
-                    By donating, you agree that your financial contribution is solely an act of goodwill, and that such a contribution does not grant you with any higher say in how the VACC is run. You agree that you will never use the fact that you have made a financial contribution as a tool to attempt to influence or intimidate staff members or the general membership.
-                </li>
-                <li>
-                    You will not use the fact that you have made a financial contribution for elevating your status in the VACC, nor to attempt to “bribe” the VACC into granting you special privileges.
-                </li>
-                <li>
-                    Once you have donated, you have surrendered your right to claim your money back at any time, unless your financial contribution does not go towards running costs for web services, as described.
-                </li>
-                <li>
-                    You confirm that you are 18 years or older.
-                </li>
-            </ul>
-            <a class="bg-vatsca2 hover:bg-vatsca3 p-4 m-12 text-4xl font-bold text-white w-fit" href="https://www.paypal.com/donate/?hosted_button_id=RBT696P4N6LVU">Donate here</button>
-        </div>        
+        </div>
+        <a href="https://www.paypal.com/donate/?hosted_button_id=RBT696P4N6LVU" class="bg-vatsca2 p-4 rounded-sm m-2 text-xl mt-12 text-white w-full md:w-fit">Donate</a>
     </div>
 </Layout>
