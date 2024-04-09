@@ -4,9 +4,6 @@ import DisplayBookings from "../components/DisplayBookings.astro";
 import Map from "../components/Map";
 import { Button } from "@nextui-org/react";
 
-const featuredPictures = ["/sweden_airport.jpg","/iceland_airport.webp","/norway_airport.jpg","/finland_airport.jpg","/denmark_airport.webp"]
-const featuredPicture = featuredPictures[(Math.floor(Math.random() * featuredPictures.length))]
-
 const announcement = [{
     title:"[VACANT POSITION] Director of VATSIM Scandinavia",
     description: "Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.",
@@ -24,7 +21,7 @@ const announcement = [{
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
-  <div class="overflow-hidden w-full h-full flex flex-col items-center bg-vatsca3 bg-[image:var(--image-url)] bg-center bg-cover -mt-20" style={{'--image-url': `url(${featuredPicture})`}}>
+  <div class="overflow-hidden w-full h-full flex flex-col items-center bg-vatsca3 bg-[url('/scandinavia.png')] bg-center bg-cover -mt-20">
     <div class="w-full h-[calc(100vh)] flex justify-center backdrop-blur-sm bg-vatsca3/75" >
       <div class="max-w-5/6 w-full h-full flex">
       <div
@@ -171,7 +168,7 @@ const announcement = [{
             Donations
           </div>
           <div
-            class="w-full h-80 bg-white dark:bg-vatsca3 flex justify-start items-center flex-col gap-6 p-4"
+            class="w-full min-h-80 h-fit bg-white dark:bg-vatsca3 flex justify-start items-center flex-col gap-6 p-4"
           >
             <p class="text-lg">
               VATSIM Scandinavia relies on the support and generosity of
@@ -198,7 +195,7 @@ const announcement = [{
             Feedback
           </div>
           <div
-            class="w-full h-80 bg-white dark:bg-vatsca3 flex justify-center items-center flex-col gap-6 p-4"
+            class="w-full min-h-80 h-fit bg-white dark:bg-vatsca3 flex justify-center items-center flex-col gap-6 p-4"
           >
             <p class="text-lg">
               <span class="italic font-medium">Your</span> feedback is invaluable
