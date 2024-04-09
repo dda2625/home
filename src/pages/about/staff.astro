@@ -2,7 +2,7 @@
 import Layout from "../../layout/layout.astro";
 
 const staffteam = [
-    {STAFFID: "ACCSCA1",POSITION:"Director",NAME:"Daniel Dahl Andersen",EMAIL:"director@vatsim-scandinavia.org",AVILABILITY:"AVL",DEPARTMENT:"Directors"},
+    {director: {STAFFID: "ACCSCA1",POSITION:"Director",NAME:"Daniel Dahl Andersen",EMAIL:"director@vatsim-scandinavia.org",AVILABILITY:"AVL",DEPARTMENT:"Directors"}},
     {STAFFID: "ACCSCA2",POSITION:"Training Director",NAME:"Simo Pietikäinen",EMAIL:"training-director@vatsim-scandinavia.org",AVILABILITY:"AVL", DEPARTMENT:"Traning"},
     {STAFFID: "ACCSCA3",POSITION:"Acting Director of Copenhagen FIR",NAME:"Peter Toft",EMAIL:"denmark@vatsim-scandinavia.org",AVILABILITY:"AVL", DEPARTMENT:"Directors"},
     {STAFFID: "ACCSCA4",POSITION:"Director of Norway FIR",NAME:"Krister Larsen",EMAIL:"norway@vatsim-scandinavia.org",AVILABILITY:"AVL", DEPARTMENT:"Directors"},
@@ -32,7 +32,7 @@ const staffteam = [
     <div class="w-full h-fit flex flex-col justify-center items-center">
         <h1 class="text-4xl py-6">Staff team</h1>
         <p class="text-lg dark:text-gray-400 italic">Feedback for our ATC services, or general comments about VATSIM Scandinavia, can be sent to feedback@vatsim-scandinavia.org</p>
-        <div class="w-full max-w-[1300px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 place-content-center justify-items-center">
+        <div class="w-full max-w-[1300px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-4 place-content-center justify-items-center">
             {staffteam.map(staff => 
                 <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded flex items-center justify-center text-center flex-col relative">
                     <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-full" />
