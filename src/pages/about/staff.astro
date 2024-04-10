@@ -237,7 +237,7 @@ const staffteam = [
   },
 ];
 
-const departments = {};
+const departments: { [key: string]: any } = {};
 
 staffteam.forEach((staff) => {
   const { DEPARTMENT, ...rest } = staff;
@@ -265,7 +265,7 @@ export { departments };
     >
         <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"> VATSCA Director</h1>
       {
-        departments["Director"].map((staff) => (
+        departments["Director"].map((staff: any) => (
           <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 flex items-center justify-center text-center flex-col relative col-span-2 xl:col-span-5 rounded-md">
             <AvailabilityDecode Availability={staff.AVILABILITY} />
             <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
@@ -286,7 +286,7 @@ export { departments };
   >
     <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Contry Directors</h1>
     {
-      departments["Directors"].map((staff) => (
+      departments["Directors"].map((staff: any) => (
         <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
           <AvailabilityDecode Availability={staff.AVILABILITY} />
           <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
@@ -307,7 +307,7 @@ export { departments };
 >
     <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Traning Department</h1>    
   {
-    departments["Training"].map((staff) => (
+    departments["Training"].map((staff: any) => (
       <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
         <AvailabilityDecode Availability={staff.AVILABILITY} />
         <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
@@ -328,7 +328,7 @@ class="w-full max-w-[1500px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-
 >
 <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Web Department</h1>
 {
-  departments["Web"].map((staff) => (
+  departments["Web"].map((staff : any) => (
     <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
       <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
       <p class="text-gray-200 italic">{staff.STAFFID}</p>
@@ -348,7 +348,7 @@ class="w-full max-w-[1500px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-
 >
 <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Event Department</h1>
 {
-  departments["Event"].map((staff) => (
+  departments["Event"].map((staff: any) => (
     <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
       <AvailabilityDecode Availability={staff.AVILABILITY} />
       <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />

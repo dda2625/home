@@ -344,8 +344,8 @@ function bookingType(booking: any) {
 }
 
 // Helper function to group bookings by day
-function groupByDay(bookings) {
-    return bookings.reduce((groupedBookings, booking) => {
+function groupByDay(bookings: any) {
+    return bookings.reduce((groupedBookings: { [x: string]: any[]; }, booking: { time_start: string | number | Date; }) => {
         const date = new Date(booking.time_start).toDateString();
         if (!groupedBookings[date]) {
             groupedBookings[date] = [];
@@ -362,14 +362,14 @@ const MyComponent = () => {
     // Render bookings
     return (
         <table className="w-full table-auto">
-            {Object.entries(groupedBookings).map(([date, bookings], index) => (
+            {Object.entries(groupedBookings).map(([date, bookings]: any, index) => (
                 <>
                     <tr>
                         <td colSpan={4} className="text-center bg-[#dfebeb] dark:bg-[#356c8e] p-2">
                             {index === 0 ? 'Today' : date}
                         </td>
                     </tr>
-                    {bookings.map((booking) => (
+                    {bookings.map((booking:any) => (
                         <tr>
                             <td className="px-2"><a title={booking.name} data-tooltip-placement="top">{booking.callsign}</a></td>
                             <td className="px-2">{bookingType(booking)}</td>

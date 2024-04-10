@@ -1,5 +1,4 @@
 ---
-import Link from "./link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
@@ -132,11 +131,6 @@ const menuitems = [
                     href={item.path}
                     class="flex lg:px-3 py-2 items-center text-vatsca3 dark:text-gray-200 hover:text-gray-900">
                     <span> {item.title}</span>
-                    {item.badge && (
-                    <span class="ml-1 px-2 py-0.5 text-[10px] animate-pulse font-semibold uppercase dark:text-whitee bg-indigo-600 rounded-full">
-                        New
-                    </span>
-                    )}
                 </a>
                 </li>
             )}
