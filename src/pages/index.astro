@@ -1,6 +1,7 @@
 ---
 import Layout from "../layout/layout.astro";
 import DisplayBookings from "../components/DisplayBookings.astro";
+import Bookings from "../components/Bookings.astro";
 import Map from "../components/Map";
 import { Button } from "@nextui-org/react";
 
@@ -78,14 +79,14 @@ const announcement = [{
           Community
         </div>
         <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col p-4 gap-4">
-          <a href="" class="w-full bg-[#488e78] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+          <a href="https://members.vateud.net/" class="w-full bg-[#488e78] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
             Join VATSIM Scandinavia
           </a>
-          <a href="" class="w-full bg-[#274f68] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
-            Signup for ATC Traning
-          </a>
-          <a href="" class="w-full bg-[#8397ee] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+          <a href="http://discord.vatsim-scandinavia.org" class="w-full bg-[#8397ee] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
             Join our Discord
+          </a>
+          <a href="" class="w-full bg-[#274f68] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+            Read the Forum
           </a>
         </div>
       </div>
@@ -159,7 +160,7 @@ const announcement = [{
       >
         Live ATC & Bookings
       </div>
-      <DisplayBookings />
+      <Bookings />
     </div>
   </div>
     </div>
@@ -221,7 +222,7 @@ const announcement = [{
             </p>
 
             <a
-              href="mailto:feedback@vatsim-scandinavia.org"
+              href="https://cc.vatsim-scandinavia.org/feedback"
               class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 bg-gray-100 dark:bg-vatsca2 hover:bg-gray-200 border-2 border-transparent"
               >Feedback
             </a>

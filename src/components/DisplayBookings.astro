@@ -1,5 +1,6 @@
 ---
 import { Chip } from "@nextui-org/react";
+import {Tooltip} from "@nextui-org/react";
 
 const mockCCData = {
   data: [
@@ -382,7 +383,7 @@ let currentDate:any = null; // To keep track of current date
       mockCCData.data.map((booking) => (
         isTodayUTC(booking.time_start) ? 
         <tr class="h-6 bg-slate-800">
-            <td class="font-bold"><span class="text-red-200">{CCBooking(booking.source) ? "⚫" : "◯"}</span> {booking.callsign}</td>
+            <td class="font-bold"><span class="text-red-200">{CCBooking(booking.source) ? "⚫" : "◯"}</span> <Tooltip content={booking.name}>{booking.callsign}</Tooltip></td>
             <td>
                 {booking.event ? <Chip radius="none" size="sm" color="success" className="text-white">Event</Chip> : ""} 
                 {booking.exam ? <Chip radius="none" size="sm" color="danger" className="text-white">Exam</Chip> : ""}
@@ -412,7 +413,7 @@ let currentDate:any = null; // To keep track of current date
               </tr>
               
               <tr class="h-6">
-            <td class="font-bold"><span class="text-red-200">{CCBooking(item.source) ? "⚫" : "◯"}</span> {item.callsign}</td>
+            <td class="font-bold"><span class="text-red-200">{CCBooking(item.source) ? "⚫" : "◯"}</span> <Tooltip content={item.name}>{item.callsign}</Tooltip></td>
             <td>
                 {item.event ? <Chip radius="none" size="sm" color="success" className="text-white">Event</Chip> : ""} 
                 {item.exam ? <Chip radius="none" size="sm" color="danger" className="text-white">Exam</Chip> : ""}
