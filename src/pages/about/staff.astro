@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layout/layout.astro";
+import AvailabilityDecode from "../../components/AvailabilityDecode.tsx"
 
 const staffteam = [
   {
@@ -248,6 +249,8 @@ staffteam.forEach((staff) => {
 });
 
 export { departments };
+
+
 ---
 
 <Layout>
@@ -263,8 +266,9 @@ export { departments };
         <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"> VATSCA Director</h1>
       {
         departments["Director"].map((staff) => (
-          <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded flex items-center justify-center text-center flex-col relative col-span-2 xl:col-span-5">
-            <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-full" />
+          <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 flex items-center justify-center text-center flex-col relative col-span-2 xl:col-span-5 rounded-md">
+            <AvailabilityDecode Availability={staff.AVILABILITY} />
+            <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
             <p class="text-gray-200 italic">{staff.STAFFID}</p>
             <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
             <h4 class="text-white">{staff.POSITION}</h4>
@@ -283,8 +287,9 @@ export { departments };
     <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Contry Directors</h1>
     {
       departments["Directors"].map((staff) => (
-        <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded flex items-center justify-center text-center flex-col relative">
-          <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-full" />
+        <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+          <AvailabilityDecode Availability={staff.AVILABILITY} />
+          <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
           <p class="text-gray-200 italic">{staff.STAFFID}</p>
           <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
           <h4 class="text-white">{staff.POSITION}</h4>
@@ -303,8 +308,9 @@ export { departments };
     <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Traning Department</h1>    
   {
     departments["Training"].map((staff) => (
-      <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded flex items-center justify-center text-center flex-col relative">
-        <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-full" />
+      <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+        <AvailabilityDecode Availability={staff.AVILABILITY} />
+        <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
         <p class="text-gray-200 italic">{staff.STAFFID}</p>
         <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
         <h4 class="text-white">{staff.POSITION}</h4>
@@ -323,8 +329,8 @@ class="w-full max-w-[1500px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-
 <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Web Department</h1>
 {
   departments["Web"].map((staff) => (
-    <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded flex items-center justify-center text-center flex-col relative">
-      <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-full" />
+    <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+      <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
       <p class="text-gray-200 italic">{staff.STAFFID}</p>
       <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
       <h4 class="text-white">{staff.POSITION}</h4>
@@ -343,8 +349,9 @@ class="w-full max-w-[1500px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-
 <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Event Department</h1>
 {
   departments["Event"].map((staff) => (
-    <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded flex items-center justify-center text-center flex-col relative">
-      <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-full" />
+    <div class="bg-vatsca3 p-4 aspect-[23/30] w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+      <AvailabilityDecode Availability={staff.AVILABILITY} />
+      <img src={"/Arrow.svg"} alt="" class="w-2/3 rounded-md-full" />
       <p class="text-gray-200 italic">{staff.STAFFID}</p>
       <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
       <h4 class="text-white">{staff.POSITION}</h4>
