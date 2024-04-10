@@ -365,7 +365,7 @@ const MyComponent = () => {
             {Object.entries(groupedBookings).map(([date, bookings], index) => (
                 <>
                     <tr>
-                        <td colSpan={4} className="text-center bg-[#dfebeb] p-2">
+                        <td colSpan={4} className="text-center bg-[#dfebeb] dark:bg-[#356c8e] p-2">
                             {index === 0 ? 'Today' : date}
                         </td>
                     </tr>
