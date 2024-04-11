@@ -1,8 +1,13 @@
 ---
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import ThemeIcon from './ThemeIcon.astro';
 
 const menuitems = [
+  {
+    title: "CPH Live",
+    path: "https://cphlive.vatsim-scandinavia.org/",
+  },
   {
     title: "Pilots",
     path: "#",
@@ -109,7 +114,7 @@ const menuitems = [
           </svg>
         </a>
         <div class="block lg:hidden">
-            <MenuIcon class="w-8 h-8 text-vatsca3 dark:text-gray-200" />
+            <MenuIcon class="w-8 h-8 text-gray-200" />
         </div>
     </div>
     <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0 text-xl">
@@ -127,17 +132,19 @@ const menuitems = [
 
             {!item.children && (
                 <li>
-                <a
-                    href={item.path}
-                    class="flex lg:px-3 py-2 items-center text-vatsca3 dark:text-gray-200 hover:text-gray-900">
-                    <span> {item.title}</span>
-                </a>
+                  <a
+                      href={item.path}
+                      class="flex lg:px-3 py-2 items-center text-vatsca3 dark:text-gray-200 hover:text-gray-900">
+                      <span> {item.title}</span>
+                  </a>
                 </li>
             )}
             </>
         ))
         }
     </ul>
+    
     </MenuItems>
 </Astronav>
+
 </header>
