@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layout/layout.astro";
 import { getCollection } from 'astro:content';
-import Contact from "../about/contact.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('announcements');
