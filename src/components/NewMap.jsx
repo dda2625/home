@@ -1,16 +1,16 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './map.css';
 
-export default function Map(props) {
+export default function Map(airport) {
   const mapContainer = useRef(null);
-  const map = useRef(null);
-  var airport = { lng: 12.648131871581867, lat: 55.62513369975767};
+  var map = useRef(null);
+  var defaultAirport = { lng: 12.648131871581867, lat: 55.62513369975767};
   const [zoom] = useState(15);
   maptilersdk.config.apiKey = 'YPWvjXSB1Key9mipDYw6';
-  if(props.airport) {
-    airport = props.airport
+  if(!airport) {
+    airport = defaultAirport
   }
 
   useEffect(() => {

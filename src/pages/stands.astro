@@ -2,6 +2,7 @@
 import Layout from "../layout/layout.astro";
 const EKBI = { lng: 9.148173216130179, lat: 55.741714236886445};
 const airport = EKBI;
+import Map from "../components/NewMap"
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
     <div class="top-32 left-24 absolute z-10">
@@ -12,13 +13,6 @@ const airport = EKBI;
             <option value="EKYT">EKYT</option>
         </select>
     </div>
-    <Map id="Map" client:visible airport={airport}/>
+    <Map airport={airport} client:visible />
 </Layout>
 
-<script is:inline>
-    document.getElementById('select').addEventListener('change', function(event) {
-        const selectedAirport = event.target.value;
-        console.log(selectedAirport);
-        document.getElementsByid
-    });
-</script>
