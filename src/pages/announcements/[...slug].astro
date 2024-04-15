@@ -15,12 +15,12 @@ const { Content } = await entry.render();
 ---
 <Layout>
     <div class="flex justify-center min-h-[calc(100vh-240px)]">
-        <div class="w-full max-w-[1300px] flex justify-center flex-col">
+        <div class="w-full max-w-[1300px] flex justify-center flex-col p-4">
             <div class="py-4">
                 <h1 class="text-4xl font-bold">{entry.data.title}</h1>
                 <hr class="border-2 my-2"/>
                 <p class="text-2xl font-semibold">{entry.data.role} | {entry.data.author}</p>
-                <p class="text-2xl">{entry.data.date}</p>
+                <p class="text-2xl">{new Date(entry.data.date).toLocaleDateString('en-GB')}</p>
             </div>
             <Content class="text-xl"/>
         </div>
