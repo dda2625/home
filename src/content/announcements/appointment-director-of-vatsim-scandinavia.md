@@ -2,7 +2,7 @@
     title: "[APPOINTMENT] Director of VATSIM Scandinavia"
     author: Christian Kovanen
     role: Director
-    date: 1/04/2024
+    date: 2024-04-01
 ---
 he votes have now been counted and verified by the Web Services Director and I.
 
