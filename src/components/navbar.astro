@@ -1,6 +1,7 @@
 ---
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import ThemeToggle from "./ThemeToggle"
 
 const menuitems = [
   {
@@ -134,16 +135,23 @@ const menuitems = [
                   <a
                       href={item.path}
                       class="flex lg:px-3 py-2 items-center text-vatsca3 dark:text-gray-200 hover:text-gray-900">
-                      <span> {item.title}</span>
+                      <span class="dark:text-white text-white"> {item.title}</span>
                   </a>
                 </li>
             )}
             </>
         ))
         }
+        <div class="w-full justify-start py-4 lg:hidden">
+          <ThemeToggle client:only/>
+        </div>
+
     </ul>
     
     </MenuItems>
-</Astronav>
+    <div class="hidden lg:block">
+      <ThemeToggle client:only/>
+    </div>
 
+</Astronav>
 </header>
