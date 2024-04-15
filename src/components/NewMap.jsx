@@ -3,12 +3,7 @@ import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './map.css';
 
-interface PropOptions {
-  airport: object;
-  id: string;
-}
-
-export default function Map(props: PropOptions) {
+export default function Map(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   var airport = { lng: 12.648131871581867, lat: 55.62513369975767};
