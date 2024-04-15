@@ -3,21 +3,11 @@ import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings.astro";
 import Map from "../components/Map";
 import { Button } from "@nextui-org/react";
+import { getCollection } from 'astro:content'
 
-const announcement = [{
-    title:"[VACANT POSITION] Director of VATSIM Scandinavia",
-    description: "Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.",
-    date: "February 29",
-    author: "Christian Kovanen",
-    link: ""
-  },
-  {
-    title: "Real-world conflicts on VATSIM",
-    description: "Due to the recent discussions in various channels of our Discord server and on these forums, I have been asked to make this announcement explaining our position and the position of VATSIM regarding the ongoing war.",
-    date: "February 29",
-    author: "Christian Kovanen",
-    link: ""
-  }]
+const allAnnouncements = await getCollection('announcements');
+
+
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
@@ -57,19 +47,23 @@ const announcement = [{
           Latest announcements
         </div>
         <div class="bg-white dark:bg-vatsca3">
-          {announcement.map(post => <div class="w-full p-4 hover:bg-vatsca2/50">
-            <a href="" class="font-semibold text-xl">
-              {post.title}
-            </a>
-            <br/>
-            <a href="">
-              {post.description}
-            </a>
-            <br/>
-            <a href="" class="text-lg font-semibold">
-              {post.date} | By {post.author}
-            </a>
-          </div>)}
+          {allAnnouncements.slice(0, 2).map(post => 
+            <div class="w-full p-2 hover:bg-vatsca2/50">
+              <a href={"/announcements/"+post.slug}>
+                <span class="font-semibold text-xl">
+                  {post.data.title}
+                </span>
+                <br/>
+                <span>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur pariatur enim quod, eveniet vero aspernatur accusamus quo cupiditate, iure et dolores, fugiat beatae? Enim neque sapiente maxime beatae a nisi?
+                </span>
+                <br/>
+                <span class="text-lg font-semibold">
+                  {post.data.date} | By {post.data.author}
+                </span>
+              </a>
+            </div>
+          )}
           
         </div>
       </div>
