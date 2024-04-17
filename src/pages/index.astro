@@ -5,8 +5,11 @@ import Map from "../components/Map";
 import { Button } from "@nextui-org/react";
 import { getCollection } from 'astro:content'
 
+
 const allAnnouncements = await getCollection('announcements');
+
 allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
@@ -53,11 +56,10 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
                   {post.data.title}
                 </span>
                 <br/>
-                <span>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur pariatur enim quod, eveniet vero aspernatur accusamus quo cupiditate, iure et dolores, fugiat beatae? Enim neque sapiente maxime beatae a nisi?
+                <span style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;">
+                  {post.data.description}
                 </span>
-                <br/>
-                <span class="text-lg font-semibold">
+                <span class="text-lg font-semibold mt-2">
                   {new Date(post.data.date).toLocaleDateString('en-GB')} | By {post.data.author}
                 </span>
               </a>

@@ -3,6 +3,7 @@
     author: Daniel Dahl Andersen
     role: Director
     date: 2024-04-15
+    description: The handover is now complete, and I want to take this moment to thank Christian Kovanen for the hard work he has done over the last 3+ years. I am taking over a vACC which is running smoothly. The handover has also been smooth and I´m slowly getting up to speed.
 ---
 
 ***Dear VATSCA member.***
