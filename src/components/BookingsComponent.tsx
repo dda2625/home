@@ -1,4 +1,7 @@
-const mockCCData = {
+import convertZulu from "../utils/convertZulu";
+import bookingType from "../utils/bookingType";
+
+var mockCCData = {
     data: [
       {
         id: 9,
@@ -326,22 +329,11 @@ const mockCCData = {
     ],
   };
 
-function convertZulu(time: string) {
-    const outputString = (time).split(" ")[1].substring(0, 5) + "Z";
-    return outputString
-}
+//  fetch('http://cc-test.vatsca.org/api/open/bookings')
+//  .then(response => response.json())
+//  .then(data => mockCCData = data)
+//  .catch(error => console.error(error));
 
-function bookingType(booking: any) {
-    if (booking.training === 1) {
-        return <span className="bg-[#1a475f] text-sm text-white px-2 py-1 rounded-md">Training</span>
-    } else if (booking.event === 1) {
-        return <span className="bg-[#41826e] text-sm text-white px-2 py-1 rounded-md">Event</span>
-    } else if (booking.exam === 1) {
-        return <span className="bg-[#b63f3f] text-sm text-white px-2 py-1 rounded-md">Exam</span>
-    } else {
-        return ""
-    }
-}
 
 // Helper function to group bookings by day
 function groupByDay(bookings: any) {
@@ -355,11 +347,9 @@ function groupByDay(bookings: any) {
     }, {});
 }
 
-const MyComponent = () => {
-    // Group bookings by day
+const BookingsComponent = () => {
     const groupedBookings = groupByDay(mockCCData.data);
 
-    // Render bookings
     return (
         <table className="w-full table-auto">
             {Object.entries(groupedBookings).map(([date, bookings]: any, index) => (
@@ -383,4 +373,4 @@ const MyComponent = () => {
     );
 };
 
-export default MyComponent;
+export default BookingsComponent;
