@@ -104,6 +104,22 @@ function OnlineName(CALLSIGN: string) {
   return name;
 }
 
+function isScandinavia(CALLSIGN: any) {
+  switch (CALLSIGN.substring(0, 2)){
+    case "EK": // EKDK
+      return true;
+    case "EN": // ENOR
+        return true;
+    case "ES": // ESOS
+        return true;
+    case "BD":  //BIRD
+        return true;
+    case "EF": // EFHK
+    default:
+      return false;
+  }
+}
+
 const feed = ControlCenterBookingInformation.data
 
 // Helper function to group bookings by day
