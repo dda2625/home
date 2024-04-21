@@ -3,7 +3,7 @@ import BookingsComponent from './BookingsComponent'
 ---
 
 <div class="w-full h-full max-h-[440px] overflow-y-scroll">
-    <BookingsComponent />
+    <BookingsComponent client:only />
 </div>
 
 <style is:global>
@@ -28,7 +28,7 @@ import BookingsComponent from './BookingsComponent'
     }
 </style>
 
-<style>
+<style is:global>
     .even-row {
       @apply bg-gray-100;
     }
