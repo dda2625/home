@@ -3,5 +3,36 @@ import BookingsComponent from './BookingsComponent'
 ---
 
 <div class="w-full h-full max-h-[440px] overflow-y-scroll">
-    <BookingsComponent />
+    <BookingsComponent client:only />
 </div>
+
+<style is:global>
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #919191 #ffffff;
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #919191;
+        border-radius: 4px;
+        border: 0px solid #ffffff;
+    }
+</style>
+
+<style is:global>
+    .even-row {
+      @apply bg-gray-100;
+    }
+    .odd-row {
+      @apply bg-white;
+    }
+  </style>
