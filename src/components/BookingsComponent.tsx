@@ -94,6 +94,16 @@ function isOnline(CALLSIGN: string) {
   return online;
 }
 
+function OnlineName(CALLSIGN: string) {
+  var name = "redacted";
+  VatsimDataFeed.controllers.forEach((controller) => {
+    if (controller.callsign === CALLSIGN) {
+      name = controller.name;
+    }
+  });
+  return name;
+}
+
 const feed = ControlCenterBookingInformation.data
 
 // Helper function to group bookings by day
@@ -114,14 +124,20 @@ const BookingsComponent = () => {
     <table className="w-full table-auto">
       {Object.entries(groupedBookings).map(([date, bookings]: any, index) => (<>
         <tr>
-          <td colSpan={4} className="text-center bg-[#dfebeb] dark:bg-[#356c8e] p-2">
+          <td colSpan={4} className="text-center bg-[#dfebeb] dark:bg-[#356c8e] p-2 font-semibold">
               {index === 0 ? 'Today' : date}
           </td>
         </tr>
         {bookings.map((booking: any) => (
-          <tr className="[&:nth-child(even)]:bg-gray-200 dark:[&:nth-child(even)]:bg-[#1e3744]">
+          <tr className="[&:nth-child(even)]:bg-gray-300 dark:[&:nth-child(even)]:bg-[#1e3744]">
             <td className="px-2">
-            {isOnline(booking.callsign) ? <span className="px-2 text-2xl -m-1 -p-2">●</span> : <span className="px-2 text-2xl -m-1 -p-2">○</span>}{booking.callsign}
+            {isOnline(booking.callsign) ? <p className="tooltip" data-tip={OnlineName(booking.callsign)}>
+            <span className="px-2 text-2xl -m-1 -p-2">●</span>
+            {booking.callsign}
+            </p> : <>
+            <span className="px-2 text-2xl -m-1 -p-2">○</span>
+            {booking.callsign}
+            </>}
             </td>
             <td className="px-2">{bookingType(booking)}</td>
             <td className="px-2">{convertZulu(booking.time_start)}</td>
