@@ -118,18 +118,18 @@ const BookingsComponent = () => {
               {index === 0 ? 'Today' : date}
           </td>
         </tr>
-        {bookings.map((booking: any) => (<>
-        <tr className="[&:nth-child(even)]:bg-gray-200 dark:[&:nth-child(even)]:bg-[#1e3744]">
-          <td className="px-2">
-          {isOnline(booking.callsign) ? <span className="px-2">🟢</span> : <span className="px-2">🔴</span>}{booking.callsign}
-          </td>
-          <td className="px-2">{bookingType(booking)}</td>
-          <td className="px-2">{convertZulu(booking.time_start)}</td>
-          <td className="px-2">{convertZulu(booking.time_end)}</td>
-        </tr>
-      </>))}
+        {bookings.map((booking: any) => (
+          <tr className="[&:nth-child(even)]:bg-gray-200 dark:[&:nth-child(even)]:bg-[#1e3744]">
+            <td className="px-2">
+            {isOnline(booking.callsign) ? <span className="px-2 text-2xl -m-1 -p-2">●</span> : <span className="px-2 text-2xl -m-1 -p-2">○</span>}{booking.callsign}
+            </td>
+            <td className="px-2">{bookingType(booking)}</td>
+            <td className="px-2">{convertZulu(booking.time_start)}</td>
+            <td className="px-2">{convertZulu(booking.time_end)}</td>
+          </tr>
+        ))}
       </>
-    ))}
+      ))}
     </table>
   );
 };
