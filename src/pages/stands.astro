@@ -1,18 +1,7 @@
 ---
 import Layout from "../layout/layout.astro";
-const EKBI = { lng: 9.148173216130179, lat: 55.741714236886445};
-const airport = EKBI;
 import Map from "../components/NewMap"
 ---
 <Layout SiteTitle="VATSIM Scandinavia">
-    <div class="top-32 left-24 absolute z-10">
-        <label class="text-2xl">Airport:</label>
-        <select id="select" class="w-fit bg-transparent appearance-auto text-xl">
-            <option value="EKCH" title="Title for Item 1" class="bg-vatsca3">EKCH</option>
-            <option value="EKBI" title="Title for Item 2">EKBI</option>
-            <option value="EKYT">EKYT</option>
-        </select>
-    </div>
-    <Map airport={airport} client:visible />
+    <Map client:visible />
 </Layout>
-

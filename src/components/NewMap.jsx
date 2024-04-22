@@ -3,15 +3,14 @@ import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './map.css';
 
-export default function Map(airport) {
+
+export default function Map() {
   const mapContainer = useRef(null);
   var map = useRef(null);
-  var defaultAirport = { lng: 12.648131871581867, lat: 55.62513369975767};
-  const [zoom] = useState(15);
+  var airport  = { lng: 12.648131871581867, lat: 55.62513369975767, zoom: 15};
+  var [zoom] = useState(airport.zoom);
+
   maptilersdk.config.apiKey = 'YPWvjXSB1Key9mipDYw6';
-  if(!airport) {
-    airport = defaultAirport
-  }
 
   useEffect(() => {
     if (map.current) return; // stops map from intializing more than once
@@ -30,8 +29,11 @@ export default function Map(airport) {
   }, [airport.lng, airport.lat, zoom]);
 
   return (
+    <>
+    <div className='w-80 h-12 bg-black top-32 z-10 absolute'>Denmark</div>
     <div className="map-wrap">
       <div ref={mapContainer} className="map" />
     </div>
+    </>
   );
 }
