@@ -4,10 +4,10 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './map.css';
 
 
-export default function Map() {
+export default function Map(airport) {
   const mapContainer = useRef(null);
   var map = useRef(null);
-  airport = airport.airport
+  var airport = airport.airport
   const [zoom] = useState(15);
   maptilersdk.config.apiKey = 'YPWvjXSB1Key9mipDYw6';
 
@@ -29,7 +29,6 @@ export default function Map() {
 
   return (
     <>
-    <div className='w-80 h-12 bg-black top-32 z-10 absolute'>Denmark</div>
     <div className="map-wrap">
       <div ref={mapContainer} className="map" />
     </div>
