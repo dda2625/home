@@ -7,11 +7,9 @@ export default function Map(airport) {
   const mapContainer = useRef(null);
   var map = useRef(null);
   var defaultAirport = { lng: 12.648131871581867, lat: 55.62513369975767};
+  airport = defaultAirport
   const [zoom] = useState(15);
   maptilersdk.config.apiKey = 'YPWvjXSB1Key9mipDYw6';
-  if(!airport) {
-    airport = defaultAirport
-  }
 
   useEffect(() => {
     if (map.current) return; // stops map from intializing more than once
