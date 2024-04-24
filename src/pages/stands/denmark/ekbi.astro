@@ -1,0 +1,10 @@
+---
+import Map from "../../../components/NewMap"
+import Layout from "../../../layout/layout.astro";
+const airport = { lng: 9.14693389881775, lat: 55.7430662590494, zoom: 15};
+import StandNavigation from "../StandNavigation.astro";
+---
+<Layout SiteTitle="VATSIM Scandinavia">
+    <StandNavigation />
+    <Map airport={airport} client:visible />
+</Layout>
