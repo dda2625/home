@@ -3,7 +3,8 @@ import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
 import './map.css';
 
-export default function Map(airport) {
+
+export default function Map() {
   const mapContainer = useRef(null);
   var map = useRef(null);
   airport = airport.airport
@@ -27,8 +28,11 @@ export default function Map(airport) {
   }, [airport.lng, airport.lat, zoom]);
 
   return (
+    <>
+    <div className='w-80 h-12 bg-black top-32 z-10 absolute'>Denmark</div>
     <div className="map-wrap">
       <div ref={mapContainer} className="map" />
     </div>
+    </>
   );
 }
