@@ -18,7 +18,7 @@ import Nav2 from "../components/navbar.astro"
     <Tooltips interactive={false} delay={[15, 140]} />
     <ViewTransitions />
   </head>
-  <body class="dark:bg-gray-800 w-full h-full min-h-screen text-black dark:text-white">
+  <body class="bg-gray-200 dark:bg-gray-800  w-full h-full min-h-screen text-vatsca3 dark:text-white">
     <Nav2 />
     <slot />
     <Footer />
@@ -52,3 +52,35 @@ import Nav2 from "../components/navbar.astro"
   }
   window.localStorage.setItem("theme", theme);
 </script>
+
+<style is:global>
+  *::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background-color: #DFE9EB;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #B8C0C2;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #356C8E;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #21455B;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #21455B;
+}
+</style>
