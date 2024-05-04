@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layout/layout.astro";
-import AvailabilityDecode from "../../components/AvailabilityDecode.tsx"
+import AvailabilityDecode from "../../components/AvailabilityDecode.tsx";
 
 const staffteam = [
   {
@@ -122,6 +122,14 @@ const staffteam = [
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Event",
+  },
+  {
+    STAFFID: "",
+    POSITION: "Web Services Assistant",
+    NAME: "Simon Bjerre",
+    EMAIL: "web@vatsim-scandinavia.org",
+    AVILABILITY: "AVL",
+    DEPARTMENT: "Web",
   },
   {
     STAFFID: "",
@@ -249,21 +257,27 @@ staffteam.forEach((staff) => {
 });
 
 export { departments };
-
-
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
-  <div class="w-full h-fit flex flex-col justify-center items-center">
+  <div class="w-full h-fit flex flex-col justify-center items-center dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat">
     <h1 class="text-5xl py-12 font-semibold">Staff team</h1>
     <p class="text-lg dark:text-gray-400 italic text-center">
       Feedback for our ATC services, or general comments about VATSIM
-      Scandinavia, can be sent <a class="text-vatsca1 font-semibold" href="https://cc.vatsim-scandinavia.org/feedback" target="_blank">here</a>
+      Scandinavia, can be sent <a
+        class="text-vatsca1 font-semibold"
+        href="https://cc.vatsim-scandinavia.org/feedback"
+        target="_blank">here</a
+      >
     </p>
     <div
       class="w-full max-w-[1500px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
     >
-        <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"> VATSCA Director</h1>
+      <h1
+        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
+      >
+        VATSCA Director
+      </h1>
       {
         departments["Director"].map((staff: any) => (
           <div class="bg-vatsca3 p-4 h-80 w-64 flex items-center justify-center text-center flex-col relative col-span-2 xl:col-span-5 rounded-md">
@@ -282,89 +296,104 @@ export { departments };
       }
     </div>
     <div
-    class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
-  >
-    <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Contry Directors</h1>
-    {
-      departments["Directors"].map((staff: any) => (
-        <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-          <AvailabilityDecode Availability={staff.AVILABILITY} />
-          <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-          <p class="text-gray-200 italic">{staff.STAFFID}</p>
-          <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-          <h4 class="text-white h-11">{staff.POSITION}</h4>
-          <span class="m-2">
-            <a href={"mailto:" + staff.EMAIL}>
-              <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-            </a>
-          </span>
-        </div>
-      ))
-    }
-  </div>
-  <div
-  class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
->
-    <h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Traning Department</h1>    
-  {
-    departments["Training"].map((staff: any) => (
-      <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-        <AvailabilityDecode Availability={staff.AVILABILITY} />
-        <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-        <p class="text-gray-200 italic">{staff.STAFFID}</p>
-        <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-        <h4 class="text-white h-11">{staff.POSITION}</h4>
-        <span class="m-2">
-          <a href={"mailto:" + staff.EMAIL}>
-            <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-          </a>
-        </span>
-      </div>
-    ))
-  }
-</div>
-<div
-class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
->
-<h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Web Department</h1>
-{
-  departments["Web"].map((staff : any) => (
-    <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-      <AvailabilityDecode Availability={staff.AVILABILITY} />
-      <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-      <p class="text-gray-200 italic">{staff.STAFFID}</p>
-      <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-      <h4 class="text-white h-11">{staff.POSITION}</h4>
-      <span class="m-2">
-        <a href={"mailto:" + staff.EMAIL}>
-          <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-        </a>
-      </span>
+      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
+    >
+      <h1
+        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
+      >
+        Contry Directors
+      </h1>
+      {
+        departments["Directors"].map((staff: any) => (
+          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+            <AvailabilityDecode Availability={staff.AVILABILITY} />
+            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
+            <p class="text-gray-200 italic">{staff.STAFFID}</p>
+            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
+            <h4 class="text-white h-11">{staff.POSITION}</h4>
+            <span class="m-2">
+              <a href={"mailto:" + staff.EMAIL}>
+                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
+              </a>
+            </span>
+          </div>
+        ))
+      }
     </div>
-  ))
-}
-</div>
-<div
-class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
->
-<h1 class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center">Event Department</h1>
-{
-  departments["Event"].map((staff: any) => (
-    <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-      <AvailabilityDecode Availability={staff.AVILABILITY} />
-      <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-      <p class="text-gray-200 italic">{staff.STAFFID}</p>
-      <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-      <h4 class="text-white h-11">{staff.POSITION}</h4>
-      <span class="m-2">
-        <a href={"mailto:" + staff.EMAIL}>
-          <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-        </a>
-      </span>
+    <div
+      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
+    >
+      <h1
+        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
+      >
+        Traning Department
+      </h1>
+      {
+        departments["Training"].map((staff: any) => (
+          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+            <AvailabilityDecode Availability={staff.AVILABILITY} />
+            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
+            <p class="text-gray-200 italic">{staff.STAFFID}</p>
+            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
+            <h4 class="text-white h-11">{staff.POSITION}</h4>
+            <span class="m-2">
+              <a href={"mailto:" + staff.EMAIL}>
+                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
+              </a>
+            </span>
+          </div>
+        ))
+      }
     </div>
-  ))
-}
-</div>
-
+    <div
+      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
+    >
+      <h1
+        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
+      >
+        Web Department
+      </h1>
+      {
+        departments["Web"].map((staff: any) => (
+          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+            <AvailabilityDecode Availability={staff.AVILABILITY} />
+            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
+            <p class="text-gray-200 italic">{staff.STAFFID}</p>
+            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
+            <h4 class="text-white h-11">{staff.POSITION}</h4>
+            <span class="m-2">
+              <a href={"mailto:" + staff.EMAIL}>
+                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
+              </a>
+            </span>
+          </div>
+        ))
+      }
+    </div>
+    <div
+      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
+    >
+      <h1
+        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
+      >
+        Event Department
+      </h1>
+      {
+        departments["Event"].map((staff: any) => (
+          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
+            <AvailabilityDecode Availability={staff.AVILABILITY} />
+            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
+            <p class="text-gray-200 italic">{staff.STAFFID}</p>
+            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
+            <h4 class="text-white h-11">{staff.POSITION}</h4>
+            <span class="m-2">
+              <a href={"mailto:" + staff.EMAIL}>
+                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
+              </a>
+            </span>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </Layout>

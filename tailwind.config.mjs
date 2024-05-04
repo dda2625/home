@@ -12,7 +12,11 @@ export default {
 				'snow': '#dfebeb',
 				'success': '#41826e',
 				'danger': '#b63f3f'
-			}
+			},
+			backgroundImage: {
+				'topography-dark': "url('/topography-dark.svg')",
+				'topography-light': "url('/topography-light.svg')",
+			  }
 		}
 	},
 	darkMode: "class",
