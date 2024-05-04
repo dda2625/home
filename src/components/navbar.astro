@@ -43,9 +43,9 @@ const menuitems = [
   }
 ];
 ---
-<header class="flex flex-col lg:flex-row justify-between items-center sticky top-0 z-50 backdrop-blur-sm px-24 py-2 text-vatsca3 dark:text-gray-200 bg-vatsca3">
+<header class="flex flex-col w-full lg:flex-row justify-between items-center sticky top-0 z-50 backdrop-blur-sm px-24 py-2 text-vatsca3 dark:text-gray-200 bg-vatsca3">
 <Astronav>
-    <div class="flex w-full lg:w-auto items-center justify-between">
+    <div class="flex w-screen px-6 lg:w-auto items-center justify-between">
         <a href="/" class="text-xl"
             >
             <svg
@@ -121,7 +121,7 @@ const menuitems = [
             <MenuIcon class="w-8 h-8 text-gray-200" />
         </div>
     </div>
-    <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0 text-xl">
+    <MenuItems class="hidden w-screen px-8 lg:w-auto mt-2 lg:flex lg:mt-0 text-xl">
     <ul class="flex flex-col lg:flex-row lg:gap-3">
         {
         menuitems.map((item, index) => (
