@@ -138,14 +138,15 @@ const BookingsComponent = () => {
   const groupedBookings = groupByDay(feed);
   return (
     <table className="w-full table-auto">
+      <tbody>
       {Object.entries(groupedBookings).map(([date, bookings]: any, index) => (<>
-        <tr>
+        <tr key={index}>
           <td colSpan={4} className="text-center bg-[#dfebeb] dark:bg-[#356c8e] p-2 font-semibold">
               {index === 0 ? 'Today' : date}
           </td>
         </tr>
         {bookings.map((booking: any) => (
-          <tr className="[&:nth-child(even)]:bg-gray-300 dark:[&:nth-child(even)]:bg-[#1e3744]">
+          <tr className="[&:nth-child(even)]:bg-gray-300 dark:[&:nth-child(even)]:bg-[#1e3744]" key={booking.callsign}>
             <td className="px-2">
             {isOnline(booking.callsign) ? <p className="tooltip" data-tip={OnlineName(booking.callsign)}>
             <span className="px-2 text-2xl -m-1 -p-2">●</span>
@@ -162,6 +163,7 @@ const BookingsComponent = () => {
         ))}
       </>
       ))}
+      </tbody>
     </table>
   );
 };
