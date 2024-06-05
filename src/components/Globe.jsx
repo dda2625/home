@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import airportData from 'airport-data-js';
+import { getAirportByIata, getAirportByIcao, getAirportByCityCode } from 'airport-data-js';
 import Globe from 'react-globe.gl';
+
+async function dataByIcao(ICAO) {
+    return await getAirportByIcao(ICAO);
+}
 
 
 function GlobeView() {
     const globeEl = useRef();
-    const [pilots, setPilots] = useState([]);
+    const [airports, setAirports] = useState([]);
     const [routes, setRoutes] = useState([]);
 
     const N = 20;
@@ -18,46 +22,34 @@ function GlobeView() {
     }));
 
     useEffect(() => {
-        fetch('https://data.vatsim.net/v3/vatsim-data.json')
-        .then(response => response.json())
-        .then(data => {
-            setPilots(data.pilots);
-        })
-        .catch(error => {
-            console.error('There was an error!', error);
+
+        Promise.all([
+            fetch('https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat').then(res => res.text())
+            .then(d => d3.csvParseRows(d, airportParse)),
+        ]).then(([airports, pilots]) => {
+
+            const byIcao = indexBy(airports, 'icao', false);
+
         });
 
-        globeEl.current.pointOfView({ lat: 55.13327328210737, lng: 10.116610662566945, altitude: 0.75 }, 1000);
+        globeEl.current.pointOfView({ lat: 55.13327328210737, lng: 10.116610662566945, altitude: 1 }, 1000);
+
     }, []); 
 
-    const rawRoutes = [];
-
-    function simpleReturn(value) {
-        return value;
-    
-    }
-
-    pilots.forEach(pilot => {
-        console.log(pilot.flight_plan? pilot.flight_plan.departure: 'No Departure');
-        let route = {callsign : pilot.callsign, departure: pilot.flight_plan? airportData.getAirportByIcao(pilot.flight_plan.departure).then(simpleReturn(value)): 'No Departure', arrival:pilot.flight_plan? pilot.flight_plan.arrival: 'No Arrival',};
-        rawRoutes.push(route)
-    });
-
-    console.log(rawRoutes);
-
     return (
-        <div className='z-10 absolute top-0'>
-            <Globe
-                ref={globeEl}
-                globeImageUrl="/8k_earth_daymap.jpg"
-                backgroundColor="rgba(0,0,0,0)"
-                arcsData={arcsData}
-                arcColor={'color'}
-                arcDashLength={() => Math.random()}
-                arcDashGap={() => Math.random()}
-                arcDashAnimateTime={() => Math.random() * 4000 + 500}
-                 />
-        </div>
+        <Globe
+            ref={globeEl}
+            globeImageUrl="/8k_earth_daymap.jpg"
+            backgroundColor="rgba(0,0,0,0)"
+            showAtmosphere={false}
+            arcsData={arcsData}
+            arcColor={'color'}
+            width={2560}
+            height={2560}
+            arcDashLength={() => Math.random()}
+            arcDashGap={() => Math.random()}
+            arcDashAnimateTime={() => Math.random() * 4000 + 500}
+                />
     );
 }
 

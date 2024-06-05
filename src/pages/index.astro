@@ -14,41 +14,32 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
 
 <Layout SiteTitle="VATSIM Scandinavia">
 
-  <div class="overflow-hidden w-full h-full flex flex-col items-center dark:bg-vatsca3/75 -mt-20 z-40 relative">
+  <div class="w-full h-fit flex flex-col items-center z-40 overflow-hidden relative">
 
-    <div class="w-full h-[calc(100vh)] flex justify-center backdrop-blur-sm dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat" >
+    <div class="w-full h-[calc(100vh-256px)] flex justify-center bg-topography-light dark:bg-topography-dark bg-repeat overflow-y-hidden dark:bg-vatsca3/25" >
       
       <div class="max-w-5/6 w-full h-full flex">
-      <div
-        class="w-full flex flex-col items-center justify-center p-12 font-bold z-20"
-      >
-        <h1 class="text-vatsca3 dark:text-white text-6xl md:text-7xl 2xl:text-8xl text-center drop-shadow-xl">
-          <span class="">vATC</span> SERVICES
-        </h1>
-        <h1 class="text-vatsca3 dark:text-white text-xl md:text-4xl 2xl:text-6xl text-center drop-shadow-xl uppercase">
-          across Scandinavia's skies 
-        </h1>
-        <p
-          class="mt-12 sm:mt-0 text-vatsca3 dark:text-white text-xl p-2 text-center w-full md:w-3/5 lg:w-full drop-shadow-xl font-medium"
-        >
-          Home vACC of Denmark, Sweden, Norway, Finland & Iceland
-        </p>
-      </div>
-      <div class="w-1/2 hidden xl:flex justify-center items-center">
-        <Globe client:only/>
-      </div>
+        <div class="w-full flex flex-col items-center justify-center p-12 font-bold z-20">
+          <h1 class="text-vatsca3 dark:text-white text-6xl md:text-7xl 2xl:text-8xl text-center drop-shadow-xl">
+            <span>vATC</span> SERVICES
+          </h1>
+          <h1 class="text-vatsca3 dark:text-white text-xl md:text-4xl 2xl:text-6xl text-center drop-shadow-xl uppercase">
+            across Scandinavia's skies 
+          </h1>
+          <p class="mt-12 sm:mt-0 text-vatsca3 dark:text-white text-xl p-2 text-center w-full md:w-3/5 lg:w-full drop-shadow-xl font-medium">
+            Home vACC of Denmark, Sweden, Norway, Finland & Iceland
+          </p>
+        </div>
+        <div class="w-1/2 hidden xl:flex justify-center items-center">
+          
+        </div>
       </div>
     </div>
 
-    <div
-      class="w-full h-fit backdrop-blur-sm flex justify-center dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat"
-      id="bookings"
-    >
+    <div class="w-full h-[75vh] flex justify-center bg-topography-light dark:bg-topography-dark bg-repeat dark:bg-vatsca3/25" id="bookings">
       <div class="max-w-[1300px] w-full grid gap-8 content-center pb-6 grid-cols-1 xl:grid-cols-6">
       <div class="w-full h-full flex flex-col col-span-6 xl:col-span-4">
-        <div
-          class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-        >
+        <div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
           Latest announcements
         </div>
         <div class="bg-white dark:bg-vatsca3">
@@ -71,7 +62,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
           
         </div>
       </div>
-      <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-6 xl:col-span-2">
+      <div class="w-full h-full bg-white dark:bg-vatsca flex flex-col items-center col-span-6 xl:col-span-2">
         <div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
           Community
         </div>
@@ -95,7 +86,6 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
         >
           Events
         </div>
-        <!-- Featured Event -->
         <div
           class="w-full h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 bg-white dark:bg-vatsca3"
         >
@@ -162,7 +152,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
   </div>
     </div>
 
-    <div class="w-full h-fit flex flex-col justify-center items-center backdrop-blur-sm pb-6 dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat">
+    <div class="w-full h-[40vh] flex flex-col justify-center items-center pb-6 bg-topography-light dark:bg-topography-dark bg-repeat dark:bg-vatsca3/25">
       <div class="max-w-[1300px] w-full h-full">
       <div
         class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-6"
@@ -229,5 +219,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
     </div>
     </div>
   </div>
-
 </Layout>
+<div class="overflow-hidden absolute z-10 top-20 w-[100vw] h-[200vh]">
+  <Globe client:only/>
+</div>
