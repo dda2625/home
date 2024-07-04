@@ -16,19 +16,19 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Airports & Charts",
-    href: "/docs/primitives/alert-dialog",
+    href: "https://wiki.vatsim-scandinavia.org/shelves/pilots",
     description:
       "full list of airports we support, their charts and procedures.",
   },
   {
     title: "Available Stands Map",
-    href: "/docs/primitives/hover-card",
+    href: "https://stands.vatsim-scandinavia.org/",
     description:
       "dont want to spawn ontop of another aircraft? Check out our map!",
   },
   {
     title: "Booking system",
-    href: "/docs/primitives/progress",
+    href: "https://booking.vatsim-scandinavia.org/",
     description:
       "We have an event that you want to attend? Book your slot here!",
   },
@@ -42,25 +42,25 @@ const components: { title: string; href: string; description: string }[] = [
 const controllers: { title: string; href: string; description: string }[] = [
   {
     title: "Documents & Procedures",
-    href: "/docs/primitives/alert-dialog",
+    href: "https://wiki.vatsim-scandinavia.org/",
     description:
       "Our library of documents and procedures for controllers.",
   },
   {
     title: "Visiting Controllers",
-    href: "/docs/primitives/hover-card",
+    href: "/visiting",
     description:
       "Want to control at our facility? Find out how here!",
   },
   {
     title: "ATC Booking",
-    href: "/docs/primitives/progress",
+    href: "https://cc.vatsim-scandinavia.org/booking",
     description:
       "Want to annouce your ATC session? Book it here!",
   },
   {
     title: "Ratings & Endorsement",
-    href: "/docs/primitives/progress",
+    href: "https://cc.vatsim-scandinavia.org/endorsements/solos",
     description:
       "Quickly get an overview of all endorsements and ratings.",
   }
@@ -69,13 +69,13 @@ const controllers: { title: string; href: string; description: string }[] = [
 const about: { title: string; href: string; description: string }[] = [
     {
       title: "Staff",
-      href: "/docs/primitives/alert-dialog",
+      href: "/about/staff",
       description:
         "Current staff members and their roles.",
     },
     {
       title: "Policies",
-      href: "/docs/primitives/hover-card",
+      href: "https://wiki.vatsim-scandinavia.org/books/privacy-policies",
       description:
         "Privacy, Data Protection, Cookie & more",
     },
@@ -87,7 +87,7 @@ const about: { title: string; href: string; description: string }[] = [
     },
     {
       title: "Contact us",
-      href: "/docs/primitives/progress",
+      href: "/about/contact",
       description:
         "Quickly get an overview of all endorsements and ratings.",
     }
@@ -105,7 +105,7 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    href="https://cc.vatsim-scandinavia.org/training/apply" target="_blank"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       Training
@@ -116,7 +116,7 @@ export default function Navigation() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/docs" title="Introduction">
+              <ListItem href="https://vatsim.net/docs/basics/getting-started" title="Introduction">
                 What you need to know to get started with VATSIM.
               </ListItem>
               <ListItem href="/docs/installation" title="TBA Title">
