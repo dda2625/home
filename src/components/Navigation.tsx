@@ -34,7 +34,7 @@ const components: { title: string; href: string; description: string }[] = [
   },
   {
     title: "Do's & Don'ts,",
-    href: "/docs/primitives/scroll-area",
+    href: "/dos-and-donts/",
     description: "Local knowledge and tips for pilots flying in and out of our airports.",
   },
 ]
