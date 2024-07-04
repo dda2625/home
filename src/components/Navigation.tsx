@@ -95,8 +95,8 @@ const about: { title: string; href: string; description: string }[] = [
 
 export default function Navigation() {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
+    <NavigationMenu >
+      <NavigationMenuList className="flex flex-col md:flex-row w-full items-center">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>

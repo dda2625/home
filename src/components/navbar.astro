@@ -1,48 +1,7 @@
 ---
-import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import ThemeToggle from "./ThemeToggle"
 import Navigation from "./Navigation";
-
-const menuitems = [
-  {
-    title: "CPH Live",
-    path: "https://cphlive.vatsim-scandinavia.org/",
-  },
-  {
-    title: "Forum",
-    path: "/",
-  },
-  {
-    title: "Pilots",
-    path: "#",
-    children: [
-      { title: "Aviliable Stands", path: "https://stands.vatsim-scandinavia.org/" },
-      { title: "Bookings", path: "https://booking.vatsim-scandinavia.org/" },
-      { title: "Feedback", path: "https://cc.vatsim-scandinavia.org/feedback" },
-    ],
-  },
-  {
-    title: "ATC",
-    path: "#",
-    children: [
-      { title: "Docs & Procedures", path: "https://wiki.vatsim-scandinavia.org" },
-      { title: "Visiting Controller", path: "/visiting" },
-      { title: "ATC Bookings", path: "https://cc.vatsim-scandinavia.org/booking" },
-    ],
-  },
-  {
-    title: "About",
-    path: "#",
-    children: [
-      { title: "Donations", path: "/about/donations" },
-      { title: "Staff", path: "/about/staff" },
-      { title: "Privacy Policies", path: "https://wiki.vatsim-scandinavia.org/books/privacy-policies" },
-      { title: "Graphical Profile", path: "https://wiki.vatsim-scandinavia.org/books/graphical-profile/page/profile-guidelines" },
-      { title: "Contact us", path: "/about/contact" },
-    ],
-  }
-];
 ---
 <header class="flex flex-col w-full lg:flex-row justify-between items-center sticky top-0 z-50 px-24 py-2 text-vatsca3 dark:text-gray-200 dark:bg-vatsca3 bg-white">
 <Astronav>
@@ -123,13 +82,12 @@ const menuitems = [
         </div>
     </div>
     <MenuItems class="hidden w-screen px-8 lg:w-auto mt-2 lg:flex lg:mt-0 text-xl ">
-    <ul class="flex flex-col lg:flex-row lg:gap-3">
-        <Navigation client:visible/>
-        <div class="w-full justify-start py-4 lg:hidden">
-          <ThemeToggle client:only/>
-        </div>
-    </ul>
-    
+      <ul class="flex flex-col lg:flex-row lg:gap-3 items-center">
+          <Navigation client:visible/>
+          <div class="w-full justify-start py-4 lg:hidden">
+            <ThemeToggle client:only/>
+          </div>
+      </ul>
     </MenuItems>
     <div class="hidden lg:block">
       <ThemeToggle client:only/>
