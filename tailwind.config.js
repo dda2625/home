@@ -56,6 +56,8 @@ module.exports = {
       backgroundImage: {
 				'topography-dark': "url('/topography-dark.svg')",
 				'topography-light': "url('/topography-light.svg')",
+        'radar-light': "url('/radar-light.svg')",
+        'radar-dark': "url('/radar-dark.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",
