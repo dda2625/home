@@ -2,7 +2,7 @@
 import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings.astro";
 import Map from "../components/Map";
-import { Button } from "@nextui-org/react";
+import { Button } from "../components/ui/button";
 import { getCollection } from 'astro:content'
 
 
@@ -13,8 +13,9 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
-  <div class="overflow-hidden w-full h-full flex flex-col items-center dark:bg-vatsca3/75 -mt-20">
-    <div class="w-full h-[calc(100vh)] flex justify-center backdrop-blur-sm dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat" >
+  <div class="overflow-hidden w-full h-full flex flex-col items-center dark:bg-vatsca3/75 -mt-20 bg-radar-dark bg-cover">
+
+    <div class="w-full h-[calc(75vh)] flex justify-center backdrop-blur-sm dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat" >
       <div class="max-w-5/6 w-full h-full flex">
       <div
         class="w-full flex flex-col items-center justify-center p-12 font-bold"
@@ -73,13 +74,13 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
           Community
         </div>
         <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col p-4 gap-4">
-          <a href="https://members.vateud.net/" class="w-full bg-[#488e78] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+          <a href="https://wiki.vatsim-scandinavia.org/books/getting-started-AVr/chapter/joining-vatsim-scandinavia" target="_blank" class="w-full bg-[#488e78] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
             Join VATSIM Scandinavia
           </a>
-          <a href="http://discord.vatsim-scandinavia.org" class="w-full bg-[#8397ee] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+          <a href="http://discord.vatsim-scandinavia.org" target="_blank" class="w-full bg-[#8397ee] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
             Join our Discord
           </a>
-          <a href="" class="w-full bg-[#274f68] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
+          <a href="https://forum.vatsim-scandinavia.org" target="_blank" class="w-full bg-[#274f68] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
             Read the Forum
           </a>
         </div>
@@ -104,7 +105,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
             />
           </div>
           <div class="p-4 col-span-2 h-fit">
-            <h1 class="text-vatsca2 dark:text-snow font-bold text-2xl -mt-2">
+            <h1 class="text-vatsca2 dark:text-white font-bold text-2xl -mt-2">
               Copenhagen Live 2024
             </h1>
             <p>
@@ -114,7 +115,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
               Copenhagen to supply non-stop ATC for you the entire day starting
               from 6z and all the way until 22z.
             </p>
-            <Button radius="none" className="bg-vatsca2 mt-4 text-white">Read More</Button>
+            <Button className="bg-vatsca2 mt-4 text-white">Read More</Button>
           </div>
           <div class="w-full grid col-span-2 md:col-span-4 gap-4 px-4">
             <a href="" class="w-full max-w-64">
@@ -225,5 +226,6 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
       </div>
     </div>
     </div>
+
   </div>
 </Layout>

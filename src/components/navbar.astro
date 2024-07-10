@@ -1,49 +1,9 @@
 ---
-import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import ThemeToggle from "./ThemeToggle"
-
-const menuitems = [
-  {
-    title: "CPH Live",
-    path: "https://cphlive.vatsim-scandinavia.org/",
-  },
-  {
-    title: "Forum",
-    path: "/",
-  },
-  {
-    title: "Pilots",
-    path: "#",
-    children: [
-      { title: "Aviliable Stands", path: "https://stands.vatsim-scandinavia.org/" },
-      { title: "Bookings", path: "https://booking.vatsim-scandinavia.org/" },
-      { title: "Feedback", path: "https://cc.vatsim-scandinavia.org/feedback" },
-    ],
-  },
-  {
-    title: "ATC",
-    path: "#",
-    children: [
-      { title: "Docs & Procedures", path: "https://wiki.vatsim-scandinavia.org" },
-      { title: "Visiting Controller", path: "/visiting" },
-      { title: "ATC Bookings", path: "https://cc.vatsim-scandinavia.org/booking" },
-    ],
-  },
-  {
-    title: "About",
-    path: "#",
-    children: [
-      { title: "Donations", path: "/about/donations" },
-      { title: "Staff", path: "/about/staff" },
-      { title: "Privacy Policies", path: "https://wiki.vatsim-scandinavia.org/books/privacy-policies" },
-      { title: "Graphical Profile", path: "https://wiki.vatsim-scandinavia.org/books/graphical-profile/page/profile-guidelines" },
-      { title: "Contact us", path: "/about/contact" },
-    ],
-  }
-];
+import Navigation from "./Navigation";
 ---
-<header class="flex flex-col w-full lg:flex-row justify-between items-center sticky top-0 z-50 backdrop-blur-sm px-24 py-2 text-vatsca3 dark:text-gray-200 bg-vatsca3">
+<header class="flex flex-col w-full lg:flex-row justify-between items-center sticky top-0 z-50 px-24 py-2 text-vatsca3 dark:text-gray-200 dark:bg-vatsca3 bg-white">
 <Astronav>
     <div class="flex w-screen px-6 lg:w-auto items-center justify-between">
         <a href="/" class="text-xl"
@@ -51,7 +11,7 @@ const menuitems = [
             <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 922 427"
-            class="h-20 fill-white"
+            class="h-20 dark:fill-white"
           >
             <g id="Logo">
               <path
@@ -121,37 +81,13 @@ const menuitems = [
             <MenuIcon class="w-8 h-8 text-gray-200" />
         </div>
     </div>
-    <MenuItems class="hidden w-screen px-8 lg:w-auto mt-2 lg:flex lg:mt-0 text-xl">
-    <ul class="flex flex-col lg:flex-row lg:gap-3">
-        {
-        menuitems.map((item, index) => (
-            <>
-            {item.children && (
-                <Dropdown
-                title={item.title}
-                children={item.children}
-                lastItem={index === menuitems.length - 1}
-                />
-            )}
-
-            {!item.children && (
-                <li class="relative">
-                  <a
-                      href={item.path}
-                      class="flex lg:px-3 py-2 items-center text-vatsca3 dark:text-gray-200 hover:text-gray-900">
-                      <span class="dark:text-white text-white"> {item.title}</span>
-                  </a>
-                </li>
-            )}
-            </>
-        ))
-        }
-        <div class="w-full justify-start py-4 lg:hidden">
-          <ThemeToggle client:only/>
-        </div>
-
-    </ul>
-    
+    <MenuItems class="hidden w-screen px-8 lg:w-auto mt-2 lg:flex lg:mt-0 text-xl ">
+      <ul class="flex flex-col lg:flex-row lg:gap-3 items-center">
+          <Navigation client:visible/>
+          <div class="w-full justify-start py-4 lg:hidden">
+            <ThemeToggle client:only/>
+          </div>
+      </ul>
     </MenuItems>
     <div class="hidden lg:block">
       <ThemeToggle client:only/>

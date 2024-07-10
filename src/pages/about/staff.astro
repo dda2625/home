@@ -2,6 +2,17 @@
 import Layout from "../../layout/layout.astro";
 import AvailabilityDecode from "../../components/AvailabilityDecode.tsx";
 
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../components/ui/table"
+
+
 const staffteam = [
   {
     STAFFID: "ACCSCA1",
@@ -17,7 +28,7 @@ const staffteam = [
     NAME: "Simo Pietikäinen",
     EMAIL: "training-director@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
-    DEPARTMENT: "Training",
+    DEPARTMENT: "Director",
   },
   {
     STAFFID: "ACCSCA3",
@@ -100,7 +111,7 @@ const staffteam = [
     DEPARTMENT: "Web",
   },
   {
-    STAFFID: "ACCSCA15",
+    STAFFID: "ACCSCA16",
     POSITION: "Event Coordinator",
     NAME: "Max Kuhla",
     EMAIL: "event@vatsim-scandinavia.org",
@@ -124,7 +135,7 @@ const staffteam = [
     DEPARTMENT: "Event",
   },
   {
-    STAFFID: "",
+    STAFFID: "ACCSCA15",
     POSITION: "Web Services Assistant",
     NAME: "Simon Bjerre",
     EMAIL: "web@vatsim-scandinavia.org",
@@ -156,7 +167,7 @@ const staffteam = [
     DEPARTMENT: "Event",
   },
   {
-    STAFFID: "ACCSCA16",
+    STAFFID: "ACCSCA17",
     POSITION: "Pilot Training Manager",
     NAME: "Jere Heiskanen",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
@@ -164,7 +175,7 @@ const staffteam = [
     DEPARTMENT: "Pilot",
   },
   {
-    STAFFID: "ACCSCA17",
+    STAFFID: "ACCSCA18",
     POSITION: "Chief Flight Instructor",
     NAME: "Arttu Uusi-Kyyny",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
@@ -172,9 +183,17 @@ const staffteam = [
     DEPARTMENT: "Pilot",
   },
   {
-    STAFFID: "ACCSCA18",
+    STAFFID: "ACCSCA19",
     POSITION: "Deputy Chief Flight Instructor",
     NAME: "Vincent Matsuuke",
+    EMAIL: "pilot-training@vatsim-scandinavia.org",
+    AVILABILITY: "AVL",
+    DEPARTMENT: "Pilot",
+  },
+  {
+    STAFFID: "ACCSCA20",
+    POSITION: "Acting Pilot Training Manager",
+    NAME: "	Tiitus Ehiarinmwian",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Pilot",
@@ -257,6 +276,7 @@ staffteam.forEach((staff) => {
 });
 
 export { departments };
+console.log(departments);
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
@@ -270,130 +290,90 @@ export { departments };
         target="_blank">here</a
       >
     </p>
+    
     <div
-      class="w-full max-w-[1500px] px-24 py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
+      class="w-full max-w-[1500px] py-6 flex flex-col gap-4 place-content-center justify-items-center"
     >
-      <h1
-        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
-      >
-        VATSCA Director
-      </h1>
-      {
-        departments["Director"].map((staff: any) => (
-          <div class="bg-vatsca3 p-4 h-80 w-64 flex items-center justify-center text-center flex-col relative col-span-2 xl:col-span-5 rounded-md">
-            <AvailabilityDecode Availability={staff.AVILABILITY} />
-            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-            <p class="text-gray-200 italic">{staff.STAFFID}</p>
-            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-            <h4 class="text-white h-11">{staff.POSITION}</h4>
-            <span class="m-2">
-              <a href={"mailto:" + staff.EMAIL}>
-                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-              </a>
-            </span>
-          </div>
-        ))
-      }
-    </div>
-    <div
-      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
-    >
-      <h1
-        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
-      >
-        Country Directors
-      </h1>
-      {
-        departments["Directors"].map((staff: any) => (
-          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-            <AvailabilityDecode Availability={staff.AVILABILITY} />
-            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-            <p class="text-gray-200 italic">{staff.STAFFID}</p>
-            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-            <h4 class="text-white h-11">{staff.POSITION}</h4>
-            <span class="m-2">
-              <a href={"mailto:" + staff.EMAIL}>
-                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-              </a>
-            </span>
-          </div>
-        ))
-      }
-    </div>
-    <div
-      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
-    >
-      <h1
-        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
-      >
-        Traning Department
-      </h1>
-      {
-        departments["Training"].map((staff: any) => (
-          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-            <AvailabilityDecode Availability={staff.AVILABILITY} />
-            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-            <p class="text-gray-200 italic">{staff.STAFFID}</p>
-            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-            <h4 class="text-white h-11">{staff.POSITION}</h4>
-            <span class="m-2">
-              <a href={"mailto:" + staff.EMAIL}>
-                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-              </a>
-            </span>
-          </div>
-        ))
-      }
-    </div>
-    <div
-      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
-    >
-      <h1
-        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
-      >
-        Web Department
-      </h1>
-      {
-        departments["Web"].map((staff: any) => (
-          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-            <AvailabilityDecode Availability={staff.AVILABILITY} />
-            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-            <p class="text-gray-200 italic">{staff.STAFFID}</p>
-            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-            <h4 class="text-white h-11">{staff.POSITION}</h4>
-            <span class="m-2">
-              <a href={"mailto:" + staff.EMAIL}>
-                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-              </a>
-            </span>
-          </div>
-        ))
-      }
-    </div>
-    <div
-      class="w-full max-w-[1500px] py-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 place-content-center justify-items-center"
-    >
-      <h1
-        class="text-2xl font-semibold md:col-span-2 xl:col-span-5 text-center"
-      >
-        Event Department
-      </h1>
-      {
-        departments["Event"].map((staff: any) => (
-          <div class="bg-vatsca3 p-4 h-80 w-64 rounded-md flex items-center justify-center text-center flex-col relative">
-            <AvailabilityDecode Availability={staff.AVILABILITY} />
-            <img src={"/Arrow.svg"} alt="" class="w-2/4 rounded-md-full" />
-            <p class="text-gray-200 italic">{staff.STAFFID}</p>
-            <h3 class="text-white mt-2 font-bold text-lg">{staff.NAME}</h3>
-            <h4 class="text-white h-11">{staff.POSITION}</h4>
-            <span class="m-2">
-              <a href={"mailto:" + staff.EMAIL}>
-                <img src="/email.svg" alt="E-Mail icon" class="w-8" />
-              </a>
-            </span>
-          </div>
-        ))
-      }
+      <Table class:list={"bg-black dark:bg-white"}>
+        <TableHeader>
+          <TableRow className="backdrop-blur-sm">
+            <TableHead className="font-bold text-black dark:text-white">Staff ID</TableHead>
+            <TableHead className="font-bold text-black dark:text-white">Position</TableHead>
+            <TableHead className="font-bold text-black dark:text-white">Name</TableHead>
+            <TableHead className="font-bold text-black dark:text-white">E-mail</TableHead>
+            <TableHead className="font-bold text-black dark:text-white">Availability</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {
+            departments["Director"].map((staff: any) => (
+              <TableRow className="backdrop-blur-sm">
+                <TableCell className="font-bold">{staff.STAFFID}</TableCell>
+                <TableCell>{staff.POSITION}</TableCell>
+                <TableCell>{staff.NAME}</TableCell>
+                <TableCell>{staff.EMAIL}</TableCell>
+                <TableCell>{staff.AVILABILITY}</TableCell>
+              </TableRow>
+            ))
+          }
+          {
+            departments["Directors"].map((staff: any) => (
+              <TableRow className="backdrop-blur-sm">
+                <TableCell className="font-bold">{staff.STAFFID}</TableCell>
+                <TableCell>{staff.POSITION}</TableCell>
+                <TableCell>{staff.NAME}</TableCell>
+                <TableCell>{staff.EMAIL}</TableCell>
+                <TableCell>{staff.AVILABILITY}</TableCell>
+              </TableRow>
+            ))
+          }
+          {
+            departments["Web"].map((staff: any) => (
+              <TableRow className="backdrop-blur-sm">
+                <TableCell className="font-bold">{staff.STAFFID}</TableCell>
+                <TableCell>{staff.POSITION}</TableCell>
+                <TableCell>{staff.NAME}</TableCell>
+                <TableCell>{staff.EMAIL}</TableCell>
+                <TableCell>{staff.AVILABILITY}</TableCell>
+              </TableRow>
+            ))
+          }
+          {
+            departments["Event"].map((staff: any) => (
+              <TableRow className="backdrop-blur-sm">
+                <TableCell className="font-bold">{staff.STAFFID}</TableCell>
+                <TableCell>{staff.POSITION}</TableCell>
+                <TableCell>{staff.NAME}</TableCell>
+                <TableCell>{staff.EMAIL}</TableCell>
+                <TableCell>{staff.AVILABILITY}</TableCell>
+              </TableRow>
+            ))
+          }
+          {
+            departments["Pilot"].map((staff: any) => (
+              <TableRow className="backdrop-blur-sm">
+                <TableCell className="font-bold">{staff.STAFFID}</TableCell>
+                <TableCell>{staff.POSITION}</TableCell>
+                <TableCell>{staff.NAME}</TableCell>
+                <TableCell>{staff.EMAIL}</TableCell>
+                <TableCell>{staff.AVILABILITY}</TableCell>
+              </TableRow>
+            ))
+          }
+          {
+            departments["Training"].map((staff: any) => (
+              <TableRow className="backdrop-blur-sm">
+                <TableCell className="font-bold">{staff.STAFFID}</TableCell>
+                <TableCell>{staff.POSITION}</TableCell>
+                <TableCell>{staff.NAME}</TableCell>
+                <TableCell>{staff.EMAIL}</TableCell>
+                <TableCell>{staff.AVILABILITY}</TableCell>
+              </TableRow>
+            ))
+          }
+        </TableBody>
+      </Table>
+
     </div>
   </div>
 </Layout>
