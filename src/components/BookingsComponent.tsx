@@ -1,376 +1,452 @@
 import convertZulu from "../utils/convertZulu";
 import bookingType from "../utils/bookingType";
 
-var mockCCData = {
+interface ScheduleEntry {
+  id: number;
+  callsign: string;
+  time_start: string;
+  time_end: string;
+  training: number;
+  event: number;
+  exam: number;
+  created_at: string;
+  updated_at: string;
+}
+
+interface ScheduleData {
+    data: ScheduleEntry[];
+}
+
+var jsonData: ScheduleData = {
     data: [
       {
-        id: 9,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKDK_B_CTR",
-        position_id: 19,
-        name: "Web Team",
-        time_start: "2024-04-10 12:00:00",
-        time_end: "2020-12-09 14:00:00",
-        user_id: 10000010,
-        training: 0,
-        event: 0,
-        exam: 0,
-        deleted: 0,
-        created_at: "2024-03-25T20:24:00.000000Z",
-        updated_at: "2020-12-03T20:24:00.000000Z",
-      },
-      {
-        id: 4,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKAH_TWR",
-        position_id: 2,
-        name: "Web Team",
-        time_start: "2024-04-10 12:00:00",
-        time_end: "2020-12-10 23:00:00",
-        user_id: 10000010,
-        training: 0,
-        event: 0,
-        exam: 1,
-        deleted: 0,
-        created_at: "2020-12-03T19:55:34.000000Z",
-        updated_at: "2020-12-03T19:55:34.000000Z",
-      },
-      {
-        id: 8,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EFHA_TWR",
-        position_id: 59,
-        name: "Web Two",
-        time_start: "2024-04-10 12:00:00",
-        time_end: "2020-12-10 12:00:00",
-        user_id: 10000002,
+        id: 272092,
+        callsign: "EKCH_A_TWR",
+        time_start: "2024-07-10 17:30:00",
+        time_end: "2024-07-10 20:00:00",
         training: 1,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2020-12-03T20:00:25.000000Z",
-        updated_at: "2020-12-03T20:00:25.000000Z",
+        created_at: "2024-07-06T10:37:15.000000Z",
+        updated_at: "2024-07-06T10:37:15.000000Z",
       },
       {
-        id: 10,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKBI_APP",
-        position_id: 3,
-        name: "Web Team",
-        time_start: "2024-04-10 11:11:00",
-        time_end: "2020-12-16 12:12:00",
-        user_id: 10000010,
+        id: 272089,
+        callsign: "EKCH_W_APP",
+        time_start: "2024-07-10 18:00:00",
+        time_end: "2024-07-10 20:00:00",
         training: 0,
         event: 0,
         exam: 1,
-        deleted: 0,
-        created_at: "2020-12-04T15:18:08.000000Z",
-        updated_at: "2020-12-04T15:18:08.000000Z",
+        created_at: "2024-07-06T10:33:25.000000Z",
+        updated_at: "2024-07-06T10:35:55.000000Z",
       },
       {
-        id: 1,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "ENGK_I_TWR",
-        position_id: 191,
-        name: "Web Team",
-        time_start: "2024-04-10 21:00:00",
-        time_end: "2020-12-17 22:00:00",
-        user_id: 10000010,
+        id: 272146,
+        callsign: "EKDK_CTR",
+        time_start: "2024-07-10 18:00:00",
+        time_end: "2024-07-10 20:00:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2020-12-03T19:55:04.000000Z",
-        updated_at: "2020-12-03T19:55:39.000000Z",
+        created_at: "2024-07-10T06:12:07.000000Z",
+        updated_at: "2024-07-10T06:12:45.000000Z",
       },
       {
-        id: 7,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKAH_TWR",
-        position_id: 2,
-        name: "Web Six",
-        time_start: "2020-12-24 12:00:00",
-        time_end: "2020-12-24 15:00:00",
-        user_id: 10000006,
+        id: 272148,
+        callsign: "ESGG_GND",
+        time_start: "2024-07-10 19:00:00",
+        time_end: "2024-07-10 20:00:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2020-12-03T19:58:05.000000Z",
-        updated_at: "2020-12-03T19:58:05.000000Z",
+        created_at: "2024-07-10T11:22:06.000000Z",
+        updated_at: "2024-07-10T11:22:06.000000Z",
       },
       {
-        id: 6,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "ENFL_I_TWR",
-        position_id: 190,
-        name: "Web Six",
-        time_start: "2020-12-29 12:00:00",
-        time_end: "2020-12-29 13:00:00",
-        user_id: 10000006,
+        id: 272121,
+        callsign: "EKDK_CTR",
+        time_start: "2024-07-11 16:00:00",
+        time_end: "2024-07-11 18:00:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2020-12-03T19:57:05.000000Z",
-        updated_at: "2020-12-03T19:57:05.000000Z",
+        created_at: "2024-07-07T19:46:04.000000Z",
+        updated_at: "2024-07-07T19:46:04.000000Z",
       },
       {
-        id: 3,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "ESDF_TWR",
-        position_id: 280,
-        name: "Web Team",
-        time_start: "2020-12-30 12:00:00",
-        time_end: "2020-12-30 12:00:00",
-        user_id: 10000010,
+        id: 272108,
+        callsign: "EFHK_E_TWR",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 20:00:00",
         training: 0,
         event: 1,
         exam: 0,
-        deleted: 0,
-        created_at: "2020-12-03T19:55:26.000000Z",
-        updated_at: "2020-12-03T19:55:26.000000Z",
+        created_at: "2024-07-07T12:02:07.000000Z",
+        updated_at: "2024-07-07T12:02:07.000000Z",
       },
       {
-        id: 2,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "BIRD_1_CTR",
-        position_id: 111,
-        name: "Web Team",
-        time_start: "2020-12-31 12:12:00",
-        time_end: "2020-12-31 15:00:00",
-        user_id: 10000010,
+        id: 272142,
+        callsign: "ESSA_E_APP",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 19:30:00",
         training: 1,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2020-12-03T19:55:13.000000Z",
-        updated_at: "2020-12-03T19:55:13.000000Z",
+        created_at: "2024-07-09T19:31:55.000000Z",
+        updated_at: "2024-07-09T20:46:24.000000Z",
       },
       {
-        id: 12,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKAH_APP",
-        position_id: 1,
-        name: "Web Six",
-        time_start: "2021-01-29 12:00:00",
-        time_end: "2021-01-29 13:00:00",
-        user_id: 10000006,
+        id: 272143,
+        callsign: "EFOU_TWR",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 20:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T19:52:23.000000Z",
+        updated_at: "2024-07-09T19:52:23.000000Z",
+      },
+      {
+        id: 272144,
+        callsign: "EFHK_GND",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 20:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T22:14:44.000000Z",
+        updated_at: "2024-07-09T22:14:44.000000Z",
+      },
+      {
+        id: 272145,
+        callsign: "ESSB_GND",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 19:30:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2021-01-28T18:57:52.000000Z",
-        updated_at: "2021-01-28T18:57:52.000000Z",
+        created_at: "2024-07-09T22:56:22.000000Z",
+        updated_at: "2024-07-09T22:56:22.000000Z",
       },
       {
-        id: 11,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKAH_TWR",
-        position_id: 2,
-        name: "Web Six",
-        time_start: "2021-01-30 12:00:00",
-        time_end: "2021-01-30 12:00:00",
-        user_id: 10000006,
+        id: 272156,
+        callsign: "EFHK_E_APP",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 20:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-10T18:37:45.000000Z",
+        updated_at: "2024-07-10T18:37:45.000000Z",
+      },
+      {
+        id: 272157,
+        callsign: "EFIN_D_CTR",
+        time_start: "2024-07-11 17:00:00",
+        time_end: "2024-07-11 20:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-10T18:38:02.000000Z",
+        updated_at: "2024-07-10T18:38:02.000000Z",
+      },
+      {
+        id: 272149,
+        callsign: "ESGG_GND",
+        time_start: "2024-07-11 17:45:00",
+        time_end: "2024-07-11 19:15:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2021-01-28T18:57:24.000000Z",
-        updated_at: "2021-01-28T18:57:24.000000Z",
+        created_at: "2024-07-10T11:22:55.000000Z",
+        updated_at: "2024-07-10T11:22:55.000000Z",
       },
       {
-        id: 14,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKAH_TWR",
-        position_id: 2,
-        name: "Web Team",
-        time_start: "2021-03-10 12:00:00",
-        time_end: "2021-03-10 14:00:00",
-        user_id: 10000010,
-        training: 1,
-        event: 0,
-        exam: 0,
-        deleted: 0,
-        created_at: "2021-03-04T20:40:19.000000Z",
-        updated_at: "2021-03-04T20:40:19.000000Z",
-      },
-      {
-        id: 15,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKAH_APP",
-        position_id: 1,
-        name: "Web Ten",
-        time_start: "2022-01-10 12:00:00",
-        time_end: "2022-01-10 15:00:00",
-        user_id: 10000010,
-        training: 0,
-        event: 0,
-        exam: 0,
-        deleted: 0,
-        created_at: "2022-01-02T14:36:24.000000Z",
-        updated_at: "2022-01-02T14:36:24.000000Z",
-      },
-      {
-        id: 17,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "ENGM_E_TWR",
-        position_id: 200,
-        name: "Web Ten",
-        time_start: "2022-05-21 12:00:00",
-        time_end: "2022-05-21 13:00:00",
-        user_id: 10000010,
+        id: 272091,
+        callsign: "EKCH_W_APP",
+        time_start: "2024-07-11 18:00:00",
+        time_end: "2024-07-11 20:00:00",
         training: 0,
         event: 0,
         exam: 1,
-        deleted: 0,
-        created_at: "2022-05-19T17:41:41.000000Z",
-        updated_at: "2022-05-19T17:41:41.000000Z",
+        created_at: "2024-07-06T10:36:22.000000Z",
+        updated_at: "2024-07-06T10:39:20.000000Z",
       },
       {
-        id: 18,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKCH_GND",
-        position_id: 11,
-        name: "Web Ten",
-        time_start: "2022-05-21 12:00:00",
-        time_end: "2022-05-21 13:00:00",
-        user_id: 10000010,
+        id: 272096,
+        callsign: "EKDK_CTR",
+        time_start: "2024-07-11 18:00:00",
+        time_end: "2024-07-11 20:00:00",
+        training: 0,
+        event: 0,
+        exam: 0,
+        created_at: "2024-07-06T11:06:01.000000Z",
+        updated_at: "2024-07-06T11:06:01.000000Z",
+      },
+      {
+        id: 272124,
+        callsign: "EKCH_A_TWR",
+        time_start: "2024-07-11 18:00:00",
+        time_end: "2024-07-11 20:00:00",
+        training: 0,
+        event: 0,
+        exam: 0,
+        created_at: "2024-07-07T20:46:43.000000Z",
+        updated_at: "2024-07-07T20:46:43.000000Z",
+      },
+      {
+        id: 272150,
+        callsign: "ESGG_GND",
+        time_start: "2024-07-12 17:45:00",
+        time_end: "2024-07-12 19:15:00",
+        training: 0,
+        event: 0,
+        exam: 0,
+        created_at: "2024-07-10T11:23:18.000000Z",
+        updated_at: "2024-07-10T11:23:18.000000Z",
+      },
+      {
+        id: 272151,
+        callsign: "ESGG_GND",
+        time_start: "2024-07-13 17:30:00",
+        time_end: "2024-07-13 20:00:00",
+        training: 0,
+        event: 0,
+        exam: 0,
+        created_at: "2024-07-10T11:23:58.000000Z",
+        updated_at: "2024-07-10T11:24:16.000000Z",
+      },
+      {
+        id: 272152,
+        callsign: "ESGG_GND",
+        time_start: "2024-07-14 17:45:00",
+        time_end: "2024-07-14 19:15:00",
+        training: 0,
+        event: 0,
+        exam: 0,
+        created_at: "2024-07-10T11:24:53.000000Z",
+        updated_at: "2024-07-10T11:24:53.000000Z",
+      },
+      {
+        id: 272135,
+        callsign: "EKCH_F_APP",
+        time_start: "2024-07-15 17:00:00",
+        time_end: "2024-07-15 18:15:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T12:41:20.000000Z",
+        updated_at: "2024-07-09T12:41:20.000000Z",
+      },
+      {
+        id: 272137,
+        callsign: "EKCH_A_GND",
+        time_start: "2024-07-15 17:00:00",
+        time_end: "2024-07-15 18:15:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T13:12:45.000000Z",
+        updated_at: "2024-07-09T13:12:45.000000Z",
+      },
+      {
+        id: 272134,
+        callsign: "EKDK_A_CTR",
+        time_start: "2024-07-15 18:15:00",
+        time_end: "2024-07-15 20:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T12:30:41.000000Z",
+        updated_at: "2024-07-09T12:30:41.000000Z",
+      },
+      {
+        id: 272136,
+        callsign: "EKCH_F_APP",
+        time_start: "2024-07-15 18:15:00",
+        time_end: "2024-07-15 20:30:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T12:41:51.000000Z",
+        updated_at: "2024-07-09T12:41:51.000000Z",
+      },
+      {
+        id: 272138,
+        callsign: "EKCH_A_GND",
+        time_start: "2024-07-15 18:15:00",
+        time_end: "2024-07-15 20:30:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-09T13:13:03.000000Z",
+        updated_at: "2024-07-09T13:13:03.000000Z",
+      },
+      {
+        id: 272155,
+        callsign: "EKCH_W_APP",
+        time_start: "2024-07-15 18:15:00",
+        time_end: "2024-07-15 20:30:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-10T16:41:47.000000Z",
+        updated_at: "2024-07-10T16:41:47.000000Z",
+      },
+      {
+        id: 272046,
+        callsign: "BIKF_TWR",
+        time_start: "2024-07-21 16:00:00",
+        time_end: "2024-07-21 19:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-02T12:52:08.000000Z",
+        updated_at: "2024-07-06T10:33:23.000000Z",
+      },
+      {
+        id: 272051,
+        callsign: "BIKF_APP",
+        time_start: "2024-07-21 16:00:00",
+        time_end: "2024-07-21 19:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-02T14:20:08.000000Z",
+        updated_at: "2024-07-02T14:20:08.000000Z",
+      },
+      {
+        id: 272101,
+        callsign: "BIKF_GND",
+        time_start: "2024-07-21 16:00:00",
+        time_end: "2024-07-21 19:00:00",
+        training: 0,
+        event: 1,
+        exam: 0,
+        created_at: "2024-07-06T17:50:52.000000Z",
+        updated_at: "2024-07-06T17:50:52.000000Z",
+      },
+      {
+        id: 272058,
+        callsign: "EKCH_W_APP",
+        time_start: "2024-07-23 18:00:00",
+        time_end: "2024-07-23 20:00:00",
         training: 0,
         event: 0,
         exam: 1,
-        deleted: 0,
-        created_at: "2022-05-19T17:41:41.000000Z",
-        updated_at: "2022-05-19T17:41:41.000000Z",
+        created_at: "2024-07-03T08:30:38.000000Z",
+        updated_at: "2024-07-06T10:44:57.000000Z",
       },
       {
-        id: 19,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "ENBR_TWR",
-        position_id: 178,
-        name: "Web Ten",
-        time_start: "2023-03-15 12:00:00",
-        time_end: "2023-03-15 14:00:00",
-        user_id: 10000010,
+        id: 271975,
+        callsign: "EKCH_W_APP",
+        time_start: "2024-07-24 18:00:00",
+        time_end: "2024-07-24 20:00:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2023-03-04T17:36:25.000000Z",
-        updated_at: "2023-03-04T17:36:25.000000Z",
+        created_at: "2024-06-25T13:31:04.000000Z",
+        updated_at: "2024-06-25T13:31:04.000000Z",
       },
       {
-        id: 20,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EFHA_APP",
-        position_id: 58,
-        name: "Web Ten",
-        time_start: "2023-03-16 12:00:00",
-        time_end: "2023-03-16 13:00:00",
-        user_id: 10000010,
+        id: 272116,
+        callsign: "EKCH_A_TWR",
+        time_start: "2024-07-24 18:00:00",
+        time_end: "2024-07-24 20:00:00",
+        training: 0,
+        event: 0,
+        exam: 1,
+        created_at: "2024-07-07T16:04:27.000000Z",
+        updated_at: "2024-07-07T16:06:10.000000Z",
+      },
+      {
+        id: 272062,
+        callsign: "EKCH_W_APP",
+        time_start: "2024-07-31 18:00:00",
+        time_end: "2024-07-31 20:00:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2023-03-04T17:37:45.000000Z",
-        updated_at: "2023-03-04T17:37:45.000000Z",
+        created_at: "2024-07-03T11:46:13.000000Z",
+        updated_at: "2024-07-03T11:46:13.000000Z",
       },
       {
-        id: 21,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EFET_I_TWR",
-        position_id: 57,
-        name: "Web Two",
-        time_start: "2023-03-16 12:13:00",
-        time_end: "2023-03-16 14:15:00",
-        user_id: 10000002,
-        training: 1,
+        id: 272093,
+        callsign: "EKCH_A_TWR",
+        time_start: "2024-07-31 18:00:00",
+        time_end: "2024-07-31 20:00:00",
+        training: 0,
         event: 0,
-        exam: 0,
-        deleted: 0,
-        created_at: "2023-03-04T17:54:22.000000Z",
-        updated_at: "2023-03-04T17:54:22.000000Z",
+        exam: 1,
+        created_at: "2024-07-06T10:55:21.000000Z",
+        updated_at: "2024-07-06T10:58:45.000000Z",
       },
       {
-        id: 22,
-        source: "CC",
-        vatsim_booking: null,
-        callsign: "EKBI_APP",
-        position_id: 3,
-        name: "Web Ten",
-        time_start: "2023-08-24 12:00:00",
-        time_end: "2023-08-24 13:00:00",
-        user_id: 10000010,
+        id: 272140,
+        callsign: "ESSB_GND",
+        time_start: "2024-08-13 17:00:00",
+        time_end: "2024-08-13 20:00:00",
         training: 0,
         event: 0,
         exam: 0,
-        deleted: 0,
-        created_at: "2023-08-23T18:03:33.000000Z",
-        updated_at: "2023-08-23T18:03:33.000000Z",
+        created_at: "2024-07-09T15:02:57.000000Z",
+        updated_at: "2024-07-09T15:02:57.000000Z",
       },
     ],
   };
 
-//  fetch('http://cc-test.vatsca.org/api/open/bookings')
-//  .then(response => response.json())
-//  .then(data => mockCCData = data)
-//  .catch(error => console.error(error));
+const res = await fetch('https://cc.vatsim-scandinavia.org/api/bookings')
+const data = await res.json()
 
+console.log(data);
 
-// Helper function to group bookings by day
-function groupByDay(bookings: any) {
-    return bookings.reduce((groupedBookings: { [x: string]: any[]; }, booking: { time_start: string | number | Date; }) => {
-        const date = new Date(booking.time_start).toDateString();
-        if (!groupedBookings[date]) {
-            groupedBookings[date] = [];
-        }
-        groupedBookings[date].push(booking);
-        return groupedBookings;
-    }, {});
+function getDayName(dateStr: string, locale: string) {
+  var date = new Date(dateStr);
+  return date.toLocaleDateString(locale, { weekday: "long" });
 }
 
-const BookingsComponent = () => {
-    const groupedBookings = groupByDay(mockCCData.data);
+const ScheduleTable: React.FC = () => {
+  // Organize data by date
+  const scheduleByDate = jsonData.data.reduce(
+    (acc: { [key: string]: ScheduleEntry[] }, entry) => {
+      const date = entry.time_start.split(" ")[0];
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(entry);
+      return acc;
+    },
+    {}
+  );
 
-    return (
-        <table className="w-full table-auto">
-            {Object.entries(groupedBookings).map(([date, bookings]: any, index) => (
-                <>
-                    <tr>
-                        <td colSpan={4} className="text-center bg-[#dfebeb] dark:bg-[#356c8e] p-2">
-                            {index === 0 ? 'Today' : date}
-                        </td>
-                    </tr>
-                    {bookings.map((booking:any) => (
-                        <tr>
-                            <td className="px-2"><a title={booking.name} data-tooltip-placement="top">{booking.callsign}</a></td>
-                            <td className="px-2">{bookingType(booking)}</td>
-                            <td className="px-2">{convertZulu(booking.time_start)}</td>
-                            <td className="px-2">{convertZulu(booking.time_end)}</td>
-                        </tr>
-                    ))}
-                </>
-            ))}
-        </table>
-    );
+  return (
+    <div>
+      {Object.keys(scheduleByDate).map((date) => (
+        <div key={date}>
+          <table className="w-full px-2">
+            <thead>
+                <th className="bg-[#132834] text-white w-full h-8 pt-1" colSpan={4}>
+                {getDayName(date, "en-US").charAt(0).toUpperCase() +
+                    getDayName(date, "en-US").slice(1)}
+                </th>
+            </thead>
+            <tbody>
+              {scheduleByDate[date].map((entry) => (
+                <tr key={entry.id}>
+                  <td className="font-bold">{entry.callsign}</td>
+                  <td>{bookingType(entry)}</td>
+                  <td>{convertZulu(entry.time_start)}</td>
+                  <td>{convertZulu(entry.time_end)}</td>
+                </tr>
+              ))}
+            </tbody>
+
+          </table>
+        </div>
+      ))}
+    </div>
+  );
 };
 
-export default BookingsComponent;
+export default ScheduleTable;
