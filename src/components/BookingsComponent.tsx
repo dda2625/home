@@ -61,11 +61,11 @@ const ScheduleTable: React.FC = () => {
             </thead>
             <tbody>
               {scheduleByDate[date].map((entry: { id: Key | null | undefined; callsign: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; time_start: string; time_end: string; }) => (
-                <tr key={entry.id} className="even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
-                  <td className="font-bold">{entry.callsign}</td>
-                  <td>{bookingType(entry)}</td>
-                  <td>{convertZulu(entry.time_start)}</td>
-                  <td>{convertZulu(entry.time_end)}</td>
+                <tr key={entry.id} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
+                  <td className="font-bold w-[35%]">{entry.callsign}</td>
+                  <td className="w-[25%]">{bookingType(entry)}</td>
+                  <td className="w-[20%]">{convertZulu(entry.time_start)}</td>
+                  <td className="w-[20%]">{convertZulu(entry.time_end)}</td>
                 </tr>
               ))}
             </tbody>
