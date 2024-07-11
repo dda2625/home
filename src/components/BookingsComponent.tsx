@@ -1,5 +1,6 @@
 import convertZulu from "../utils/convertZulu";
 import bookingType from "../utils/bookingType";
+import type { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
 
 interface ScheduleEntry {
   id: number;
@@ -12,12 +13,6 @@ interface ScheduleEntry {
   created_at: string;
   updated_at: string;
 }
-
-interface ScheduleData {
-    data: ScheduleEntry[];
-}
-
-
 
 let headers = new Headers({
     "Accept"       : "application/json",
@@ -40,7 +35,7 @@ function getDayName(dateStr: string, locale: string) {
 const ScheduleTable: React.FC = () => {
   // Organize data by date
   const scheduleByDate = jsonData.data.reduce(
-    (acc: { [key: string]: ScheduleEntry[] }, entry) => {
+    (acc: { [key: string]: ScheduleEntry[] }, entry: ScheduleEntry) => {
       const date = entry.time_start.split(" ")[0];
       if (!acc[date]) {
         acc[date] = [];
@@ -65,7 +60,7 @@ const ScheduleTable: React.FC = () => {
                 </tr>
             </thead>
             <tbody>
-              {scheduleByDate[date].map((entry) => (
+              {scheduleByDate[date].map((entry: { id: Key | null | undefined; callsign: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; time_start: string; time_end: string; }) => (
                 <tr key={entry.id} className="even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
                   <td className="font-bold">{entry.callsign}</td>
                   <td>{bookingType(entry)}</td>

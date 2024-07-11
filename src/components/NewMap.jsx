@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import * as maptilersdk from '@maptiler/sdk';
 import "@maptiler/sdk/dist/maptiler-sdk.css";
-import './map.css';
 
 
 export default function Map(airport) {
