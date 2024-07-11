@@ -1,0 +1,12 @@
+---
+const { title, padding } = Astro.props;
+---
+
+<div class="flex flex-col col-span-6 xl:col-span-4">
+    <div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
+        {title}
+    </div>
+    <div class={`bg-white dark:bg-vatsca3 p-${padding}`}>
+        <slot></slot>
+    </div>
+</div>

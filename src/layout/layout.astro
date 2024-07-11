@@ -3,7 +3,7 @@ const { SiteTitle } = Astro.props;
 import Footer from "../components/Footer.astro"
 import { ViewTransitions } from "astro:transitions";
 import { Tooltips } from 'astro-tooltips';
-import Nav2 from "../components/navbar.astro"
+import Nav from "../components/navbar.astro"
 import '../globals.css'
 
 ---
@@ -16,12 +16,12 @@ import '../globals.css'
     <link rel="shortcut icon" href="/Arrow.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <Tooltips interactive={false} delay={[15, 140]} />
     <ViewTransitions />
   </head>
-  <body class="bg-gray-200 dark:bg-gray-800 w-full h-full min-h-screen text-vatsca3 dark:text-white transition ease-in-out delay-50 flex flex-col items-center">
-    <Nav2 />
+  <body class="bg-snow dark:bg-gray-800 w-full h-full min-h-screen text-vatsca3 dark:text-white transition ease-in-out delay-50 flex flex-col items-center">
+    <Nav />
 
     <slot />
     <Footer />
@@ -32,7 +32,7 @@ import '../globals.css'
   body {
     margin: 0;
     padding: 0;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
   }
 </style>
