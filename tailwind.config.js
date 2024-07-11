@@ -70,6 +70,10 @@ module.exports = {
                     foreground: "var(--popover-foreground)",
                 },
             },
+            backgroundImage: {
+                'radar-light': "url('/radar-light.svg')",
+                'radar-dark': "url('/radar-dark.svg')",
+            },
             borderRadius: {
                 lg: "var(--radius)",
                 md: "var(--radius)",
