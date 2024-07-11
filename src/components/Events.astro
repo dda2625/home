@@ -2,14 +2,14 @@
 import CardButton from "../components/ui/CardButton.astro";
 ---
 
-<h2 class="font-semibold text-lg text-secondary mb-2 dark:text-white">Today</h2>
+<h2 class="font-semibold text-lg text-secondary mb-2 dark:text-white p-2">Today</h2>
 
-<div class="flex flex-col gap-4 w-screen md:w-full">
+<div class="flex flex-col gap-4 w-screen md:w-full p-2">
     <div class="flex flex-col md:flex-row justify-center gap-2">
         <img
         src="/img/events/cphlive2024.png"
         alt=""
-        class="w-[350px]"
+        class="w-full md:w-[350px]"
         />
         <div class="md:ml-4">
             <h3 class="text-secondary dark:text-white font-bold text-lg -mt-2">
@@ -22,11 +22,11 @@ import CardButton from "../components/ui/CardButton.astro";
         </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-center gap-2">
+    <div class="flex flex-col md:flex-row justify-center md:items-center gap-2">
         <img
         src="/img/events/cphlive2024.png"
         alt=""
-        class="w-[350px]"
+        class="w-full md:w-[350px]"
         />
 
         <div class="md:ml-4">
@@ -45,8 +45,8 @@ import CardButton from "../components/ui/CardButton.astro";
     </div>
 </div>
 
-<h2 class="font-semibold text-lg text-secondary mt-8 mb-2 dark:text-white">Upcoming</h2>
-<div class="flex flex-row gap-2 overflow-x-scroll">
+<h2 class="font-semibold text-lg text-secondary mt-8 mb-2 dark:text-white p-2">Upcoming</h2>
+<div class="flex flex-row gap-2 overflow-x-scroll p-4">
     <img
     src="/img/events/procdctreg.png"
     alt=""
