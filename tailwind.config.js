@@ -20,6 +20,7 @@ module.exports = {
         'secondary': '#1a475f',
         'tertiary': '#011328',
         'grey': '#484b4c',
+        'lightgrey': '#edf0f4',
         'snow': 'dfebeb',
         'success': '#41826e',
         'danger': '#b63f3f',
