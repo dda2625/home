@@ -1,5 +1,6 @@
 ---
 import PageContainer from "../../components/ui/PageContainer.astro"
+import Link from "../../components/ui/Link.astro"
 
 import {
     Table,
@@ -283,11 +284,8 @@ export { departments };
     <div class="bg-white/75 dark:bg-tertiary p-8">
         <p class="text-lg dark:text-white italic text-center">
             Feedback for our ATC services, or general comments about VATSIM
-            Scandinavia can be sent <a
-            class="text-secondary underline font-semibold"
-            href="https://cc.vatsim-scandinavia.org/feedback"
-            target="_blank">here</a
-            >
+            Scandinavia can be sent
+            <Link href="https://cc.vatsim-scandinavia.org/feedback" target="_blank">here</Link>
         </p>
         
         <div
