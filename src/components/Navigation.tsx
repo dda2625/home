@@ -227,11 +227,14 @@ export default function Navigation() {
     )
 }
 
-const ListItem = React.forwardRef<
-    React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, external, ...props }, ref) => {
-    return (
+interface ListItemProps extends React.ComponentPropsWithoutRef<"a"> {
+    title: string;
+    external?: boolean;
+}
+
+const ListItem = React.forwardRef<HTMLAnchorElement, ListItemProps>(
+    ({ className, title, children, external, ...props }, ref) => {
+        return (
         <li>
         <NavigationMenuLink asChild>
             <a
