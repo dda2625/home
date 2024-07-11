@@ -16,9 +16,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        'vatsca1': '#43c6e7',
-				'vatsca2': '#1a475f',
-				'vatsca3': '#011328',
         'primary': '#43c6e7',
         'secondary': '#1a475f',
         'tertiary': '#011328',
@@ -34,18 +31,27 @@ module.exports = {
         foreground: "var(--foreground)",
         primary: {
           DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
         },
         secondary: {
           DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
+        },
+        tertiary: {
+          DEFAULT: "var(--tertiary)",
+        },
+        grey: {
+          DEFAULT: "var(--grey)",
         },
         snow: {
           DEFAULT: "var(--snow)",
         },
-        destructive: {
-          DEFAULT: "var(--destructive)",
-          foreground: "var(--destructive-foreground)",
+        success: {
+          DEFAULT: "var(--success)",
+        },
+        danger: {
+          DEFAULT: "var(--danger)",
+        },
+        warning: {
+          DEFAULT: "var(--warning)",
         },
         muted: {
           DEFAULT: "var(--muted)",
@@ -59,16 +65,6 @@ module.exports = {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
         },
-        card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
-        },
-      },
-      backgroundImage: {
-				'topography-dark': "url('/topography-dark.svg')",
-				'topography-light': "url('/topography-light.svg')",
-        'radar-light': "url('/radar-light.svg')",
-        'radar-dark': "url('/radar-dark.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",
