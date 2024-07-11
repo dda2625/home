@@ -10,10 +10,10 @@ const announcementsCollection = defineCollection({
         date: z.date(),
         tags: z.array(z.string()).optional(),
         image: z.string().optional(),
-
-      }),
+        
+    }),
 });
 
 export const collections = {
-  'announcements': announcementsCollection,
+    'announcements': announcementsCollection,
 };
