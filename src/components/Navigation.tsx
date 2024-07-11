@@ -108,10 +108,10 @@ export default function Navigation() {
                     href="https://cc.vatsim-scandinavia.org/training/apply" target="_blank"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
-                      Training
+                      ATC Training
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      We offer both traning for controllers and pilots for the VATSIM network.
+                      We offer the best traning for controllers on the VATSIM network.
                     </p>
                   </a>
                 </NavigationMenuLink>
@@ -119,10 +119,10 @@ export default function Navigation() {
               <ListItem href="https://vatsim.net/docs/basics/getting-started" title="Introduction">
                 What you need to know to get started with VATSIM.
               </ListItem>
-              <ListItem href="/docs/installation" title="TBA Title">
-                TBA Desciption.
+              <ListItem href="https://wiki.vatsim-scandinavia.org/shelves/pilot-training" title="Pilot Traning">
+                We also have a Pilot training program! Check it out here.
               </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Need more?">
+              <ListItem href="https://wiki.vatsim-scandinavia.org/" title="Need more?">
                 Visit our wiki to find more information.
               </ListItem>
             </ul>
