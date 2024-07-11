@@ -58,7 +58,7 @@ const ScheduleTable: React.FC = () => {
           <table className="w-full px-2">
             <thead>
                 <tr>
-                    <th className="bg-[#132834] text-white w-full h-8 pt-1" colSpan={4}>
+                  <th className="bg-[#246385] text-white w-full h-8 pt-1" colSpan={4}>
                     {getDayName(date, "en-US").charAt(0).toUpperCase() +
                         getDayName(date, "en-US").slice(1)}
                     </th>
@@ -66,7 +66,7 @@ const ScheduleTable: React.FC = () => {
             </thead>
             <tbody>
               {scheduleByDate[date].map((entry) => (
-                <tr key={entry.id}>
+                <tr key={entry.id} className="even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
                   <td className="font-bold">{entry.callsign}</td>
                   <td>{bookingType(entry)}</td>
                   <td>{convertZulu(entry.time_start)}</td>
