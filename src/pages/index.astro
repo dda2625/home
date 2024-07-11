@@ -43,8 +43,8 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
                     <div class="flex flex-col gap-8">
                         <CardBox title="Latest announcements" padding="4">
                             {allAnnouncements.slice(0, 2).map(post => 
-                                <div class="w-full p-2 hover:bg-vatsca2/50">
-                                    <a href={"/announcements/"+post.slug}>
+                                <div class="w-full p-2 hover:bg-primary/50">
+                                    <a href={"/"}>
                                         <span class="font-semibold text-md text-secondary">
                                             {post.data.title}
                                         </span>

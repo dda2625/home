@@ -1,5 +1,5 @@
 ---
-    title: "[APPOINTMENT] Director of VATSIM Scandinavia"
+    title: "Director of VATSIM Scandinavia"
     author: Christian Kovanen
     description: The votes have now been counted and verified by the Web Services Director and I. In total, 136 votes were cast with 20 blanks and 116 in favour of Daniel Dahl Andersen (1384322)
     role: Director
