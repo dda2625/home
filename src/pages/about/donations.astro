@@ -1,13 +1,15 @@
 ---
-import Layout from "../../layout/Layout.astro";
+import PageContainer from "../../components/ui/PageContainer.astro"
 ---
-<Layout SiteTitle="VATSIM Scandinavia">
-    <div class="w-full h-full min-h-screen flex flex-col justify-start items-center dark:bg-vatsca3/75  bg-repeat">
-        <h1 class="text-5xl py-12 font-semibold">Donations</h1>
+
+<PageContainer SiteTitle="Donations">
+    <h1 class="text-5xl py-12 font-semibold">Donations</h1>
+
+    <div class="bg-white/75 dark:bg-tertiary p-8">
         <div class="w-full h-fit grid grid-cols-1 md:grid-cols-2 px-6 md:px-0 gap-4 max-w-[1300px]">
             <div>
                 <h1 class="text-2xl font-bold p-2">Our Agreement</h1>
-                <ul class="pl-4 text-lg">
+                <ul class="pl-4">
                     <li class="list-disc">Every EUR donated will go towards funding our web services. As we will be using the PayPal system to accept donations, your financial commitment will be guaranteed towards funding our web services.</li>
                     <li class="list-disc">VATSIM Scandinavia will continue to work proactively to grow our community and will do its utmost to constantly improve the final product for our membership.</li>
                     <li class="list-disc">We will not disclose the details of anyone who has donated, or how much they have donated.</li>
@@ -16,7 +18,7 @@ import Layout from "../../layout/Layout.astro";
             </div>
             <div>
                 <h1 class="text-2xl font-bold p-2">Your Agreement</h1>
-                <ul class="pl-4 text-lg">
+                <ul class="pl-4">
                     <li class="list-disc">By donating, you agree that your financial contribution is solely an act of goodwill and that such a contribution does not grant you any higher say in how the VACC is run. You agree that you will never use the fact that you have made a financial contribution as a tool to attempt to influence or intimidate staff members or the general membership.</li>
                     <li class="list-disc">You will not use the fact that you have made a financial contribution to elevate your status in the VACC, nor to attempt to “bribe” the VACC into granting you special privileges.</li>
                     <li class="list-disc">Once you have donated, you have surrendered your right to claim your money back at any time, unless your financial contribution does not go towards running costs for web services, as described.</li>
@@ -24,6 +26,6 @@ import Layout from "../../layout/Layout.astro";
                 </ul>
             </div>
         </div>
-        <a href="https://www.paypal.com/donate/?hosted_button_id=RBT696P4N6LVU" class="bg-vatsca2 p-4 rounded-sm m-2 text-xl mt-12 text-white w-fit text-center">Donate</a>
+        <a href="https://www.paypal.com/donate/?hosted_button_id=RBT696P4N6LVU" class="bg-secondary p-3 rounded-sm text-lg text-white text-center">Donate</a>
     </div>
-</Layout>
+</PageContainer>
