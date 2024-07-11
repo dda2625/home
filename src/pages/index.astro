@@ -1,10 +1,10 @@
 ---
 import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings.astro";
-import { Button } from "../components/ui/button";
 import HeroButton from "../components/ui/HeroButton.astro";
 import CardBox from "../components/ui/CardBox.astro";
 import CardButton from "../components/ui/CardButton.astro";
+import Events from "../components/Events.astro";
 import { getCollection } from 'astro:content';
 
 const allAnnouncements = await getCollection('announcements');
@@ -40,7 +40,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
         <div class="w-full h-fit backdrop-blur-sm flex justify-center pt-8" id="bookings">
             <div class="max-w-[1300px] w-full content-center pt-6 pb-6">
                 <div class="flex gap-8">
-                    <div class="flex flex-col gap-8">
+                    <div class="w-[950px] flex flex-col gap-8">
                         <CardBox title="Latest announcements" padding="2">
                             {allAnnouncements.slice(0, 2).map(post => 
                                 <div class="p-2 mt-2 mb-4 hover:bg-white hover:brightness-[95%]">
@@ -63,59 +63,12 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
                             )}
                         </CardBox>
                             
-                        <CardBox title="Events">
-                                
-                            <div class="p-4 col-span-2 h-fit">
-                                <img
-                                class="m-0"
-                                src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                                alt=""
-                                />
-                            </div>
-                            <div class="p-4 col-span-2 h-fit">
-                                <h1 class="text-vatsca2 dark:text-white font-bold text-2xl -mt-2">
-                                    Copenhagen Live 2024
-                                </h1>
-                                <p>
-                                    The time has come once again! On September 21st, 2024, we are
-                                    excited to welcome you to the 8th annual Copenhagen LIVE. Join us
-                                    as controllers from all of VATSIM-Scandinavia come together in
-                                    Copenhagen to supply non-stop ATC for you the entire day starting
-                                    from 6z and all the way until 22z.
-                                </p>
-                                <CardButton href="#" text="Read more" color="snow"/>
-                            </div>
-                            <div class="w-full grid col-span-2 md:col-span-4 gap-4 px-4">
-                                <a href="" class="w-full max-w-64">
-                                    <img
-                                    src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                                    alt=""
-                                    />
-                                </a>
-                                <a href="" class="w-full max-w-64">
-                                    <img
-                                    src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                                    alt=""
-                                    />
-                                </a>
-                                <a href="" class="w-full max-w-64">
-                                    <img
-                                    src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                                    alt=""
-                                    />
-                                </a>
-                                <a href="" class="w-full max-w-64">
-                                    <img
-                                    src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                                    alt=""
-                                    />
-                                </a>
-                                <CardButton href="/events" text="See more events" color="snow"/>
-                            </div>
+                        <CardBox title="Events" padding="4">
+                            <Events/>
                         </CardBox>
                     </div>
                         
-                    <div class="flex flex-col gap-8 w-[800px]">
+                    <div class="flex flex-col gap-8">
                         <CardBox title="Live ATC & Bookings">
                             <Bookings />
                         </CardBox>
