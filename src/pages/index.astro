@@ -1,231 +1,96 @@
 ---
 import Layout from "../layout/layout.astro";
 import Bookings from "../components/Bookings.astro";
-import Map from "../components/Map";
-import { Button } from "../components/ui/button";
-import { getCollection } from 'astro:content'
-
+import HeroButton from "../components/ui/HeroButton.astro";
+import CardBox from "../components/ui/CardBox.astro";
+import CardButton from "../components/ui/CardButton.astro";
+import Events from "../components/Events.astro";
+import { getCollection } from 'astro:content';
 
 const allAnnouncements = await getCollection('announcements');
-
 allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 
 ---
 
 <Layout SiteTitle="VATSIM Scandinavia">
-  <div class="overflow-hidden w-full h-full flex flex-col items-center dark:bg-vatsca3/75 -mt-20">
-
-    <div class="w-full h-[calc(75vh)] flex justify-center backdrop-blur-sm dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat" >
-      <div class="max-w-5/6 w-full h-full flex">
-      <div
-        class="w-full flex flex-col items-center justify-center p-12 font-bold"
-      >
-        <h1 class="text-vatsca3 dark:text-white text-6xl md:text-7xl 2xl:text-8xl text-center drop-shadow-xl">
-          <span class="">vATC</span> SERVICES
-        </h1>
-        <h1 class="text-vatsca3 dark:text-white text-xl md:text-4xl 2xl:text-6xl text-center drop-shadow-xl uppercase">
-          across Scandinavia's skies 
-        </h1>
-        <p
-          class="mt-12 sm:mt-0 text-vatsca3 dark:text-white text-xl p-2 text-center w-full md:w-3/5 lg:w-full drop-shadow-xl font-medium"
-        >
-          Home vACC of Denmark, Sweden, Norway, Finland & Iceland
-        </p>
-      </div>
-      <div class="w-full hidden xl:block">
-        <Map client:load/>
-      </div>
-      </div>
-    </div>
-
-    <div
-      class=" w-full h-fit backdrop-blur-sm flex justify-center dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat"
-      id="bookings"
-    >
-      <div class="max-w-[1300px] w-full grid gap-8 content-center pt-6 pb-6 grid-cols-1 xl:grid-cols-6">
-      <div class="w-full h-full flex flex-col col-span-6 xl:col-span-4">
-        <div
-          class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-        >
-          Latest announcements
-        </div>
-        <div class="bg-white dark:bg-vatsca3">
-          {allAnnouncements.slice(0, 2).map(post => 
-            <div class="w-full p-2 hover:bg-vatsca2/50">
-              <a href={"/announcements/"+post.slug}>
-                <span class="font-semibold text-xl">
-                  {post.data.title}
-                </span>
-                <br/>
-                <span style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;">
-                  {post.data.description}
-                </span>
-                <span class="text-lg font-semibold mt-2">
-                  {new Date(post.data.date).toLocaleDateString('en-GB')} | By {post.data.author}
-                </span>
-              </a>
+    <div class="w-full h-full flex flex-col items-center -mt-20">
+        
+        <div class="w-full h-[calc(75vh)] flex justify-center backdrop-blur-sm bg-snow" >
+            <div class="max-w-[1300px] w-full h-full flex">
+                <div class="w-full flex flex-col items-center justify-center p-12 font-bold">
+                    <h1 class="text-secondary dark:text-white text-xl md:text-4xl 2xl:text-6xl text-center drop-shadow-xl">
+                        Serving the Scandinavian skies 
+                    </h1>
+                    <p class="mt-12 sm:mt-0 text-secondary dark:text-white text-xl p-2 text-center w-full md:w-3/5 lg:w-full drop-shadow-xl font-medium">
+                        Home vACC of Denmark, Finland, Iceland, Norway & Sweden
+                    </p>
+                    <div class="flex gap-4 pt-4 w-full">
+                        <HeroButton href="https://wiki.vatsim-scandinavia.org/books/getting-started-AVr/chapter/joining-vatsim-scandinavia" text="Join VATSIM Scandinavia" color="bg-success"/>
+                        <HeroButton href="http://discord.vatsim-scandinavia.org" text="Join our Discord" color="bg-[#8397ee] dark:bg-[#5c6aa7]"/>
+                    </div>
+                </div>
+                <div class="w-full hidden xl:block">
+                    <div class="w-full h-full flex items-center justify-center">
+                        <img src="img/euroscope.svg" class="w-full"/>
+                    </div>
+                </div>
             </div>
-          )}
-          
         </div>
-      </div>
-      <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-6 xl:col-span-2">
-        <div class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center">
-          Community
-        </div>
-        <div class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col p-4 gap-4">
-          <a href="https://wiki.vatsim-scandinavia.org/books/getting-started-AVr/chapter/joining-vatsim-scandinavia" target="_blank" class="w-full bg-[#488e78] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
-            Join VATSIM Scandinavia
-          </a>
-          <a href="http://discord.vatsim-scandinavia.org" target="_blank" class="w-full bg-[#8397ee] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
-            Join our Discord
-          </a>
-          <a href="https://forum.vatsim-scandinavia.org" target="_blank" class="w-full bg-[#274f68] h-16 text-xl font-semibold text-center flex items-center justify-center text-white">
-            Read the Forum
-          </a>
-        </div>
-      </div>
-      <div
-        class="w-full h-full flex flex-col col-span-6 xl:col-span-4 items-center justify-center"
-      >
-        <div
-          class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-        >
-          Events
-        </div>
-        <!-- Featured Event -->
-        <div
-          class="w-full h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 bg-white dark:bg-vatsca3"
-        >
-          <div class="p-4 col-span-2 h-fit">
-            <img
-              class="m-0"
-              src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-              alt=""
-            />
-          </div>
-          <div class="p-4 col-span-2 h-fit">
-            <h1 class="text-vatsca2 dark:text-white font-bold text-2xl -mt-2">
-              Copenhagen Live 2024
-            </h1>
-            <p>
-              The time has come once again! On September 21st, 2024, we are
-              excited to welcome you to the 8th annual Copenhagen LIVE. Join us
-              as controllers from all of VATSIM-Scandinavia come together in
-              Copenhagen to supply non-stop ATC for you the entire day starting
-              from 6z and all the way until 22z.
-            </p>
-            <Button className="bg-vatsca2 mt-4 text-white">Read More</Button>
-          </div>
-          <div class="w-full grid col-span-2 md:col-span-4 gap-4 px-4">
-            <a href="" class="w-full max-w-64">
-              <img
-                src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                alt=""
-              />
-            </a>
-            <a href="" class="w-full max-w-64">
-              <img
-                src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                alt=""
-              />
-            </a>
-            <a href="" class="w-full max-w-64">
-              <img
-                src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                alt=""
-              />
-            </a>
-            <a href="" class="w-full max-w-64">
-              <img
-                src="https://vatsim-scandinavia.org/uploads/monthly_2024_02/image.thumb.png.feedb461ebb532c3d652d9a6f4c11829.png"
-                alt=""
-              />
-            </a>
-            <a href="/events" class="p-2 text-lg col-span-2 md:col-span-4 font-semibold dark:text-vatsca1">See more event here</a>
-          </div>
-          
-        </div>
-      </div>
-      <div
-      class="w-full h-full bg-white dark:bg-vatsca3 flex flex-col items-center col-span-6 xl:col-span-2"
-    >
-      <div
-        class="bg-vatsca2 h-12 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-      >
-        Live ATC & Bookings
-      </div>
-      <Bookings />
-    </div>
-  </div>
-    </div>
+        
+        <div class="w-full h-fit backdrop-blur-sm flex justify-center pt-8" id="bookings">
+            <div class="max-w-[1300px] w-full content-center pt-6 pb-6">
+                <div class="flex gap-8">
+                    <div class="w-[950px] flex flex-col gap-8">
+                        <CardBox title="Latest announcements" padding="2">
+                            {allAnnouncements.slice(0, 2).map(post => 
+                                <div class="p-2 mt-2 mb-4 hover:bg-white dark:hover:bg-black hover:brightness-[95%]">
+                                    <a href={"/"}>
+                                        <div class="flex">
+                                            <div class="w-[90%]">
+                                                <div class="font-semibold text-lg text-secondary dark:text-white">
+                                                    {post.data.title}
+                                                </div>
+                                                <div class="text-sm">
+                                                    {post.data.description}
+                                                </div>
+                                            </div>
+                                            <div class="w-[10%] text-grey text-right dark:text-white">
+                                                24 JUN
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            )}
+                        </CardBox>
+                            
+                        <CardBox title="Events" padding="4">
+                            <Events/>
+                        </CardBox>
+                    </div>
+                        
+                    <div class="flex flex-col gap-8">
+                        <CardBox title="Live ATC & Bookings">
+                            <Bookings />
+                        </CardBox>
 
-    <div class="w-full h-fit flex flex-col justify-center items-center backdrop-blur-sm pb-6 dark:bg-vatsca3/75 bg-topography-light dark:bg-topography-dark bg-repeat">
-      <div class="max-w-[1300px] w-full h-full">
-      <div
-        class="w-full grid content-center grid-cols-1 xl:grid-cols-2 gap-6"
-      >
-        <div class="w-full h-fit flex flex-col items-center justify-center">
-          <div
-            class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-          >
-            Donations
-          </div>
-          <div
-            class="w-full min-h-80 h-fit bg-white dark:bg-vatsca3 flex justify-start items-center flex-col gap-6 p-4"
-          >
-            <p class="text-lg">
-              VATSIM Scandinavia relies on the support and generosity of
-              individuals like you to support our services.
-            </p>
-            <p>
-              Your donations enable us to maintain our infrastructure, develop
-              innovative features, and expand our reach, ensuring that pilots
-              across the Scandinavian airspace can continue to enjoy the
-              immersive experience of flying
-            </p>
-            <a
-              href="/about/donations"
-              class="mt-[4.5rem] rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 text-white bg-vatsca2 hover:bg-vatsca2/80 border-2 border-transparent"
-              >Read more
-            </a>
-          </div>
+                        <CardBox title="Donations" padding="4">
+                            <p>
+                                Your donations enable us to maintain our infrastructure, to continue providing the best possible services for our members and guests.
+                            </p>
+
+                            <CardButton href="/about/donations" text="Read more" color="snow"/>
+                        </CardBox>
+
+                        <CardBox title="Feedback" padding="4">
+                            <p>
+                                Provide your feedback that we can use to improve our Scandinavian controllers.
+                            </p>
+                            
+                            <CardButton href="https://cc.vatsim-scandinavia.org/feedback" text="Leave us feedback" color="snow"/>
+                        </CardBox>
+                    </div>
+                </div>                    
+            </div>
         </div>
-
-        <div class="w-full h-fit flex flex-col items-center justify-center">
-          <div
-            class="bg-vatsca2 h-16 text-xl font-bold text-white w-full m-0 pl-4 flex items-center"
-          >
-            Feedback
-          </div>
-          <div
-            class="w-full min-h-80 h-fit bg-white dark:bg-vatsca3 flex justify-center items-center flex-col gap-6 p-4"
-          >
-            <p class="text-lg">
-              <span class="italic font-medium">Your</span> feedback is invaluable
-              to us as we strive to enhance your virtual flying experience.
-            </p>
-            <p>
-              Whether you've encountered seamless navigation, encountered
-              challenges, or have suggestions for improvement, we want to hear
-              from you.
-            </p>
-            <p>
-              Take a moment to share your thoughts and experiences with us, and
-              together, let's elevate the skies over Scandinavia to new heights.
-              Fly safe, and thank you for being a part of VATSIM Scandinavia!
-            </p>
-
-            <a
-              href="https://cc.vatsim-scandinavia.org/feedback"
-              class="rounded w-64 text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-4 py-2 text-white bg-vatsca2 hover:bg-vatsca2/80 border-2 border-transparent"
-              >Feedback
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-    </div>
-
-  </div>
 </Layout>

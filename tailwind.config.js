@@ -16,53 +16,64 @@ module.exports = {
     },
     extend: {
       colors: {
-        'vatsca1': '#43c6e7',
-				'vatsca2': '#1a475f',
-				'vatsca3': '#011328',
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        'primary': '#43c6e7',
+        'secondary': '#1a475f',
+        'tertiary': '#011328',
+        'grey': '#484b4c',
+        'lightgrey': '#edf0f4',
+        'snow': '#dfebeb',
+        'success': '#41826e',
+        'danger': '#b63f3f',
+        'warning': '#ff9800',
+        border: "var(--border)",
+        input: "(var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--primary)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--secondary)",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+        tertiary: {
+          DEFAULT: "var(--tertiary)",
+        },
+        grey: {
+          DEFAULT: "var(--grey)",
+        },
+        lightgrey: {
+          DEFAULT: "var(--lightgrey)",
+        },
+        snow: {
+          DEFAULT: "var(--snow)",
+        },
+        success: {
+          DEFAULT: "var(--success)",
+        },
+        danger: {
+          DEFAULT: "var(--danger)",
+        },
+        warning: {
+          DEFAULT: "var(--warning)",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
         },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      backgroundImage: {
-				'topography-dark': "url('/topography-dark.svg')",
-				'topography-light': "url('/topography-light.svg')",
-        'radar-light': "url('/radar-light.svg')",
-        'radar-dark': "url('/radar-dark.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "var(--radius)",
+        sm: "var(--radius)",
       },
       keyframes: {
         "accordion-down": {
