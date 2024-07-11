@@ -21,7 +21,7 @@ module.exports = {
         'tertiary': '#011328',
         'grey': '#484b4c',
         'lightgrey': '#edf0f4',
-        'snow': 'dfebeb',
+        'snow': '#dfebeb',
         'success': '#41826e',
         'danger': '#b63f3f',
         'warning': '#ff9800',
@@ -41,6 +41,9 @@ module.exports = {
         },
         grey: {
           DEFAULT: "var(--grey)",
+        },
+        lightgrey: {
+          DEFAULT: "var(--lightgrey)",
         },
         snow: {
           DEFAULT: "var(--snow)",

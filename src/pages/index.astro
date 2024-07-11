@@ -26,7 +26,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
                     </p>
                     <div class="flex gap-4 pt-4 w-full">
                         <HeroButton href="https://wiki.vatsim-scandinavia.org/books/getting-started-AVr/chapter/joining-vatsim-scandinavia" text="Join VATSIM Scandinavia" color="bg-success"/>
-                        <HeroButton href="http://discord.vatsim-scandinavia.org" text="Join our Discord" color="bg-[#8397ee]"/>
+                        <HeroButton href="http://discord.vatsim-scandinavia.org" text="Join our Discord" color="bg-[#8397ee] dark:bg-[#5c6aa7]"/>
                     </div>
                 </div>
                 <div class="w-full hidden xl:block">
@@ -43,18 +43,18 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
                     <div class="w-[950px] flex flex-col gap-8">
                         <CardBox title="Latest announcements" padding="2">
                             {allAnnouncements.slice(0, 2).map(post => 
-                                <div class="p-2 mt-2 mb-4 hover:bg-white hover:brightness-[95%]">
+                                <div class="p-2 mt-2 mb-4 hover:bg-white dark:hover:bg-black hover:brightness-[95%]">
                                     <a href={"/"}>
                                         <div class="flex">
                                             <div class="w-[90%]">
-                                                <div class="font-semibold text-lg text-secondary">
+                                                <div class="font-semibold text-lg text-secondary dark:text-white">
                                                     {post.data.title}
                                                 </div>
                                                 <div class="text-sm">
                                                     {post.data.description}
                                                 </div>
                                             </div>
-                                            <div class="w-[10%] text-grey text-right">
+                                            <div class="w-[10%] text-grey text-right dark:text-white">
                                                 24 JUN
                                             </div>
                                         </div>
