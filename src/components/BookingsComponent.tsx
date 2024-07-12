@@ -1,6 +1,8 @@
 import convertZulu from "../utils/convertZulu";
 import bookingType from "../utils/bookingType";
-import type { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react";
+import liveNetworkData from "../utils/liveNetworkData";
+import vatscaController from "../utils/vatscaController";
+import fixNetworkTime from "../utils/fixNetworkTime";
 
 interface ScheduleEntry {
   id: number;
@@ -32,6 +34,21 @@ function getDayName(dateStr: string, locale: string) {
   return date.toLocaleDateString(locale, { weekday: "long" });
 }
 
+var todayATC: Object[] = []
+
+for (const controller of await liveNetworkData()) {
+  if (vatscaController(controller.callsign)) {
+    console.log(controller.callsign + controller.logon_time);
+    const ATC = new Object();
+    ATC.callsign = "🟢 " + controller.callsign;
+    ATC.name = controller.name;
+    ATC.time_start = convertZulu(fixNetworkTime(controller.logon_time));
+    todayATC.push(ATC);
+  }
+}
+
+console.log(todayATC);
+
 const ScheduleTable: React.FC = () => {
   // Organize data by date
   const currentDate = new Date();
@@ -52,27 +69,40 @@ const ScheduleTable: React.FC = () => {
   );
 
   const today = new Date().toISOString().split("T")[0];
+  const todayATCEntries = scheduleByDate[today] || [];
+  const updatedScheduleByDate = {
+    ...scheduleByDate,
+    [today]: [...todayATCEntries, ...todayATC]
+  };
+
+  const scheduleByDateWithTodayATC = Object.keys(updatedScheduleByDate).map((date) => ({
+    date,
+    entries: updatedScheduleByDate[date]
+  }));
 
   return (
     <div>
-      {Object.keys(scheduleByDate).map((date) => (
+      {scheduleByDateWithTodayATC.map(({ date, entries }) => (
         <div key={date}>
           <table className="w-full px-2">
             <thead>
               <tr>
                 <th className="bg-[#246385] text-white w-full h-8 pt-1" colSpan={4}>
-                  {}
-                  {scheduleByDate[today]?.length > 0 && ( 
-                    <span>{getDayName(today, "en-US") === getDayName(new Date().toISOString().split("T")[0], "en-US") ? "Today" : getDayName(date, "en-US").charAt(0).toUpperCase() + getDayName(date, "en-US").slice(1)}</span>
+                  {scheduleByDate[today]?.length > 0 && (
+                    <span>
+                      {getDayName(today, "en-US") === getDayName(new Date().toISOString().split("T")[0], "en-US")
+                        ? "Today"
+                        : getDayName(date, "en-US").charAt(0).toUpperCase() + getDayName(date, "en-US").slice(1)}
+                    </span>
                   )}
                 </th>
               </tr>
             </thead>
             <tbody>
-              {scheduleByDate[date].map((entry: ScheduleEntry) => (
+              {entries.map((entry: ScheduleEntry) => (
                 <tr key={entry.id} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
-                  <td className="font-bold w-[35%]">{entry.callsign}</td>
-                  <td className="w-[25%]">{bookingType(entry)}</td>
+                  <td className="font-bold w-[37%] pl-2">{entry.callsign}</td>
+                  <td className="w-[23%]">{bookingType(entry)}</td>
                   <td className="w-[20%]">{convertZulu(entry.time_start)}</td>
                   <td className="w-[20%]">{convertZulu(entry.time_end)}</td>
                 </tr>
@@ -81,11 +111,13 @@ const ScheduleTable: React.FC = () => {
           </table>
         </div>
       ))}
-      {scheduleByDate[today]?.length === 0 && (
-        <div>No bookings for today.</div>
-      )}
+      {scheduleByDate[today]?.length === 0 && <div>No bookings for today.</div>}
       {scheduleByDate[today]?.length > 0 && (
-        <div>{getDayName(today, "en-US") === getDayName(new Date().toISOString().split("T")[0], "en-US") ? "Today's bookings:" : "Bookings:"}</div>
+        <div>
+          {getDayName(today, "en-US") === getDayName(new Date().toISOString().split("T")[0], "en-US")
+            ? "Today's bookings:"
+            : "Bookings:"}
+        </div>
       )}
     </div>
   );
