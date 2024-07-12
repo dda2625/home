@@ -63,7 +63,7 @@ const components: { title: string; href: string; description: string, external?:
         external: true,
     },
     {
-        title: "Available Stands Map",
+        title: "Available Stands",
         href: "https://stands.vatsim-scandinavia.org/",
         description: "Live map for unoccupied stands",
         external: true,
@@ -116,7 +116,7 @@ const about: { title: string; href: string; description: string, external?: bool
         "List with roles and contact information",
     },
     {
-        title: "Contact us",
+        title: "Contact Us",
         href: "/about/contact",
         description: "Get in touch with us",
     },
@@ -129,7 +129,7 @@ const about: { title: string; href: string; description: string, external?: bool
     {
         title: "Donations",
         href: "/about/donations",
-        description: "As non-profit we rely on donations",
+        description: "Help us keep VATSCA running!",
     },
 ]
 
@@ -155,7 +155,7 @@ export default function Navigation() {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+                    <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid w-[100%] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                             {gettingstarted.map((component) => (
