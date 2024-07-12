@@ -116,13 +116,6 @@ const ScheduleTable: React.FC = () => {
         </div>
       ))}
       {scheduleByDate[today]?.length === 0 && <div>No bookings for today.</div>}
-      {scheduleByDate[today]?.length > 0 && (
-        <div>
-          {getDayName(today, "en-US") === getDayName(new Date().toISOString().split("T")[0], "en-US")
-            ? "Today's bookings:"
-            : "Bookings:"}
-        </div>
-      )}
     </div>
   );
 };
