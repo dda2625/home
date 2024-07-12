@@ -421,5 +421,12 @@ export { departments };
                 }
             </TableBody>
         </Table>
+
+        <div class="flex flex-row gap-5 justify-between text-sm mt-4 max-lg:flex-wrap">
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="AVL"/> = Available and can be reached on a daily basis</span>
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="OOO"/> = Out of Office (longer vacation, 3-6 weeks)</span>
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="DEP"/> = Away for more than 2 months</span>
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="VAC"/> = Vacant Position</span>
+        </div>
     </div>
 </PageContainer>
