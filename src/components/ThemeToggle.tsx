@@ -17,7 +17,7 @@ export default function ThemeToggle() {
     }, [theme]);
     
     return (
-        <button className="text-xl" onClick={handleClick}>
+        <button className="text-xl" onClick={handleClick} aria-label="Toggle between dark and light mode">
         {
             theme === "light" 
             ? 
