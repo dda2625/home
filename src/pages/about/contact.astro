@@ -1,11 +1,41 @@
 ---
-import Layout from "../../layout/Layout.astro";
+import PageContainer from "../../components/ui/PageContainer.astro"
+import Link from "../../components/ui/Link.astro"
 ---
-<Layout SiteTitle="VATSIM Scandinavia">
-    <div class="w-full h-screen flex flex-col justify-start items-center text-center dark:bg-vatsca3/75  bg-repeat">
-        <h1 class="text-5xl py-12 font-semibold">Contact us</h1>
-        <p class="text-xl m-4">Need to get in contact with a specific member of our staff? <br/><a href="/about/staff" class="text-vatsca1">Go here</a></p>
-        <p class="text-xl m-4">Want to leave feedback about our experience with our services or controllers? <br/><a href="https://cc.vatsim-scandinavia.org/feedback" class="text-vatsca1">cc.vatsim-scandinavia.org/feedback</a></p>
-        <p class="text-xl m-4">For general questions, please join our discord and use the #General channel <br/><a href="http://discord.vatsim-scandinavia.org/" class="text-vatsca1">Discord</a></p>
+
+<PageContainer SiteTitle="Contact us">
+    <h1 class="text-5xl py-12 font-semibold">Contact us</h1>
+
+    <div class="bg-white/75 dark:bg-tertiary p-8">
+        <p>
+            <strong>Issues with requesting ATC training?</strong><br>
+            First, make sure you've
+            <Link href="https://wiki.vatsim-scandinavia.org/books/getting-started-AVr/chapter/joining-vatsim-scandinavia" target="_blank">joined VATSIM Scandinavia</Link> properly. If the issue still persist, contact <Link href="mailto:training-director@vatsim-scandinavia.org">Training Department</Link>
+        </p>
+        
+        <p class="pt-4">
+            <strong>Wish to or have issues with changing your subdivision/vACC to Scandinavia?</strong><br>
+            Read all instructions on how to join <Link href="https://vatsim-scandinavia.org/about/join/">VATSIM Scandinavia properly</Link> If you still have a issue, contact <Link href="mailto:training-director@vatsim-scandinavia.org">Training Department</Link>.
+        </p>
+        
+        <p class="pt-4">
+            <strong>Wrong, missing or outdated airport documentation or downloads?</strong><br>
+            Contact <Link href="/about/staff/">the respective FIR Director</Link>.
+        </p>
+        
+        <p class="pt-4">
+            <strong>Technical issues?</strong><br>
+            Report them to <Link href="mailto:web@vatsim-scandinavia.org">Web Department</Link>.
+        </p>
+        
+        <p class="pt-4">
+            <strong>Would you like to leave us some feedback about your experience with us?</strong><br>
+            Send your feedback <Link href="https://cc.vatsim-scandinavia.org/feedback">through Control Center</Link>
+        </p>
+        
+        <p class="pt-4">
+            <strong>Would you like to join our Discord server? Not intended for support requests, see above.</strong><br>
+            <Link href="http://discord.vatsim-scandinavia.org/">http://discord.vatsim-scandinavia.org/</Link>
+        </p>
     </div>
-</Layout>
+</PageContainer>

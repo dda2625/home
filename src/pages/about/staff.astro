@@ -1,5 +1,7 @@
 ---
-import Layout from "../../layout/Layout.astro";
+import PageContainer from "../../components/ui/PageContainer.astro"
+import Link from "../../components/ui/Link.astro"
+import AvailabilityDecode from "../../components/AvailabilityDecode"
 
 import {
     Table,
@@ -15,6 +17,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA1",
     POSITION: "Director",
+    CID: 1384322,
     NAME: "Daniel Dahl Andersen",
     EMAIL: "director@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -23,54 +26,61 @@ const staffteam = [
 {
     STAFFID: "ACCSCA2",
     POSITION: "Training Director",
-    NAME: "Simo Pietikäinen",
+    CID: 1602589,
+    NAME: "Jeppe Seier",
     EMAIL: "training-director@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
-    DEPARTMENT: "Director",
+    DEPARTMENT: "Board",
 },
 {
     STAFFID: "ACCSCA3",
-    POSITION: "Acting Director of Copenhagen FIR",
-    NAME: "Peter Toft",
+    POSITION: "Director of Copenhagen FIR",
+    CID: 1226374,
+    NAME: "Lukas Agerskov",
     EMAIL: "denmark@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
-    DEPARTMENT: "Directors",
+    DEPARTMENT: "Board",
 },
 {
     STAFFID: "ACCSCA4",
     POSITION: "Director of Norway FIR",
+    CID: 1340812,
     NAME: "Krister Larsen",
     EMAIL: "norway@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
-    DEPARTMENT: "Directors",
+    DEPARTMENT: "Board",
 },
 {
     STAFFID: "ACCSCA5",
     POSITION: "Director of Sweden FIR",
+    CID: 811805,
     NAME: "Martin Loxbo",
     EMAIL: "sweden@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
-    DEPARTMENT: "Directors",
+    DEPARTMENT: "Board",
 },
 {
     STAFFID: "ACCSCA6",
     POSITION: "Director of Helsinki FIR",
-    NAME: "Richard Weber",
+    CID: 1460595,
+    NAME: "Richard",
     EMAIL: "finland@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
-    DEPARTMENT: "Directors",
+    DEPARTMENT: "Board",
 },
 {
     STAFFID: "ACCSCA7",
     POSITION: "Director of Reykjavík CTA",
-    NAME: "Gunnar Gudm",
+    CID: "-",
+    NAME: "-",
     EMAIL: "iceland@vatsim-scandinavia.org",
-    AVILABILITY: "AVL",
-    DEPARTMENT: "Directors",
+    AVILABILITY: "VAC",
+    DEPARTMENT: "Board",
 },
 {
     STAFFID: "ACCSCA9",
     POSITION: "Data Protection Officer",
+    CID: 1203470,
     NAME: "Henrik Sønstebø",
     EMAIL: "dpo@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -79,6 +89,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA11",
     POSITION: "Web Services Director",
+    CID: 1352906,
     NAME: "Daniel Lange",
     EMAIL: "web@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -87,6 +98,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA12",
     POSITION: "Web Services Assistant",
+    CID: 1512667,
     NAME: "Thor Høgås",
     EMAIL: "web@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -95,6 +107,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA13",
     POSITION: "Web Services Assistant",
+    CID: 1419105,
     NAME: "David Mortensen",
     EMAIL: "web@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -103,7 +116,17 @@ const staffteam = [
 {
     STAFFID: "ACCSCA14",
     POSITION: "Web Services Assistant",
+    CID: 1401513,
     NAME: "Markus Nielsen",
+    EMAIL: "web@vatsim-scandinavia.org",
+    AVILABILITY: "AVL",
+    DEPARTMENT: "Web",
+},
+{
+    STAFFID: "ACCSCA15",
+    POSITION: "Web Services Assistant",
+    CID: 1581824,
+    NAME: "Simon Bjerre",
     EMAIL: "web@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Web",
@@ -111,6 +134,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA16",
     POSITION: "Event Coordinator",
+    CID: 1157125,
     NAME: "Max Kuhla",
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -119,6 +143,7 @@ const staffteam = [
 {
     STAFFID: "",
     POSITION: "	Event Assistant Sweden",
+    CID: 1480664,
     NAME: "Marcus Lundelin",
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -127,22 +152,16 @@ const staffteam = [
 {
     STAFFID: "",
     POSITION: "	Event Assistant Denmark",
+    CID: 1581824,
     NAME: "Simon Bjerre",
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Event",
 },
 {
-    STAFFID: "ACCSCA15",
-    POSITION: "Web Services Assistant",
-    NAME: "Simon Bjerre",
-    EMAIL: "web@vatsim-scandinavia.org",
-    AVILABILITY: "AVL",
-    DEPARTMENT: "Web",
-},
-{
     STAFFID: "",
     POSITION: "	Event Assistant Norway",
+    CID: 1540722,
     NAME: "Nicolas Hennes",
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -151,6 +170,7 @@ const staffteam = [
 {
     STAFFID: "",
     POSITION: "	Event Assistant Finland",
+    CID: 1458761,
     NAME: "Henri Luiro",
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -159,6 +179,7 @@ const staffteam = [
 {
     STAFFID: "",
     POSITION: "	Event Assistant Iceland",
+    CID: 1308253,
     NAME: "Jonathan Fong",
     EMAIL: "event@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -167,14 +188,16 @@ const staffteam = [
 {
     STAFFID: "ACCSCA17",
     POSITION: "Pilot Training Manager",
+    CID: 1440666,
     NAME: "Jere Heiskanen",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
-    AVILABILITY: "AVL",
+    AVILABILITY: "DEP",
     DEPARTMENT: "Pilot",
 },
 {
     STAFFID: "ACCSCA18",
     POSITION: "Chief Flight Instructor",
+    CID: 1358735,
     NAME: "Arttu Uusi-Kyyny",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -183,6 +206,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA19",
     POSITION: "Deputy Chief Flight Instructor",
+    CID: 1193177,
     NAME: "Vincent Matsuuke",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -191,6 +215,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA20",
     POSITION: "Acting Pilot Training Manager",
+    CID: 1480445,
     NAME: "	Tiitus Ehiarinmwian",
     EMAIL: "pilot-training@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -199,6 +224,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA21",
     POSITION: "Training Assistant Sweden",
+    CID: 937154,
     NAME: "Håkan Schulz",
     EMAIL: "training-sweden@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -206,8 +232,9 @@ const staffteam = [
 },
 {
     STAFFID: "ACCSCA22",
-    POSITION: "Acting Training Assistant Denmark",
-    NAME: "Kristoffer Michelsen",
+    POSITION: "Training Assistant Denmark",
+    CID: 1336291,
+    NAME: "Jakob Ek Jensen",
     EMAIL: "training-denmark@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Training",
@@ -215,7 +242,8 @@ const staffteam = [
 {
     STAFFID: "ACCSCA23",
     POSITION: "Training Assistant Norway",
-    NAME: "Daniel Lange",
+    CID: 1559031,
+    NAME: "Sander Lislott",
     EMAIL: "training-norway@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Training",
@@ -223,6 +251,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA24",
     POSITION: "Training Assistant Finland",
+    CID: 1339541,
     NAME: "Otto Tuhkunen",
     EMAIL: "training-finland@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -231,6 +260,7 @@ const staffteam = [
 {
     STAFFID: "ACCSCA25",
     POSITION: "Training Assistant Iceland",
+    CID: 1196137,
     NAME: "Kieran Riley",
     EMAIL: "training-iceland@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
@@ -239,7 +269,8 @@ const staffteam = [
 {
     STAFFID: "ACCSCA26",
     POSITION: "Deputy Training Assistant Sweden",
-    NAME: "n/a",
+    CID: "-",
+    NAME: "-",
     EMAIL: "training-sweden@vatsim-scandinavia.org",
     AVILABILITY: "VAC",
     DEPARTMENT: "Training",
@@ -247,7 +278,8 @@ const staffteam = [
 {
     STAFFID: "ACCSCA27",
     POSITION: "Deputy Training Assistant Denmark",
-    NAME: "Jakob Ek Jensen",
+    CID: 1447687,
+    NAME: "Thomas Brøgger",
     EMAIL: "training-denmark@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Training",
@@ -255,7 +287,8 @@ const staffteam = [
 {
     STAFFID: "ACCSCA28",
     POSITION: "Deputy Training Assistant Norway",
-    NAME: "Jannik Huttenlocher",
+    CID: 1621930,
+    NAME: "Marius Linge",
     EMAIL: "training-norway@vatsim-scandinavia.org",
     AVILABILITY: "AVL",
     DEPARTMENT: "Training",
@@ -274,19 +307,17 @@ staffteam.forEach((staff) => {
 });
 
 export { departments };
-console.log(departments);
+
 ---
 
-<Layout SiteTitle="VATSIM Scandinavia">
-    <div class="w-full h-fit flex flex-col justify-center items-center dark:bg-vatsca3/75  bg-repeat">
-        <h1 class="text-5xl py-12 font-semibold">Staff team</h1>
-        <p class="text-lg dark:text-gray-400 italic text-center">
+<PageContainer SiteTitle="Staff">
+    <h1 class="text-5xl py-12 font-semibold">Staff</h1>
+
+    <div class="bg-white/75 dark:bg-tertiary p-8">
+        <p class="text-lg dark:text-white italic text-center">
             Feedback for our ATC services, or general comments about VATSIM
-            Scandinavia can be sent <a
-            class="text-vatsca1 font-semibold"
-            href="https://cc.vatsim-scandinavia.org/feedback"
-            target="_blank">here</a
-            >
+            Scandinavia can be sent
+            <Link href="https://cc.vatsim-scandinavia.org/feedback" target="_blank">here</Link>
         </p>
         
         <div
@@ -294,9 +325,10 @@ console.log(departments);
         >
         <Table class:list={"bg-black dark:bg-white"}>
             <TableHeader>
-                <TableRow className="backdrop-blur-sm">
+                <TableRow>
                     <TableHead className="font-bold text-black dark:text-white">Staff ID</TableHead>
                     <TableHead className="font-bold text-black dark:text-white">Position</TableHead>
+                    <TableHead className="font-bold text-black dark:text-white">CID</TableHead>
                     <TableHead className="font-bold text-black dark:text-white">Name</TableHead>
                     <TableHead className="font-bold text-black dark:text-white">E-mail</TableHead>
                     <TableHead className="font-bold text-black dark:text-white">Availability</TableHead>
@@ -305,73 +337,96 @@ console.log(departments);
             <TableBody>
                 {
                     departments["Director"].map((staff: any) => (
-                    <TableRow className="backdrop-blur-sm">
+                    <TableRow>
                         <TableCell className="font-bold">{staff.STAFFID}</TableCell>
                         <TableCell>{staff.POSITION}</TableCell>
+                        <TableCell>{staff.CID}</TableCell>
                         <TableCell>{staff.NAME}</TableCell>
                         <TableCell>{staff.EMAIL}</TableCell>
-                        <TableCell>{staff.AVILABILITY}</TableCell>
+                        <TableCell>
+                            <AvailabilityDecode Availability={staff.AVILABILITY}/>
+                        </TableCell>
                     </TableRow>
                     ))
                 }
                 {
-                    departments["Directors"].map((staff: any) => (
-                    <TableRow className="backdrop-blur-sm">
+                    departments["Board"].map((staff: any) => (
+                    <TableRow>
                         <TableCell className="font-bold">{staff.STAFFID}</TableCell>
                         <TableCell>{staff.POSITION}</TableCell>
+                        <TableCell>{staff.CID}</TableCell>
                         <TableCell>{staff.NAME}</TableCell>
                         <TableCell>{staff.EMAIL}</TableCell>
-                        <TableCell>{staff.AVILABILITY}</TableCell>
+                        <TableCell>
+                            <AvailabilityDecode Availability={staff.AVILABILITY}/>
+                        </TableCell>
                     </TableRow>
                     ))
                 }
                 {
                     departments["Web"].map((staff: any) => (
-                    <TableRow className="backdrop-blur-sm">
+                    <TableRow>
                         <TableCell className="font-bold">{staff.STAFFID}</TableCell>
                         <TableCell>{staff.POSITION}</TableCell>
+                        <TableCell>{staff.CID}</TableCell>
                         <TableCell>{staff.NAME}</TableCell>
                         <TableCell>{staff.EMAIL}</TableCell>
-                        <TableCell>{staff.AVILABILITY}</TableCell>
+                        <TableCell>
+                            <AvailabilityDecode Availability={staff.AVILABILITY}/>
+                        </TableCell>
                     </TableRow>
                     ))
                 }
                 {
                     departments["Event"].map((staff: any) => (
-                    <TableRow className="backdrop-blur-sm">
+                    <TableRow>
                         <TableCell className="font-bold">{staff.STAFFID}</TableCell>
                         <TableCell>{staff.POSITION}</TableCell>
+                        <TableCell>{staff.CID}</TableCell>
                         <TableCell>{staff.NAME}</TableCell>
                         <TableCell>{staff.EMAIL}</TableCell>
-                        <TableCell>{staff.AVILABILITY}</TableCell>
+                        <TableCell>
+                            <AvailabilityDecode Availability={staff.AVILABILITY}/>
+                        </TableCell>
                     </TableRow>
                     ))
                 }
                 {
                     departments["Pilot"].map((staff: any) => (
-                    <TableRow className="backdrop-blur-sm">
+                    <TableRow>
                         <TableCell className="font-bold">{staff.STAFFID}</TableCell>
                         <TableCell>{staff.POSITION}</TableCell>
+                        <TableCell>{staff.CID}</TableCell>
                         <TableCell>{staff.NAME}</TableCell>
                         <TableCell>{staff.EMAIL}</TableCell>
-                        <TableCell>{staff.AVILABILITY}</TableCell>
+                        <TableCell>
+                            <AvailabilityDecode Availability={staff.AVILABILITY}/>
+                        </TableCell>
                     </TableRow>
                     ))
                 }
                 {
                     departments["Training"].map((staff: any) => (
-                    <TableRow className="backdrop-blur-sm">
+                    <TableRow>
                         <TableCell className="font-bold">{staff.STAFFID}</TableCell>
                         <TableCell>{staff.POSITION}</TableCell>
+                        <TableCell>{staff.CID}</TableCell>
                         <TableCell>{staff.NAME}</TableCell>
                         <TableCell>{staff.EMAIL}</TableCell>
-                        <TableCell>{staff.AVILABILITY}</TableCell>
+                        <TableCell>
+                            <AvailabilityDecode Availability={staff.AVILABILITY}/>
+                        </TableCell>
                     </TableRow>
                     ))
                 }
             </TableBody>
         </Table>
-        
+
+        <div class="flex flex-row gap-5 justify-between text-sm mt-4 max-lg:flex-wrap">
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="AVL"/> = Available and can be reached on a daily basis</span>
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="OOO"/> = Out of Office (longer vacation, 3-6 weeks)</span>
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="DEP"/> = Away for more than 2 months</span>
+            <span class="max-lg:w-[100%]"><AvailabilityDecode Availability="VAC"/> = Vacant Position</span>
+        </div>
     </div>
-</div>
-</Layout>
+</PageContainer>
