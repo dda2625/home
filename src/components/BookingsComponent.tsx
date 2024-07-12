@@ -16,6 +16,12 @@ interface ScheduleEntry {
   updated_at: string;
 }
 
+interface ATC {
+  callsign: string;
+  name: string;
+  time_start: string;
+}
+
 let headers = new Headers({
     "Accept"       : "application/json",
     "Content-Type" : "application/json",
@@ -38,8 +44,7 @@ var todayATC: Object[] = []
 
 for (const controller of await liveNetworkData()) {
   if (vatscaController(controller.callsign)) {
-    console.log(controller.callsign + controller.logon_time);
-    const ATC = new Object();
+    const ATC: ATC = new Object();
     ATC.callsign = "🟢 " + controller.callsign;
     ATC.name = controller.name;
     ATC.time_start = convertZulu(fixNetworkTime(controller.logon_time));
