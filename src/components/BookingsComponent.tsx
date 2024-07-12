@@ -44,15 +44,14 @@ var todayATC: Object[] = []
 
 for (const controller of await liveNetworkData()) {
   if (vatscaController(controller.callsign)) {
-    const ATC: ATC = new Object();
-    ATC.callsign = "🟢 " + controller.callsign;
-    ATC.name = controller.name;
-    ATC.time_start = convertZulu(fixNetworkTime(controller.logon_time));
-    todayATC.push(ATC);
+    let atcInstance: ATC = {
+      callsign: "🟢 " + controller.callsign,
+      name: controller.name,
+      time_start: convertZulu(fixNetworkTime(controller.logon_time))
+    };
+    todayATC.push(atcInstance);
   }
 }
-
-console.log(todayATC);
 
 const ScheduleTable: React.FC = () => {
   // Organize data by date
