@@ -1,12 +1,12 @@
 function AvailabilityDecodeFunc(status: any) {
     if (status === "AVL") {
-        return <a title="Available and can be reached on a daily basis" data-tooltip-placement="top" className="bg-[#1a475f] text-sm text-white px-2 py-1 rounded-md  absolute top-0 right-0">AVL</a>
+        return <span title="Available and can be reached on a daily basis" data-tooltip-placement="top" className="bg-secondary text-sm text-white px-2 py-1 rounded-md">AVL</span>
     } else if (status === "OOO") {
-        return <a title="Out of Office (longer vacation, 3-6 weeks)" data-tooltip-placement="top" className="bg-[#366694] text-sm text-white px-2 py-1 rounded-md absolute top-0 right-0">OOO</a>
+        return <span title="Out of Office (longer vacation, 3-6 weeks)" data-tooltip-placement="top" className="bg-warning text-sm text-black px-2 py-1 rounded-md">OOO</span>
     } else if (status === "DEP") {
-        return <a title="Away for more than 2 months" data-tooltip-placement="top" className="bg-[#893333] text-sm text-white px-2 py-1 rounded-md absolute top-0 right-0">DEP</a>
+        return <span title="Away for more than 2 months" data-tooltip-placement="top" className="bg-danger text-sm text-white px-2 py-1 rounded-md">DEP</span>
     } else if (status === "VAC") {
-        return <a title="Position vacant" data-tooltip-placement="top" className="bg-gray-200 text-sm text-vatsca3 px-2 py-1 rounded-md absolute top-0 right-0">VAC</a>
+        return <span title="Vacant Position" data-tooltip-placement="top" className="bg-snow text-sm text-vatsca3 px-2 py-1 rounded-md">VAC</span>
     }
 }
 
