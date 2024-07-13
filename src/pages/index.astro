@@ -5,10 +5,7 @@ import HeroButton from "../components/ui/HeroButton.astro";
 import CardBox from "../components/ui/CardBox.astro";
 import CardButton from "../components/ui/CardButton.astro";
 import Events from "../components/Events.astro";
-import { getCollection } from 'astro:content';
-
-const allAnnouncements = await getCollection('announcements');
-allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+import Announcement from "../components/Announcements";
 
 ---
 
@@ -42,25 +39,7 @@ allAnnouncements.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.dat
                 <div class="flex max-xl:flex-wrap gap-8 max-xl:px-8">
                     <div class="2xl:w-[72.5%] xl:w-[72.5%] max-xl:w-[100%] flex flex-col gap-8">
                         <CardBox title="Latest announcements" padding="2">
-                            {allAnnouncements.slice(0, 2).map(post => 
-                                <div class="p-2 mt-2 mb-4 hover:bg-white dark:hover:bg-black hover:brightness-[95%]">
-                                    <a href={"/"}>
-                                        <div class="flex">
-                                            <div class="w-[90%]">
-                                                <div class="font-semibold text-lg text-secondary dark:text-white">
-                                                    {post.data.title}
-                                                </div>
-                                                <div class="text-sm">
-                                                    {post.data.description}
-                                                </div>
-                                            </div>
-                                            <div class="w-[10%] text-grey text-right dark:text-white">
-                                                24 JUN
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            )}
+                            <Announcement  client:visible/>
                         </CardBox>
                             
                         <CardBox title="Events" padding="4">
