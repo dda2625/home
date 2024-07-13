@@ -78,7 +78,7 @@ const components: { title: string; href: string; description: string, external?:
 
 const controllers: { title: string; href: string; description: string, external?: boolean }[] = [
     {
-        title: "Documents & Procedures",
+        title: "Wiki",
         href: "https://wiki.vatsim-scandinavia.org/",
         description: "Documents and procedures",
         external: true,
@@ -86,7 +86,7 @@ const controllers: { title: string; href: string; description: string, external?
     {
         title: "Control Center",
         href: "https://cc.vatsim-scandinavia.org/",
-        description: "Applications, bookings and follow up",
+        description: "Applications, bookings and rosters",
         external: true,
     },
     {
