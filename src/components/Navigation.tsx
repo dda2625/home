@@ -86,7 +86,7 @@ const controllers: { title: string; href: string; description: string, external?
     {
         title: "Control Center",
         href: "https://cc.vatsim-scandinavia.org/",
-        description: "Applications, bookings and rosters",
+        description: "Rosters, bookings and applications",
         external: true,
     },
     {
