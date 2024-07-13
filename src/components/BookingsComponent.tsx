@@ -1,5 +1,6 @@
 import fixNetworkTime from "../utils/fixNetworkTime"
 import convertZulu from "../utils/convertZulu"
+import bookingType from "../utils/bookingType"
 
 interface NetworkDataTypes{
     name: string
@@ -150,7 +151,7 @@ const ScheduleTable: React.FC = () => {
             {groupedFilteredSessions[date].map((session: any) => (
               <tr key={session.callsign} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
                 {session.type === 'Booking' ? <td className="pl-[4px]">○ {session.callsign}</td> : <td className="pl-[4px]"><span className="text-[#1a4860]">●</span> {session.callsign}</td>}
-              
+                <td>{bookingType(session)}</td>
                 <td>{convertZulu(session.time_start)}</td>
                 <td>{session.time_end ? convertZulu(session.time_end) : ""}</td>
               </tr>
