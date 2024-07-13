@@ -105,10 +105,10 @@ const ScheduleTable: React.FC = () => {
             <tbody>
               {entries.map((entry: ScheduleEntry) => (
                 <tr key={entry.id} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
-                  <td className="font-bold w-[37%] pl-2">{entry.callsign}</td>
-                  <td className="w-[23%]">{bookingType(entry)}</td>
-                  <td className="w-[20%]">{convertZulu(entry.time_start)}</td>
-                  <td className="w-[20%]">{convertZulu(entry.time_end)}</td>
+                  <td className="font-bold w-[40%] pl-2">{entry.callsign}</td>
+                  <td className="w-[20%]">{bookingType(entry)}</td>
+                  <td className="w-[15%]">{convertZulu(entry.time_start)}</td>
+                  <td className="w-[15%]">{convertZulu(entry.time_end)}</td>
                 </tr>
               ))}
             </tbody>
