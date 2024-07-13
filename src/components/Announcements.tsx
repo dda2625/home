@@ -38,7 +38,7 @@ async function AnnoucementPosts() {
 var posts = await AnnoucementPosts();
 
 const Annoucements: React.FC = () => {
-  return <div>
+  return <div className="min-h-[200px]">
             {posts.slice(0, 2).map(post =>
                                 <div className="p-2 mt-2 mb-4 hover:bg-white dark:hover:bg-black hover:brightness-[95%]">
                                 <a href={'https://forum.vatsim-scandinavia.org/d/'+post.slug} target="_blank">
@@ -51,7 +51,7 @@ const Annoucements: React.FC = () => {
 
                                             </div>
                                         </div>
-                                        <div className="w-[10%] text-grey text-right dark:text-white">
+                                        <div className="text-grey text-right dark:text-white">
                                             {new Date(post.created).toLocaleDateString() }
                                         </div>
                                     </div>
