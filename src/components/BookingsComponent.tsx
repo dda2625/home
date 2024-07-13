@@ -149,7 +149,7 @@ const ScheduleTable: React.FC = () => {
           <tbody>
             {groupedFilteredSessions[date].map((session: any) => (
               <tr key={session.callsign} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
-                {session.type === 'Booking' ? <td>{session.callsign}</td> : <td>🟢 {session.callsign}</td>}
+                {session.type === 'Booking' ? <td className="pl-[4px]">○ {session.callsign}</td> : <td className="pl-[4px]"><span className="text-[#1a4860]">●</span> {session.callsign}</td>}
               
                 <td>{convertZulu(session.time_start)}</td>
                 <td>{session.time_end ? convertZulu(session.time_end) : ""}</td>
