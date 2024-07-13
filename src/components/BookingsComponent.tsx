@@ -1,122 +1,164 @@
-import convertZulu from "../utils/convertZulu";
-import bookingType from "../utils/bookingType";
-import liveNetworkData from "../utils/liveNetworkData";
-import vatscaController from "../utils/vatscaController";
-import fixNetworkTime from "../utils/fixNetworkTime";
+import fixNetworkTime from "../utils/fixNetworkTime"
+import convertZulu from "../utils/convertZulu"
 
-interface ScheduleEntry {
-  id: number;
-  callsign: string;
-  time_start: string;
-  time_end: string;
-  training: number;
-  event: number;
-  exam: number;
-  created_at: string;
-  updated_at: string;
+interface NetworkDataTypes{
+    name: string
+    callsign: string,
+    facility: number,
+    rating: number,
+    logon_time: Date
 }
 
-interface ATC {
-  callsign: string;
-  name: string;
-  time_start: string;
+interface BookingDataTypes{
+  callsign: string
+  time_start: Date,
+  time_end: Date,
+  training: number,
+  event: number,
+  exam: number
 }
-
-let headers = new Headers({
-    "Accept"       : "application/json",
-    "Content-Type" : "application/json",
-    "User-Agent"   : "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36"
-});
-
-const res = await fetch('https://cc.vatsim-scandinavia.org/api/bookings',{
-    method  : 'GET', 
-    headers : headers 
-})
-var jsonData = await res.json()
-
-
-function getDayName(dateStr: string, locale: string) {
-  var date = new Date(dateStr);
-  return date.toLocaleDateString(locale, { weekday: "long" });
-}
-
-var todayATC: Object[] = []
-
-for (const controller of await liveNetworkData()) {
-  if (vatscaController(controller.callsign)) {
-    let atcInstance: ATC = {
-      callsign: "🟢 " + controller.callsign,
-      name: controller.name,
-      time_start: convertZulu(fixNetworkTime(controller.logon_time))
-    };
-    todayATC.push(atcInstance);
+async function BookingData() {
+  try {
+      const response = await fetch('https://cc.vatsim-scandinavia.org/api/bookings');
+      if (response.ok) {
+          const data = await response.json();
+          var dd = data.data
+          return dd;
+      } else {
+          console.error('Error fetching data:', response.status);
+          return null;
+      }
+  } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
   }
 }
 
-const ScheduleTable: React.FC = () => {
-  // Organize data by date
-  const currentDate = new Date();
-  const nextSevenDays = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
-  const scheduleByDate = jsonData.data.reduce(
-    (acc: { [key: string]: ScheduleEntry[] }, entry: ScheduleEntry) => {
-      const entryDate = new Date(entry.time_start);
-      if (entryDate.getDate() >= currentDate.getDate() && entryDate <= nextSevenDays) {
-        const date = entryDate.toISOString().split("T")[0];
-        if (!acc[date]) {
-          acc[date] = [];
-        }
-        acc[date].push(entry);
+async function NetworkData() {
+  try {
+      const response = await fetch('https://data.vatsim.net/v3/vatsim-data.json');
+      if (response.ok) {
+          const data = await response.json();
+          return data.controllers;
+      } else {
+          console.error('Error fetching data:', response.status);
+          return null;
       }
-      return acc;
-    },
-    {}
-  );
+  } catch (error) {
+      console.error('Error fetching data:', error);
+      return null;
+  }
 
-  const today = new Date().toISOString().split("T")[0];
-  const todayATCEntries = scheduleByDate[today] || [];
-  const updatedScheduleByDate = {
-    ...scheduleByDate,
-    [today]: [...todayATCEntries, ...todayATC]
+}
+
+function isActiveRoster(NetworkData: NetworkDataTypes) {
+  const possibleOptions = ['EK', 'EN', 'ES', 'EF', 'BI', 'BG']; // List of possible options
+  const firstTwoChars = NetworkData.callsign.substring(0, 2); // Get the first four characters of the string
+  if (possibleOptions.includes(firstTwoChars) && NetworkData.facility >= 1 && NetworkData.rating >= 1) {
+    return true; 
+  }
+  return false;
+}
+
+var sessions:any = []
+
+for (const session of await BookingData()) {
+  const atcsession = {
+    callsign: session.callsign,
+    time_start: session.time_start,
+    time_end: session.time_end,
+    training: session.training,
+    event: session.event,
+    exam: session.exam,
+    type: 'Booking'
   };
+  sessions.push(atcsession);
+}
 
-  const scheduleByDateWithTodayATC = Object.keys(updatedScheduleByDate).map((date) => ({
-    date,
-    entries: updatedScheduleByDate[date]
-  }));
+for (const session of await NetworkData()) {
+  if (!isActiveRoster(session)) {
+    continue;
+  }
+  const atcsession = {
+    callsign: session.callsign,
+    time_start: fixNetworkTime(session.logon_time),
+    training: null,
+    event: null,
+    exam: null,
+    type: 'Network'
+  };
+  sessions.push(atcsession);
+}
+// Reduce sessions to include only the next 6 days
+const currentDate = new Date();
+const nextSixDays = new Date(currentDate.getTime() + (6 * 24 * 60 * 60 * 1000)); // Add 6 days to the current date
+const filteredSessions = sessions.filter((session: any) => {
+  const sessionDate = new Date(session.time_start);
+  return sessionDate <= nextSixDays;
+});
+
+// Sort filtered sessions by time_start
+filteredSessions.sort((a: any, b: any) => {
+  return new Date(a.time_start).getTime() - new Date(b.time_start).getTime();
+});
+
+// Group filtered sessions by day
+const groupedFilteredSessions: { [key: string]: any[] } = {};
+filteredSessions.forEach((session: any) => {
+  const date = new Date(session.time_start).toLocaleDateString();
+  if (!groupedFilteredSessions[date]) {
+    groupedFilteredSessions[date] = [];
+  }
+  groupedFilteredSessions[date].push(session);
+});
+
+// Sort sessions by time_start
+sessions.sort((a: any, b: any) => {
+  return new Date(a.time_start).getTime() - new Date(b.time_start).getTime();
+});
+
+// Group sessions by day
+const groupedSessions: { [key: string]: any[] } = {};
+sessions.forEach((session: any) => {
+  const date = new Date(session.time_start).toLocaleDateString();
+  if (!groupedSessions[date]) {
+    groupedSessions[date] = [];
+  }
+  groupedSessions[date].push(session);
+});
+
+function getDayName(dateStr: string) {
+  var date = new Date(dateStr);
+  var today = new Date().toLocaleDateString('en-US', { weekday: "long" })
+  if (date.toLocaleDateString('en-US', { weekday: "long" }) == today ) {
+    return "Today";
+  }
+  return date.toLocaleDateString('en-US', { weekday: "long" });
+}
+
+
+const ScheduleTable: React.FC = () => {
+
 
   return (
     <div>
-      {scheduleByDateWithTodayATC.map(({ date, entries }) => (
-        <div key={date}>
-          <table className="w-full px-2">
-            <thead>
-              <tr>
-                <th className="bg-[#246385] text-white w-full h-8 pt-1" colSpan={4}>
-                  {scheduleByDate[today]?.length > 0 && (
-                    <span>
-                      {getDayName(today, "en-US") === getDayName(new Date().toISOString().split("T")[0], "en-US")
-                        ? "Today"
-                        : getDayName(date, "en-US").charAt(0).toUpperCase() + getDayName(date, "en-US").slice(1)}
-                    </span>
-                  )}
-                </th>
+    {Object.keys(groupedFilteredSessions).map((date: string) => (
+      <div key={date}>
+        <h2 className="bg-[#d5dfdf] w-full font-bold text-black p-2 text-center">{getDayName(date)}</h2>
+        <table className="w-full px-2">
+          <tbody>
+            {groupedFilteredSessions[date].map((session: any) => (
+              <tr key={session.callsign} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
+                <td>{session.callsign}</td>
+                <td>{convertZulu(session.time_start)}</td>
+                <td>{session.time_end ? convertZulu(session.time_end) : ""}</td>
               </tr>
-            </thead>
-            <tbody>
-              {entries.map((entry: ScheduleEntry) => (
-                <tr key={entry.id} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
-                  <td className="font-bold w-[40%] pl-2">{entry.callsign}</td>
-                  <td className="w-[20%]">{bookingType(entry)}</td>
-                  <td className="w-[15%]">{convertZulu(entry.time_start)}</td>
-                  <td className="w-[15%]">{convertZulu(entry.time_end)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ))}
-      {scheduleByDate[today]?.length === 0 && <div>No bookings for today.</div>}
-    </div>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ))}
+  </div>
   );
 };
 
