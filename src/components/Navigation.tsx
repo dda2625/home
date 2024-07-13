@@ -74,11 +74,6 @@ const components: { title: string; href: string; description: string, external?:
         description: "Book slots for our larger events here",
         external: true,
     },
-    {
-        title: "Do's & Don'ts,",
-        href: "/dos-and-donts/",
-        description: "Tips for pilots flying in Scandinavia",
-    },
 ]
 
 const controllers: { title: string; href: string; description: string, external?: boolean }[] = [
