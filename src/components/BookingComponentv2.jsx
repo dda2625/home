@@ -5,6 +5,8 @@ import "../globals.css";
 
 const BookingComponent = () => {
   const [updatedBookings, setUpdatedBookings] = useState([]);
+  const [BookingsNotTodayDate, setBookingsNotTodayDate] = useState([]);
+  const [BookingsNotToday, setBookingsNotToday] = useState([]);
 
   useEffect(() => {
     const fetchBookingData = async () => {
@@ -27,6 +29,21 @@ const BookingComponent = () => {
             new Date(session.time_start).toDateString() === currentDate
         );
 
+        const bookingsNotToday = bookingData.data.filter(
+            (session) =>
+              new Date(session.time_start).toDateString() !== currentDate
+          );
+
+        // Group filtered sessions by day
+        const groupedFilteredSessions = {};
+        bookingsNotToday.forEach((session) => {
+        const date = new Date(session.time_start).toLocaleDateString();
+        if (!groupedFilteredSessions[date]) {
+            groupedFilteredSessions[date] = [];
+        }
+        groupedFilteredSessions[date].push(session);
+        });
+
         // Create a map for quick lookup of live sessions
         const liveSessionsMap = new Map();
         for (const liveSession of networkData.controllers) {
@@ -40,6 +57,8 @@ const BookingComponent = () => {
         }));
 
         setUpdatedBookings(updatedBookings);
+        setBookingsNotTodayDate(groupedFilteredSessions);
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -47,6 +66,8 @@ const BookingComponent = () => {
 
     fetchBookingData();
   }, []);
+
+  console.log(BookingsNotTodayDate)
 
   return (
     <table className="w-full px-2">
@@ -71,6 +92,27 @@ const BookingComponent = () => {
             <td>{booking.time_end ? convertZulu(booking.time_end) : ""}</td>
           </tr>
         ))}
+
+
+        {Object.keys(BookingsNotTodayDate).map((date) => (
+            <>
+                <tr key={date} className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full font-bold text-black dark:text-white p-2 text-center">
+                    <td colSpan={4}>{new Date(date).toLocaleDateString('en-US', { weekday: "long" })}</td>
+                </tr>
+                {BookingsNotTodayDate[date].map((session, index) => (
+                    <tr key={index} className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black">
+                        <td className="pl-[4px]">{session.callsign}</td>
+                        <td>{bookingType(session)}</td>
+                        <td>{convertZulu(session.time_start)}</td>
+                        <td>{session.time_end ? convertZulu(session.time_end) : ""}</td>
+                    </tr>
+                ))}
+            </>
+        ))}
+
+        <tr className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full font-bold text-black dark:text-white p-2 text-center">
+            <td colSpan={4}><a href="cc.vatsim-scandinavia.org/bookings" target="_blank">View more in Control Center</a></td>
+        </tr>
       </tbody>
     </table>
   );
