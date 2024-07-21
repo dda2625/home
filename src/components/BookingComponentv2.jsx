@@ -29,6 +29,12 @@ const BookingComponent = () => {
             new Date(session.time_start).toDateString() === currentDate
         );
 
+        const liveSession = networkData.controllers.filter(
+            (session) =>
+            ["EK","EN","ES","EF","BI","BG"].some((word) => session.callsign.startsWith(word)) &&
+            session.facility > 0
+        );
+
         const bookingsNotToday = bookingData.data.filter(
             (session) =>
               new Date(session.time_start).toDateString() !== currentDate
@@ -56,7 +62,13 @@ const BookingComponent = () => {
           isOnline: liveSessionsMap.has(session.callsign),
         }));
 
+        const updatedNetwork = liveSession.map((session) => ({
+            ...session,
+            isOnline: true,
+          }));
+
         setUpdatedBookings(updatedBookings);
+        setUpdatedBookings(updatedNetwork);
         setBookingsNotTodayDate(groupedFilteredSessions);
 
       } catch (error) {
@@ -67,7 +79,9 @@ const BookingComponent = () => {
     fetchBookingData();
   }, []);
 
-  console.log(BookingsNotTodayDate)
+  const options = {
+    hour: '2-digit', minute: '2-digit'
+  }
 
   return (
     <table className="w-full px-2">
@@ -81,14 +95,14 @@ const BookingComponent = () => {
             className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black"
           >
             {booking.isOnline ? (
-              <td className="pl-[4px]">○ {booking.callsign}</td>
+              <td className="pl-[4px]">● {booking.callsign}</td>
             ) : (
               <td className="pl-[4px]">
-                <span className="text-[#1a4860] font-bold text-xl">●</span> {booking.callsign}
+                <span className="text-[#1a4860] font-bold text-xl">○</span> {booking.callsign}
               </td>
             )}
             <td>{bookingType(booking)}</td>
-            <td>{convertZulu(booking.time_start)}</td>
+            <td>{booking.time ? convertZulu(booking.time_start) : new Date(booking.logon_time).toLocaleTimeString(options) + "z"}</td>
             <td>{booking.time_end ? convertZulu(booking.time_end) : ""}</td>
           </tr>
         ))}
