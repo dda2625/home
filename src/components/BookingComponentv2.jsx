@@ -68,7 +68,6 @@ const BookingComponent = () => {
           }));
 
         setUpdatedBookings(updatedBookings);
-        setUpdatedBookings(updatedNetwork);
         setBookingsNotTodayDate(groupedFilteredSessions);
 
       } catch (error) {
@@ -102,7 +101,7 @@ const BookingComponent = () => {
               </td>
             )}
             <td>{bookingType(booking)}</td>
-            <td>{booking.time ? convertZulu(booking.time_start) : new Date(booking.logon_time).toLocaleTimeString(options) + "z"}</td>
+            <td>{booking.time_start ? convertZulu(booking.time_start) : new Date(booking.logon_time).toLocaleTimeString(options) + "z"}</td>
             <td>{booking.time_end ? convertZulu(booking.time_end) : ""}</td>
           </tr>
         ))}
