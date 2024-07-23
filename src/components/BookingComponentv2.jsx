@@ -6,7 +6,6 @@ import "../globals.css";
 const BookingComponent = () => {
   const [updatedBookings, setUpdatedBookings] = useState([]);
   const [BookingsNotTodayDate, setBookingsNotTodayDate] = useState([]);
-  const [BookingsNotToday, setBookingsNotToday] = useState([]);
 
   useEffect(() => {
     const fetchBookingData = async () => {
@@ -23,16 +22,9 @@ const BookingComponent = () => {
 
         const currentDate = new Date().toDateString();
 
-        // Filter bookings for today
         const bookingsToday = bookingData.data.filter(
           (session) =>
             new Date(session.time_start).toDateString() === currentDate
-        );
-
-        const liveSession = networkData.controllers.filter(
-            (session) =>
-            ["EK","EN","ES","EF","BI","BG"].some((word) => session.callsign.startsWith(word)) &&
-            session.facility > 0
         );
 
         const bookingsNotToday = bookingData.data.filter(
@@ -61,11 +53,6 @@ const BookingComponent = () => {
           ...session,
           isOnline: liveSessionsMap.has(session.callsign),
         }));
-
-        const updatedNetwork = liveSession.map((session) => ({
-            ...session,
-            isOnline: true,
-          }));
 
         setUpdatedBookings(updatedBookings);
         setBookingsNotTodayDate(groupedFilteredSessions);
