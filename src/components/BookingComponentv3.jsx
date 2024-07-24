@@ -100,7 +100,7 @@ const BookingComponent = () => {
           </tr>
         )}
 
-        {SessionToday.length > 0 ? (
+        {SessionToday.length > 0 || BookingsToday.length > 0 ? (
           <tr className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full h-full font-bold text-black dark:text-white p-2 text-center">
             <td colSpan={4} className="w-full h-full text-center">
               Today
