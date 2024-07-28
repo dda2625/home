@@ -43,17 +43,17 @@ const gettingstarted: NavigationItems = [
     {
         title: "Joining VATSCA",
         href: "https://wiki.vatsim-scandinavia.org/books/getting-started-AVr/chapter/joining-vatsim-scandinavia",
-        description: "Transfering to Scandinavia",
+        description: "Transferring to Scandinavia",
         external: true,
     },
     {
         title: "ATC Training",
         href: "https://cc.vatsim-scandinavia.org/",
-        description: "Apply for a controller rating",
+        description: "Apply to become a controller",
         external: true,
     },
     {
-        title: "Pilot Traning",
+        title: "Pilot Training",
         href: "https://wiki.vatsim-scandinavia.org/shelves/pilot-training",
         description: "Information and applications",
         external: true,
@@ -97,7 +97,7 @@ const controllers: NavigationItems = [
     {
         title: "Training Department",
         href: "https://wiki.vatsim-scandinavia.org/books/training-documents",
-        description: "FAQ, documentation and information",
+        description: "FAQ and training-related policies",
         external: true,
     },
     {
@@ -105,15 +105,14 @@ const controllers: NavigationItems = [
         href: "https://wiki.vatsim-scandinavia.org/books/training-documents/page/transfer-and-visiting-policy-in-vatsim-scandinavia",
         description: "Information regarding visiting ratings",
         external: true,
-    },   
+    },
 ]
 
 const about: NavigationItems = [
     {
         title: "Staff",
         href: "/about/staff",
-        description:
-        "List with roles and contact information",
+        description: "Overview of roles and contact information",
     },
     {
         title: "Contact Us",
