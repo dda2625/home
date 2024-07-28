@@ -2,6 +2,7 @@
 import PageContainer from "../../components/ui/PageContainer.astro"
 import Link from "../../components/ui/Link.astro"
 import AvailabilityDecode from "../../components/AvailabilityDecode"
+import {ExternalLinkIcon} from '../../components/icons/ExternalLinkIcon';
 
 import {
     Table,
@@ -317,7 +318,7 @@ export { departments };
         <p class="text-lg dark:text-white italic text-center">
             Feedback for our ATC services, or general comments about VATSIM
             Scandinavia can be sent
-            <Link href="https://cc.vatsim-scandinavia.org/feedback" target="_blank">here</Link>
+            <Link href="https://cc.vatsim-scandinavia.org/feedback" target="_blank">here<ExternalLinkIcon width="0.75rem" marginLeft="0.3rem"/> </Link>
         </p>
         
         <div
