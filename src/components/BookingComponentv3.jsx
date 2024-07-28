@@ -99,7 +99,7 @@ const BookingComponent = () => {
         ) : (
           <tr className="h-12">
             <td colSpan={4}>
-              <iframe src="https://lottie.host/embed/f38f2e55-b47a-4836-850e-7db8f1c45410/rlLEGSkU2x.json" className="w-full h-full" />
+              <iframe src="https://lottie.host/embed/e516525c-74c1-4db5-b2b2-bb135366e103/W8AodEgALN.json" className="w-full h-full" />
             </td>
           </tr>
         )}
