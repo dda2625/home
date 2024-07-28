@@ -3,6 +3,12 @@ import bookingType from "../utils/bookingType";
 import convertZulu from "../utils/convertZulu";
 import fixNetworkTime from "../utils/fixNetworkTime";
 import {ExternalLinkIcon} from './icons/ExternalLinkIcon';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../components/ui/tooltip"
 
 import "../globals.css";
 
@@ -91,6 +97,9 @@ const BookingComponent = () => {
     fetchBookingData();
   }, []);
 
+  console.log(SessionToday);
+  console.log(BookingsToday);
+
   return (
     <table className="w-full h-full px-2">
       <tbody className="h-full">
@@ -118,7 +127,18 @@ const BookingComponent = () => {
             key={index}
             className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black"
           >
-            <td className="pl-[4px] font-medium text-[#447b68]">● {booking.callsign}</td>
+            <td className="pl-[4px] font-medium text-[#447b68]">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                  <span>● {booking.callsign}</span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{booking.name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </td>
             <td className="pl-[4px]"></td>
             <td className="pl-[4px]">
               {convertZulu(fixNetworkTime(booking.logon_time))}
