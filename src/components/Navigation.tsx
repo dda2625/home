@@ -112,7 +112,7 @@ const about: NavigationItems = [
     {
         title: "Staff",
         href: "/about/staff",
-        description: "Overview of roles and contact information",
+        description: "Roles and contact information",
     },
     {
         title: "Contact Us",
