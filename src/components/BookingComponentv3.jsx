@@ -30,7 +30,7 @@ const BookingComponent = () => {
         const acceptedFIRs = ["EK", "EN", "EF", "ES", "BI", "BG"];
 
         for (const session of NetworkApiData.controllers) {
-          if (acceptedFIRs.includes(session.callsign.slice(0, 2))) {
+          if (acceptedFIRs.includes(session.callsign.slice(0, 2)) && session.facility > 0) {
             filterdSessions = [...filterdSessions, session];
           }
         }
