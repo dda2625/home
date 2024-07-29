@@ -128,7 +128,7 @@ const BookingComponent = () => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                  <span>● {booking.callsign}</span>
+                  <span className="font-bold">● {booking.callsign}</span>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{booking.name}</p>
