@@ -149,7 +149,7 @@ const BookingComponent = () => {
             className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-tertiary dark:odd:bg-black"
           >
             <td className="pl-[4px]">○ {booking.callsign}</td>
-            <td className="pl-[4px]"></td>
+            <td className="pl-[4px]">{bookingType(booking)}</td>
             <td className="pl-[4px]">{convertZulu(booking.time_start)}</td>
             <td className="pl-[4px]">{convertZulu(booking.time_end)}</td>
           </tr>
