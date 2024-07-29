@@ -1,8 +1,8 @@
+import React, { useState, useEffect } from 'react';
+
 async function PullForumData(URL: string) {
   try {
-    const response = await fetch(
-      URL
-    );
+    const response = await fetch(URL);
     if (response.ok) {
       const data = await response.json();
       return data.data;
@@ -16,16 +16,17 @@ async function PullForumData(URL: string) {
   }
 }
 
+
 async function AnnoucementPosts() {
   var posts = [];
-  
+
   const announcements = await PullForumData('https://forum.vatsim-scandinavia.org/api/discussions?filter[tag]=announcements');
-  
+
   for (const post of await announcements) {
-    const firstPost = await PullForumData('https://forum.vatsim-scandinavia.org/api/posts?filter[id]='+post.relationships.firstPost.data.id);
-    const firstPostContent = await firstPost[0].attributes.contentHtml
+    const firstPost = await PullForumData('https://forum.vatsim-scandinavia.org/api/posts?filter[id]=' + post.relationships.firstPost.data.id);
+    const firstPostContent = await firstPost[0].attributes.contentHtml;
     const postdata = {
-      slug:   post.attributes.slug,
+      slug: post.attributes.slug,
       title: post.attributes.title,
       created: post.attributes.createdAt,
       content: firstPostContent,
@@ -34,31 +35,33 @@ async function AnnoucementPosts() {
   }
   return posts;
 }
+var data = await AnnoucementPosts()
 
-var posts = await AnnoucementPosts();
+const Annoucements = () => {
 
-const Annoucements: React.FC = () => {
-  return <div className="min-h-[200px]">
-            {posts.slice(0, 2).map(post =>
-                                <div className="p-2 mt-2 mb-4 hover:bg-white dark:hover:bg-black hover:brightness-[95%]">
-                                <a href={'https://forum.vatsim-scandinavia.org/d/'+post.slug} target="_blank">
-                                    <div className="flex">
-                                        <div className="w-[90%]">
-                                            <div className="font-semibold text-lg text-secondary dark:text-white">
-                                                {post.title}
-                                            </div>
-                                            <div className="text-sm line-clamp-2" dangerouslySetInnerHTML={{__html: post.content}}>
+  return (
+      <>
+      {data.map((post) => (
+          <div className="p-2 mt-2 mb-4 hover:bg-white dark:hover:bg-black hover:brightness-[95%]" key={post.slug}>
+          <a href={'https://forum.vatsim-scandinavia.org/d/'+post.slug} target="_blank">
+              <div className="flex">
+                  <div className="w-[90%]">
+                      <div className="font-semibold text-lg text-secondary dark:text-white">
+                          {post.title}
+                      </div>
+                      <div className="text-sm line-clamp-2" dangerouslySetInnerHTML={{__html: post.content}}>
 
-                                            </div>
-                                        </div>
-                                        <div className="text-grey text-right text-md dark:text-white font-bold w-[10%]">
-                                            {((new Date(post.created).toLocaleDateString('default', { day: "2-digit",month: 'short' })).toUpperCase())}
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-            )}
-         </div>;
+                      </div>
+                  </div>
+                  <div className="text-grey text-right text-md dark:text-white font-bold w-[10%]">
+                      {((new Date(post.created).toLocaleDateString('default', { day: "2-digit",month: 'short' })).toUpperCase())}
+                  </div>
+              </div>
+          </a>
+      </div>
+      ))}
+    </>
+  );
 };
 
 export default Annoucements;

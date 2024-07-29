@@ -97,9 +97,6 @@ const BookingComponent = () => {
     fetchBookingData();
   }, []);
 
-  console.log(SessionToday);
-  console.log(BookingsToday);
-
   return (
     <table className="w-full h-full px-2">
       <tbody className="h-full">
@@ -157,9 +154,9 @@ const BookingComponent = () => {
             <td className="pl-[4px]">{convertZulu(booking.time_end)}</td>
           </tr>
         ))}
-        {Object.keys(bookingsNotToday).map((date) => (
+        {Object.keys(bookingsNotToday).map((date, index) => (
           <>
-            <tr className="bg-snow dark:bg-secondary w-full font-bold text-black dark:text-white py-4 text-center">
+            <tr className="bg-snow dark:bg-secondary w-full font-bold text-black dark:text-white py-4 text-center" key={index}>
               <td colSpan={4} className="py-1">
                 {new Date(date).toLocaleString('en-us', {  weekday: 'long', month: 'long', day: 'numeric' })}
               </td>
