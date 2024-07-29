@@ -114,7 +114,7 @@ const BookingComponent = () => {
         )}
 
         {SessionToday.length > 0 || BookingsToday.length > 0 ? (
-          <tr className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full h-full font-bold text-black dark:text-white p-2 text-center">
+          <tr className="bg-snow dark:bg-secondary w-full h-full font-bold text-black dark:text-white p-2 text-center">
             <td colSpan={4} className="w-full h-full text-center">
               Today
             </td>
@@ -125,7 +125,7 @@ const BookingComponent = () => {
         {SessionToday.map((booking, index) => (
           <tr
             key={index}
-            className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black"
+            className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-tertiary dark:odd:bg-black"
           >
             <td className="pl-[4px] font-medium text-[#447b68]">
               <TooltipProvider>
@@ -149,7 +149,7 @@ const BookingComponent = () => {
         {BookingsToday.map((booking, index) => (
           <tr
             key={index}
-            className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black"
+            className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-tertiary dark:odd:bg-black"
           >
             <td className="pl-[4px]">○ {booking.callsign}</td>
             <td className="pl-[4px]"></td>
@@ -159,7 +159,7 @@ const BookingComponent = () => {
         ))}
         {Object.keys(bookingsNotToday).map((date) => (
           <>
-            <tr className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full font-bold text-black dark:text-white py-4 text-center">
+            <tr className="bg-snow dark:bg-secondary w-full font-bold text-black dark:text-white py-4 text-center">
               <td colSpan={4} className="py-1">
                 {new Date(date).toLocaleString('en-us', {  weekday: 'long', month: 'long', day: 'numeric' })}
               </td>
@@ -167,7 +167,7 @@ const BookingComponent = () => {
             {bookingsNotToday[date].map((session, index) => (
               <tr
                 key={index}
-                className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-[#0f2a38] dark:odd:bg-black"
+                className="h-6 even:bg-gray-50 odd:bg-white dark:even:bg-tertiary dark:odd:bg-black"
               >
                 <td className="pl-[4px]">{session.callsign}</td>
                 <td className="pl-[4px]">{bookingType(session)}</td>
@@ -178,7 +178,7 @@ const BookingComponent = () => {
           </>
         ))}
         {bookingsNotToday ? (
-          <tr className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full font-bold text-black dark:text-white p-2 text-center h-12">
+          <tr className="bg-snow dark:bg-tertiary w-full font-bold text-black dark:text-white p-2 text-center h-12">
             <td colSpan={4}>
               <a href="cc.vatsim-scandinavia.org/bookings" target="_blank" className="underline hover:no-underline">
                 See all bookings <ExternalLinkIcon width="0.75rem" marginLeft="0.3rem" />
