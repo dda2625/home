@@ -161,7 +161,7 @@ const BookingComponent = () => {
           <>
             <tr className="bg-[#d5dfdf] dark:bg-[#1b3546] w-full font-bold text-black dark:text-white py-4 text-center">
               <td colSpan={4} className="py-1">
-                {date}
+                {new Date(date).toLocaleString('en-us', {  weekday: 'long', month: 'long', day: 'numeric' })}
               </td>
             </tr>
             {bookingsNotToday[date].map((session, index) => (
