@@ -51,8 +51,8 @@ const Annoucements: React.FC = () => {
 
                                             </div>
                                         </div>
-                                        <div className="text-grey text-right dark:text-white">
-                                            {new Date(post.created).toLocaleDateString() }
+                                        <div className="text-grey text-right text-md dark:text-white font-bold w-[10%]">
+                                            {((new Date(post.created).toLocaleDateString('default', { day: "2-digit",month: 'short' })).toUpperCase())}
                                         </div>
                                     </div>
                                 </a>
