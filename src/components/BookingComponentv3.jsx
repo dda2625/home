@@ -111,8 +111,8 @@ const BookingComponent = () => {
         )}
 
         {SessionToday.length > 0 || BookingsToday.length > 0 ? (
-          <tr className="bg-snow dark:bg-secondary w-full h-full font-bold text-black dark:text-white p-2 text-center">
-            <td colSpan={4} className="w-full h-full text-center">
+          <tr className="bg-snow dark:bg-secondary w-full h-6 font-bold text-black dark:text-white p-2 text-center">
+            <td colSpan={4} className="w-full h-full text-center py-1" >
               Today
             </td>
           </tr>
