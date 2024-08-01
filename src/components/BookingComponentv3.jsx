@@ -177,7 +177,7 @@ const BookingComponent = () => {
         {bookingsNotToday ? (
           <tr className="bg-snow dark:bg-tertiary w-full font-bold text-black dark:text-white p-2 text-center h-12">
             <td colSpan={4}>
-              <a href="https://home.vatsca.org/cc.vatsim-scandinavia.org/bookings" target="_blank" className="underline hover:no-underline">
+              <a href="https://cc.vatsim-scandinavia.org/booking" target="_blank" className="underline hover:no-underline">
                 See all bookings <ExternalLinkIcon width="0.75rem" marginLeft="0.3rem" />
               </a>
             </td>
