@@ -1,5 +1,6 @@
 ---
 import CardButton from "../components/ui/CardButton.astro";
+import MyComponent from "../components/Events.jsx"
 ---
 
 <h3 class="font-semibold text-lg text-secondary mb-2 dark:text-white">Today</h3>
@@ -68,3 +69,4 @@ import CardButton from "../components/ui/CardButton.astro";
     class="w-[280px] max-lg:w-[200px]"
     />
 </div>
+<MyComponent client:only/>
