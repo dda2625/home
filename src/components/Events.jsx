@@ -31,69 +31,38 @@ const Events = () => {
             return startDate.toLocaleString('en-uk', {  weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })+" - "+endDate.toLocaleString('en-uk', {  weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' })
         }
     }
-
-    console.log(dateConverter("2024-08-05 17:00:00"))
     
     return (
-        <div class="flex flex-col gap-4 md:w-full md:min-w-[900px] h-fit">
-            <h3 className="font-semibold text-lg text-secondary mb-2 dark:text-white">Today</h3>
-            <div className="grid grid-cols-5 grid-rows-4 gap-4">
-                <div className="col-span-5 flex flex-row gap-4">
-                    <a target='_blank'  href={events.length != 0 ? events[0].link  : ""} className='w-96 h-fit aspect-video'>
-                        {events.length != 0 ? <img src={events[0].image} className='w-96 h-fit aspect-video rounded-sm' />  : <div className='w-96 h-fit aspect-video bg-gray-200 rounded'></div>}
-                    </a>
-                    <div>
-                        <a target='_blank'  href={events.length != 0 ? events[0].link  : ""}>
-                            <h2 className='font-bold text-2xl hover:text-secondary hover:underline'>{events.length != 0 ? events[0].title  : ""}</h2>
+        <div class="flex flex-col gap-2 md:w-full md:min-w-[900px] h-fit"> 
+            <div className="grid grid-cols-3 gap-4"> 
+            {events.slice(0,5).map((item, index) => (
+                <>
+                {index < 2 ? 
+                    <div key={index} className='flex col-span-3 gap-4 relative'>
+                        <a target='_blank'  href={item.link} className='h-fit aspect-video'>
+                            <img src={item.image} className={`w-96 h-fit aspect-video rounded-sm absolute'}`} />
                         </a>
-                        <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(events[0].start_date, events[0].end_date)  : ""}</p>
-                        <hr className='py-1 mt-2'/>
-                        <p className='line-clamp-6 mb-1'>{events.length != 0 ? events[0].short_description  : ""}</p>
-                        <a href="#" class='bg-snow p-3 text-center text-black dark:text-white hover:brightness-[95%] d-block inline-block mt-2 text-sm rounded-sm' target='_blank'>
-                            Read more
-                        </a>
+                        <div>
+                            <h2 className='font-bold text-2xl'>{item.title}</h2>
+                            <hr />
+                            <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(item.start_date, item.end_date)  : ""}</p>
+                            <p className={`line-clamp-6 mb-1`}>{item.short_description}</p>
+                            <a href={item.link} class={`bg-snow p-3 text-center text-black dark:text-white hover:brightness-[95%] d-block inline-block mt-2 text-sm rounded-sm`} target='_blank'>
+                                Read more
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div className="col-span-5 row-start-2 flex flex-row gap-4">
-                <a target='_blank'  href={events.length != 0 ? events[1].link  : ""} className='w-96 h-fit aspect-video'>
-                        {events.length != 0 ? <img src={events[1].image} className='w-96 h-fit aspect-video rounded-sm' />  : <div className='w-96 h-fit aspect-video bg-gray-200 rounded'></div>}
+                    : 
+                    <a key={index} className='flex flex-col' target='_blank'  href={item.link}>
+                            <img src={item.image} className={`w-64 h-fit aspect-video rounded-sm absolute'}`} />
+                        <div>
+                            <h2 className='font-bold text-2xl'>{item.title}</h2>
+                            <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(item.start_date, item.end_date)  : ""}</p>
+                        </div>
                     </a>
-                    <div>
-                        <a target='_blank'  href={events.length != 0 ? events[1].link  : ""}>
-                            <h2 className='font-bold text-2xl hover:text-secondary hover:underline'>{events.length != 0 ? events[1].title  : ""}</h2>
-                        </a>
-                        <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(events[1].start_date, events[1].end_date)  : ""}</p>
-                        <hr className='py-1 mt-2'/>
-                        <p className='line-clamp-6 mb-1'>{events.length != 0 ? events[1].short_description  : ""}</p>
-                        <a href="#" class='bg-snow p-3 text-center text-black dark:text-white hover:brightness-[95%] d-block inline-block mt-2 text-sm rounded-sm' target='_blank'>
-                            Read more
-                        </a>
-                    </div>
-                </div>
-
-                <h3 className="font-semibold text-lg text-secondary mb-2 dark:text-white">Upcoming</h3>
-                <div className='col-span-5 row-start-3 flex flex-row gap-4 w-ful overflow-x-visible md:min-w-[900px] overflow-hidden'>
-                    <a className="flex flex-col gap-4" target='_blank'  href={events.length != 0 ? events[2].link  : ""}>
-                        <img src={events.length != 0 ? events[2].image  : ""}  className='w-48 h-fit aspect-video'/>
-                        <p>{events.length != 0 ? dateConverter(events[2].start_date, events[2].end_date)  : ""}</p>
-                    </a>
-                    <a className="flex flex-col gap-4" target='_blank'  href={events.length != 0 ? events[3].link  : ""}>
-                        <img src={events.length != 0 ? events[3].image  : ""}  className='w-48 h-fit aspect-video'/>
-                        <p>{events.length != 0 ? dateConverter(events[3].start_date, events[3].end_date)  : ""}</p>
-                    </a>
-                    <a className="flex flex-col gap-4" target='_blank'  href={events.length != 0 ? events[4].link  : ""}>
-                        <img src={events.length != 0 ? events[4].image  : ""}  className='w-48 h-fit aspect-video'/>
-                        <p>{events.length != 0 ? dateConverter(events[4].start_date, events[4].end_date)  : ""}</p>
-                    </a>
-                    <a className="flex flex-col gap-4" target='_blank'  href={events.length != 0 ? events[5].link  : ""}>
-                        <img src={events.length != 0 ? events[5].image  : ""}  className='w-48 h-fit aspect-video'/>
-                        <p>{events.length != 0 ? dateConverter(events[5].start_date, events[5].end_date)  : ""}</p>
-                    </a>
-                    <a className="flex flex-col gap-4" target='_blank'  href={events.length != 0 ? events[6].link  : ""}>
-                        <img src={events.length != 0 ? events[5].image  : ""}  className='w-48 h-fit aspect-video'/>
-                        <p>{events.length != 0 ? dateConverter(events[5].start_date, events[5].end_date)  : ""}</p>
-                    </a>
-                </div>
+                    }
+                </>
+            ))}
             </div>
         </div>
     );
