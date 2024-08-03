@@ -33,14 +33,13 @@ const Events = () => {
     }
     
     return (
-        <div class="flex flex-col gap-2 md:w-full md:min-w-[900px] h-fit"> 
-            <div className="grid grid-cols-3 gap-4"> 
+        <div class="flex flex-col gap-2 w-full md:min-w-[900px] h-fit"> 
             {events.slice(0,5).map((item, index) => (
                 <>
                 {index < 2 ? 
-                    <div key={index} className='flex col-span-3 gap-4 relative'>
+                    <div key={index} className='flex col-span-3 gap-4 relative w-full flex-col md:flex-row'>
                         <a target='_blank'  href={item.link} className='h-fit aspect-video'>
-                            <img src={item.image} className={`w-96 h-fit aspect-video rounded-sm absolute'}`} />
+                            <img src={item.image} className={`w-full md:w-96 h-fit aspect-video rounded-sm absolute'}`} />
                         </a>
                         <div>
                             <h2 className='font-bold text-2xl'>{item.title}</h2>
@@ -53,6 +52,12 @@ const Events = () => {
                         </div>
                     </div>
                     : 
+                    ""
+                    }
+                </>
+            ))}
+            <div className='flex gap-4 overflow-hidden overflow-x-scroll'>
+                {events.slice(2,6).map((item, index) => (
                     <a key={index} className='flex flex-col' target='_blank'  href={item.link}>
                             <img src={item.image} className={`w-64 h-fit aspect-video rounded-sm absolute'}`} />
                         <div>
@@ -60,10 +65,9 @@ const Events = () => {
                             <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(item.start_date, item.end_date)  : ""}</p>
                         </div>
                     </a>
-                    }
-                </>
-            ))}
+                ))}
             </div>
+
         </div>
     );
 };
