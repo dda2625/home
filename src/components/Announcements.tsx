@@ -46,14 +46,14 @@ const Annoucements = () => {
           <a href={'https://forum.vatsim-scandinavia.org/d/'+post.slug} target="_blank">
               <div className="flex">
                   <div className="w-[90%]">
-                      <div className="font-semibold text-lg text-secondary dark:text-white">
+                      <div className="font-semibold text-xl text-secondary dark:text-white">
                           {post.title}
                       </div>
                       <div className="text-sm line-clamp-2" dangerouslySetInnerHTML={{__html: post.content}}>
 
                       </div>
                   </div>
-                  <div className="text-grey text-right text-md dark:text-white font-bold w-[10%]">
+                  <div className="text-grey text-right text-md dark:text-gray-300 font-bold w-[10%]">
                       {((new Date(post.created).toLocaleDateString('default', { day: "2-digit",month: 'short' })).toUpperCase())}
                   </div>
               </div>

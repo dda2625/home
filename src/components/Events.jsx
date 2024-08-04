@@ -41,14 +41,16 @@ const Events = () => {
                         <a target='_blank'  href={item.link} className='h-fit aspect-video'>
                             <img src={item.image} className={`w-full md:w-96 h-fit aspect-video rounded-sm absolute'}`} />
                         </a>
-                        <div>
-                            <h2 className='font-bold text-2xl'>{item.title}</h2>
-                            <hr />
-                            <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(item.start_date, item.end_date)  : ""}</p>
+                        <div className='flex flex-col justify-between'>
+                            <div className='w-fit'>
+                            <h2 className='font-semibold text-xl text-secondary dark:text-white'>{item.title}</h2>
+                            <p className='text-grey font-bold pb-4 dark:text-gray-300'>{events.length != 0 ? dateConverter(item.start_date, item.end_date)  : ""}</p>
                             <p className={`line-clamp-6 mb-1`}>{item.short_description}</p>
                             <a href={item.link} class={`bg-snow p-3 text-center text-black dark:text-white hover:brightness-[95%] d-block inline-block mt-2 text-sm rounded-sm`} target='_blank'>
                                 Read more
                             </a>
+                            </div>
+
                         </div>
                     </div>
                     : 
@@ -56,14 +58,10 @@ const Events = () => {
                     }
                 </>
             ))}
-            <div className='flex gap-4 overflow-hidden overflow-x-scroll'>
-                {events.slice(2,6).map((item, index) => (
-                    <a key={index} className='flex flex-col' target='_blank'  href={item.link}>
-                            <img src={item.image} className={`w-64 h-fit aspect-video rounded-sm absolute'}`} />
-                        <div>
-                            <h2 className='font-bold text-2xl'>{item.title}</h2>
-                            <p className='text-gray-800 font-medium'>{events.length != 0 ? dateConverter(item.start_date, item.end_date)  : ""}</p>
-                        </div>
+            <div className='flex overflow-hidden overflow-x-scroll'>
+                {events.slice(2,9).map((item, index) => (
+                    <a key={index} className='flex flex-col rounded pr-1 pb-1 pt-1' target='_blank'  href={item.link}>
+                        <img src={item.image} className={`w-64 h-fit aspect-video rounded-sm absolute'}`} />
                     </a>
                 ))}
             </div>
