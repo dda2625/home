@@ -95,7 +95,17 @@ const BookingComponent = () => {
     };
 
     fetchBookingData();
+
   }, []);
+
+  function isBookingAlive(start, end) {
+    const currentDate = new Date();
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    return startDate <= currentDate && endDate
+  }
+  console.log(SessionToday.length > 1 ? isBookingAlive(convertZulu(fixNetworkTime(SessionToday[1].logon_time)), convertZulu(BookingsToday[1].time_start)) : "");
 
   return (
     <table className="w-full h-full px-2">
